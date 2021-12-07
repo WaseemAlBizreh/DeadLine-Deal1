@@ -42,7 +42,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registerization page'),
+        title: const Text('Registration page'),
         leading: IconButton(
           onPressed: () {},
           icon: const Icon(Icons.arrow_back_ios),
@@ -144,12 +144,12 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     ElevatedButton(
-                      style:
-                      ElevatedButton.styleFrom(
+                      style: ElevatedButton.styleFrom(
+                        primary: c1,
                         padding: EdgeInsets.all(15),
                       ),
                       child: const Text(
-                        '  Register  ' ,
+                        '  Register  ',
                         style: TextStyle(
                           fontSize: 20,
                         ),
