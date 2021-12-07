@@ -146,13 +146,12 @@ class _RegisterState extends State<Register> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: c1,
-                        padding: EdgeInsets.all(15),
-                      ),
-                      child: const Text(
-                        '  Register  ',
-                        style: TextStyle(
-                          fontSize: 20,
+                        padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32.0),
                         ),
+                      ),
+                      child: const Text('Register', style: TextStyle(fontSize: 20,),
                       ),
                       onPressed: () {},
                     ),
