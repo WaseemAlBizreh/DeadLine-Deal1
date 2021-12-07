@@ -31,7 +31,6 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   bool visible = true;
   bool visible1 = true;
-  var icon_visible = Icons.visibility;
   var c1 = const Color(0xFF06487f);
   var c2 = const Color(0xFF86a9db);
   var c3 = const Color(0xffdcdcf6);
@@ -48,8 +47,11 @@ class _RegisterState extends State<Register> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
         backgroundColor: c1,
-        actions: [
-          Icon(Icons.post_add),
+        actions: const [
+          Icon(Icons.post_add, size: 30),
+          SizedBox(
+            width: 30,
+          )
         ],
       ),
       body: Container(
@@ -74,8 +76,9 @@ class _RegisterState extends State<Register> {
                           filled: true,
                           hintText: "UserName",
                           prefixIcon: Icon(Icons.person_sharp, color: c4),
-                          border: const OutlineInputBorder(
+                          border: OutlineInputBorder(
                             borderSide: BorderSide(width: 0.4),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                         keyboardType: TextInputType.name,
@@ -91,8 +94,9 @@ class _RegisterState extends State<Register> {
                           filled: true,
                           hintText: "Email",
                           prefixIcon: Icon(Icons.mail, color: c4),
-                          border: const OutlineInputBorder(
+                          border: OutlineInputBorder(
                             borderSide: BorderSide(width: 0.4),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                         keyboardType: TextInputType.emailAddress,
@@ -117,10 +121,15 @@ class _RegisterState extends State<Register> {
                                 visible1 = !visible1;
                               });
                             },
-                            icon: Icon(icon_visible, color: c2),
+                            icon: Icon(
+                                visible1
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: c2),
                           ),
-                          border: const OutlineInputBorder(
+                          border: OutlineInputBorder(
                             borderSide: BorderSide(width: 0.4),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                       ),
@@ -141,10 +150,15 @@ class _RegisterState extends State<Register> {
                                 visible = !visible;
                               });
                             },
-                            icon: Icon(icon_visible, color: c2),
+                            icon: Icon(
+                                visible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                                color: c2),
                           ),
-                          border: const OutlineInputBorder(
+                          border: OutlineInputBorder(
                             borderSide: BorderSide(width: 0.4),
+                            borderRadius: BorderRadius.circular(5.0),
                           ),
                         ),
                         keyboardType: TextInputType.text,
@@ -154,12 +168,16 @@ class _RegisterState extends State<Register> {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: c1,
-                        padding: EdgeInsets.fromLTRB(30, 15, 30, 15),
+                        padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(32.0),
                         ),
                       ),
-                      child: const Text('Register', style: TextStyle(fontSize: 20,),
+                      child: const Text(
+                        'Register',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                       onPressed: () {},
                     ),
