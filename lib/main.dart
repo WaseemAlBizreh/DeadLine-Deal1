@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 void main() {
   runApp(MyApp());
@@ -30,7 +30,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   bool visible = true;
-
+  bool visible1 = true;
   var icon_visible = Icons.visibility;
   var c1 = const Color(0xFF06487f);
   var c2 = const Color(0xFF86a9db);
@@ -102,7 +102,7 @@ class _RegisterState extends State<Register> {
                     Container(
                       margin: const EdgeInsets.fromLTRB(35, 0, 35, 35),
                       child: TextFormField(
-                        obscureText: visible,
+                        obscureText: visible1,
                         autocorrect: false,
                         keyboardType: TextInputType.text,
                         textInputAction: TextInputAction.next,
@@ -112,7 +112,11 @@ class _RegisterState extends State<Register> {
                           filled: true,
                           prefixIcon: Icon(Icons.lock_rounded, color: c4),
                           suffixIcon: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                visible1 = !visible1;
+                              });
+                            },
                             icon: Icon(icon_visible, color: c2),
                           ),
                           border: const OutlineInputBorder(
@@ -125,14 +129,18 @@ class _RegisterState extends State<Register> {
                       margin: EdgeInsets.fromLTRB(35, 0, 35, 35),
                       child: TextFormField(
                         autocorrect: false,
-                        obscureText: true,
+                        obscureText: visible,
                         decoration: InputDecoration(
                           fillColor: c3,
                           filled: true,
                           hintText: "Confirm Password",
                           prefixIcon: Icon(Icons.lock, color: c4),
                           suffixIcon: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              setState(() {
+                                visible = !visible;
+                              });
+                            },
                             icon: Icon(icon_visible, color: c2),
                           ),
                           border: const OutlineInputBorder(
