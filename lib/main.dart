@@ -37,6 +37,11 @@ class _RegisterState extends State<Register> {
   var c4 = const Color(0xff345b8e);
   var c5 = const Color(0xff5c97d5);
 
+TextEditingController _NameController = new TextEditingController();
+TextEditingController _EmailController = new TextEditingController();
+TextEditingController _PassController = new TextEditingController();
+TextEditingController _CPassController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,6 +75,12 @@ class _RegisterState extends State<Register> {
                     Container(
                       margin: EdgeInsets.all(35),
                       child: TextFormField(
+                        controller: _NameController,
+                        onFieldSubmitted:(value){
+                          setState(() {
+                            _NameController.text = value;
+                          });
+                        } ,
                         autocorrect: false,
                         decoration: InputDecoration(
                           fillColor: c3,
@@ -88,6 +99,12 @@ class _RegisterState extends State<Register> {
                     Container(
                       margin: const EdgeInsets.fromLTRB(35, 0, 35, 35),
                       child: TextFormField(
+                        controller: _EmailController,
+                        onFieldSubmitted:(value){
+                          setState(() {
+                            _EmailController.text = value;
+                          });
+                        } ,
                         autocorrect: false,
                         decoration: InputDecoration(
                           fillColor: c3,
@@ -106,6 +123,12 @@ class _RegisterState extends State<Register> {
                     Container(
                       margin: const EdgeInsets.fromLTRB(35, 0, 35, 35),
                       child: TextFormField(
+                        controller: _PassController,
+                        onFieldSubmitted:(value){
+                          setState(() {
+                            _PassController.text = value;
+                          });
+                        } ,
                         obscureText: visible1,
                         autocorrect: false,
                         keyboardType: TextInputType.text,
@@ -137,6 +160,12 @@ class _RegisterState extends State<Register> {
                     Container(
                       margin: EdgeInsets.fromLTRB(35, 0, 35, 35),
                       child: TextFormField(
+                        controller: _CPassController,
+                        onFieldSubmitted:(value){
+                          setState(() {
+                            _CPassController.text = value;
+                          });
+                        } ,
                         autocorrect: false,
                         obscureText: visible,
                         decoration: InputDecoration(
