@@ -48,9 +48,9 @@ class _RegisterState extends State<Register> {
           icon: const Icon(Icons.arrow_back_ios),
         ),
         backgroundColor: c1,
-        // actions: [
-        //   IconButton(onPressed: () {}, icon: const Icon(Icons.settings_sharp)),
-        // ],
+        actions: [
+          Icon(Icons.post_add),
+        ],
       ),
       body: Container(
         height: double.infinity,
