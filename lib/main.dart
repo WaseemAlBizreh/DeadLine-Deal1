@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:get/get.dart';
+import 'package:get/get.dart';
+import 'package:waseem/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -47,7 +48,7 @@ TextEditingController _CPassController = TextEditingController();
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Registration page'),
+        title: const Text('Sign up' , style: TextStyle(fontSize: 25),),
         leading: IconButton(
           onPressed: () {},
           icon: const Icon(Icons.arrow_back_ios),
@@ -97,7 +98,7 @@ TextEditingController _CPassController = TextEditingController();
                             prefixIcon: Icon(Icons.person_sharp, color: c4),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(width: 0.4),
-                              borderRadius: BorderRadius.circular(5.0),
+                              borderRadius: BorderRadius.circular(15.0),
                             ),
                           ),
                           keyboardType: TextInputType.name,
@@ -126,7 +127,7 @@ TextEditingController _CPassController = TextEditingController();
                             prefixIcon: Icon(Icons.mail, color: c4),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(width: 0.4),
-                              borderRadius: BorderRadius.circular(5.0),
+                              borderRadius: BorderRadius.circular(15.0),
                             ),
                           ),
                           keyboardType: TextInputType.emailAddress,
@@ -173,7 +174,7 @@ TextEditingController _CPassController = TextEditingController();
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(width: 0.4),
-                              borderRadius: BorderRadius.circular(5.0),
+                              borderRadius: BorderRadius.circular(15.0),
                             ),
                           ),
                         ),
@@ -216,7 +217,7 @@ TextEditingController _CPassController = TextEditingController();
                             ),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(width: 0.4),
-                              borderRadius: BorderRadius.circular(5.0),
+                              borderRadius: BorderRadius.circular(15.0),
                             ),
                           ),
                           keyboardType: TextInputType.text,
@@ -226,7 +227,7 @@ TextEditingController _CPassController = TextEditingController();
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary: c1,
-                          padding: EdgeInsets.fromLTRB(40, 15, 40, 15),
+                          padding: EdgeInsets.fromLTRB(100, 15, 100, 15),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0),
                           ),
