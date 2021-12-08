@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:waseem/home.dart';
+// import 'package:get/get.dart';
+// import 'package:waseem/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -54,12 +54,6 @@ TextEditingController _CPassController = TextEditingController();
           icon: const Icon(Icons.arrow_back_ios),
         ),
         backgroundColor: c1,
-        actions: const [
-          Icon(Icons.post_add, size: 30),
-          SizedBox(
-            width: 30,
-          )
-        ],
       ),
       body: Container(
         height: double.infinity,
@@ -117,6 +111,9 @@ TextEditingController _CPassController = TextEditingController();
                           validator: (value){
                             if(value!.isEmpty){
                               return 'please enter EmailAddress';
+                            }
+                            if(!_EmailController.text.contains('@')){
+                              return 'please enter valid Email';
                             }
                           },
                           autocorrect: false,
