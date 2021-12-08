@@ -10,7 +10,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
+      body: Container(
+        child: Image.asset('assets\imgs\Snap_24.png'),
+      ),
     );
   }
 }

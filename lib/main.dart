@@ -55,6 +55,12 @@ TextEditingController _CPassController = TextEditingController();
         backgroundColor: c1,
       ),
       body: Container(
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage('assets\imgs\Snap_24.png'),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
         height: double.infinity,
         child: SingleChildScrollView(
           child: Column(
