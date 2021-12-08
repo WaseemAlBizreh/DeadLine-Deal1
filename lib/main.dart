@@ -71,7 +71,7 @@ TextEditingController _CPassController = TextEditingController();
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.all(35),
+                        margin: EdgeInsets.all(25),
                         child: TextFormField(
                           controller: _NameController,
                           onFieldSubmitted:(value){
@@ -100,7 +100,7 @@ TextEditingController _CPassController = TextEditingController();
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.fromLTRB(35, 0, 35, 35),
+                        margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
                         child: TextFormField(
                           controller: _EmailController,
                           onFieldSubmitted:(value){
@@ -132,7 +132,7 @@ TextEditingController _CPassController = TextEditingController();
                         ),
                       ),
                       Container(
-                        margin: const EdgeInsets.fromLTRB(35, 0, 35, 35),
+                        margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
                         child: TextFormField(
                           controller: _PassController,
                           onFieldSubmitted:(value){
@@ -177,7 +177,7 @@ TextEditingController _CPassController = TextEditingController();
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.fromLTRB(35, 0, 35, 35),
+                        margin: EdgeInsets.fromLTRB(25, 0, 25, 25),
                         child: TextFormField(
                           controller: _CPassController,
                           onFieldSubmitted:(value){
