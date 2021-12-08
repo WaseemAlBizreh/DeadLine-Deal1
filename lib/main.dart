@@ -239,7 +239,7 @@ TextEditingController _CPassController = TextEditingController();
                           _formkey.currentState!.validate();
                         },
                       ),
-                      SizedBox(height: 35)
+                      SizedBox(height: 25)
                     ],
                   ),
                 ),
