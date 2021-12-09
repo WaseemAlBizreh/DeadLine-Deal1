@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:splashscreen/splashscreen.dart';
+import 'package:splash_screen_view/SplashScreenView.dart';
 import 'package:waseem/main.dart';
 
 var c3 = const Color(0xffdcdcf6);
@@ -16,17 +16,12 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SplashScreen(
-          backgroundColor: c3,
-          //to put image dir here => image: Image.asset(''),
-          //to edit photo size here => photoSize: 150,
-          seconds: 3,
-          title: const Text("Welcome To Our Shop"),
-          loaderColor: c5,
-          loadingText: const Text("Getting Things Ready For You"),
-          navigateAfterSeconds: Register(),
-        ),
+      home: SplashScreenView(
+        navigateRoute: Register(),
+        duration: 2000,
+        imageSize: 130,
+        imageSrc: "assets/imgs/1.png",
+        backgroundColor: c3,
       ),
     );
   }
