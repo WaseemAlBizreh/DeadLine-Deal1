@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'splash_screen.dart';
 // import 'package:get/get.dart';
 // import 'package:waseem/home.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(Splash_Screen());
 }
 class MyApp extends StatefulWidget {
   @override
