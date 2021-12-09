@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'splash_screen.dart';
-// import 'package:get/get.dart';
 // import 'package:waseem/home.dart';
 
 void main() {
   runApp(Splash_Screen());
 }
+
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -38,17 +38,20 @@ class _RegisterState extends State<Register> {
   var c4 = const Color(0xff345b8e);
   var c5 = const Color(0xff5c97d5);
 
-TextEditingController _NameController = TextEditingController();
-TextEditingController _EmailController = TextEditingController();
-TextEditingController _PassController = TextEditingController();
-TextEditingController _CPassController = TextEditingController();
+  TextEditingController _NameController = TextEditingController();
+  TextEditingController _EmailController = TextEditingController();
+  TextEditingController _PassController = TextEditingController();
+  TextEditingController _CPassController = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sign up' , style: TextStyle(fontSize: 25),),
+        title: const Text(
+          'Sign up',
+          style: TextStyle(fontSize: 25),
+        ),
         leading: IconButton(
           onPressed: () {},
           icon: const Icon(Icons.arrow_back_ios),
@@ -56,37 +59,37 @@ TextEditingController _CPassController = TextEditingController();
         backgroundColor: c1,
       ),
       body: Container(
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage('assets\imgs\Snap_24.png'),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            alignment: Alignment.topCenter,
+            image: AssetImage('assets/imgs/15.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
         height: double.infinity,
         child: SingleChildScrollView(
           child: Column(
             children: [
               SizedBox(height: 100),
               Card(
-                margin: EdgeInsets.all(10),
-                elevation: 5,
-                color: c2,
+                elevation: 75,
+                color: Colors.white.withOpacity(0.4),
                 child: Form(
-                  key:_formkey,
+                  key: _formkey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
-                        margin: EdgeInsets.all(25),
+                        margin: EdgeInsets.fromLTRB(25, 40, 25, 25),
                         child: TextFormField(
                           controller: _NameController,
-                          onFieldSubmitted:(value){
+                          onFieldSubmitted: (value) {
                             setState(() {
                               _NameController.text = value;
                             });
-                          } ,
-                          validator: (value){
-                            if(value!.isEmpty){
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
                               return 'please enter UserName';
                             }
                           },
@@ -109,16 +112,16 @@ TextEditingController _CPassController = TextEditingController();
                         margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
                         child: TextFormField(
                           controller: _EmailController,
-                          onFieldSubmitted:(value){
+                          onFieldSubmitted: (value) {
                             setState(() {
                               _EmailController.text = value;
                             });
-                          } ,
-                          validator: (value){
-                            if(value!.isEmpty){
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
                               return 'please enter EmailAddress';
                             }
-                            if(!_EmailController.text.contains('@')){
+                            if (!_EmailController.text.contains('@')) {
                               return 'please enter valid Email';
                             }
                           },
@@ -126,7 +129,7 @@ TextEditingController _CPassController = TextEditingController();
                           decoration: InputDecoration(
                             fillColor: c3,
                             filled: true,
-                            hintText: "Email",
+                            hintText: "E-mail",
                             prefixIcon: Icon(Icons.mail, color: c4),
                             border: OutlineInputBorder(
                               borderSide: BorderSide(width: 0.4),
@@ -141,16 +144,16 @@ TextEditingController _CPassController = TextEditingController();
                         margin: const EdgeInsets.fromLTRB(25, 0, 25, 25),
                         child: TextFormField(
                           controller: _PassController,
-                          onFieldSubmitted:(value){
+                          onFieldSubmitted: (value) {
                             setState(() {
                               _PassController.text = value;
                             });
-                          } ,
-                          validator: (value){
-                            if(value!.isEmpty){
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
                               return 'please enter Password';
                             }
-                            if(value.length < 8){
+                            if (value.length < 8) {
                               return 'Must be more than 8 number or characters';
                             }
                           },
@@ -186,16 +189,16 @@ TextEditingController _CPassController = TextEditingController();
                         margin: EdgeInsets.fromLTRB(25, 0, 25, 25),
                         child: TextFormField(
                           controller: _CPassController,
-                          onFieldSubmitted:(value){
+                          onFieldSubmitted: (value) {
                             setState(() {
                               _CPassController.text = value;
                             });
-                          } ,
-                          validator: (value){
-                            if(value!.isEmpty){
+                          },
+                          validator: (value) {
+                            if (value!.isEmpty) {
                               return 'please Confirm Password';
                             }
-                            if(value!= _PassController.text){
+                            if (value != _PassController.text) {
                               return 'Not Match with password';
                             }
                           },
@@ -230,13 +233,13 @@ TextEditingController _CPassController = TextEditingController();
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           primary: c1,
-                          padding: EdgeInsets.fromLTRB(100, 15, 100, 15),
+                          padding: EdgeInsets.fromLTRB(60, 15, 60, 15),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(32.0),
                           ),
                         ),
                         child: const Text(
-                          'Register',
+                          'CREATE ACCOUNT',
                           style: TextStyle(
                             fontSize: 20,
                           ),
@@ -245,7 +248,36 @@ TextEditingController _CPassController = TextEditingController();
                           _formkey.currentState!.validate();
                         },
                       ),
-                      SizedBox(height: 25)
+                      SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Alredy have have an account?",
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 14,
+                              color: c3,
+                            ),
+                          ),
+                          TextButton(
+                              onPressed: () {},
+                              style: TextButton.styleFrom(
+                                primary: c1,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(32.0),
+                                ),
+                              ),
+                              child: Text(
+                                "Sign in",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 15,
+                                    color: c1),
+                              )),
+                        ],
+                      ),
+                      SizedBox(height: 15),
                     ],
                   ),
                 ),
