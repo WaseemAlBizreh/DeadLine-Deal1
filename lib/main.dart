@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
-import 'splash_screen.dart';
-// import 'package:waseem/home.dart';
+import 'package:flutter/rendering.dart';
+import 'package:splash_screen_view/SplashScreenView.dart';
 
 void main() {
-  runApp(Splash_Screen());
+  runApp(MyApp());
 }
+
+var c1 = const Color(0xFF06487f);
+var c2 = const Color(0xFF86a9db);
+var c3 = const Color(0xffdcdcf6);
+var c4 = const Color(0xff345b8e);
+var c5 = const Color(0xff5c97d5);
 
 class MyApp extends StatefulWidget {
   @override
@@ -19,7 +25,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Product App',
       debugShowCheckedModeBanner: false,
-      home: Register(),
+      home: SplashScreenView(
+        navigateRoute: Register(),
+        duration: 2000,
+        imageSize: 130,
+        imageSrc: "assets/imgs/1.png",
+        backgroundColor: c3,
+      ),
     );
   }
 }
@@ -32,11 +44,6 @@ class Register extends StatefulWidget {
 class _RegisterState extends State<Register> {
   bool visible = true;
   bool visible1 = true;
-  var c1 = const Color(0xFF06487f);
-  var c2 = const Color(0xFF86a9db);
-  var c3 = const Color(0xffdcdcf6);
-  var c4 = const Color(0xff345b8e);
-  var c5 = const Color(0xff5c97d5);
 
   TextEditingController _NameController = TextEditingController();
   TextEditingController _EmailController = TextEditingController();
