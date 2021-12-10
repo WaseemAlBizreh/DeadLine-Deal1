@@ -131,10 +131,19 @@ class _login_pageState extends State<login_page> {
                         ),
                       ),
                       ElevatedButton(
-                        child: const Text(
-                          'Log in',
-                          style: TextStyle(
-                            fontSize: 20,
+                        child: Ink(
+                          padding: const EdgeInsets.fromLTRB(100, 15,100, 15),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: LinearGradient(colors: [c1,c2]),
+                          ),
+                          child: Container(
+                            child: const Text(
+                              'Log in',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
                           ),
                         ),
                         style: ButtonStyle(
@@ -143,9 +152,10 @@ class _login_pageState extends State<login_page> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          backgroundColor: MaterialStateProperty.all(c1),
                           padding: MaterialStateProperty.all(
-                              const EdgeInsets.fromLTRB(100, 15, 100, 15)),
+                              const EdgeInsets.all(0)),
+                          elevation: MaterialStateProperty.all(0),
+                          backgroundColor: MaterialStateProperty.all(Colors.transparent),
                         ),
                         onPressed: () {
                           _formkey1.currentState!.validate();
@@ -165,7 +175,10 @@ class _login_pageState extends State<login_page> {
                           ),
                           TextButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (_)=> Register()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => Register()));
                               },
                               style: TextButton.styleFrom(
                                 primary: c1,
@@ -182,6 +195,7 @@ class _login_pageState extends State<login_page> {
                               )),
                         ],
                       ),
+                      SizedBox(height: 15),
                     ],
                   ),
                 ),
