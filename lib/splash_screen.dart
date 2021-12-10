@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:waseem/u_register.dart';
 import 'package:flutter/rendering.dart';
 import 'package:splashscreen/splashscreen.dart';
+import 'home_page.dart';
 import 'package:waseem/main.dart';
 
 var c3 = const Color(0xffdcdcf6);
@@ -20,12 +22,12 @@ class _Splash_ScreenState extends State<Splash_Screen> {
         body: SplashScreen(
           backgroundColor: c3,
           //to put image dir here => image: Image.asset(''),
-          //to edit photo size here => photoSize: 150,
+          //to edit photo size here => photoSize: 150,kgdfkgposkpof;sg
           seconds: 3,
           title: const Text("Welcome To Our Shop"),
           loaderColor: c5,
           loadingText: const Text("Getting Things Ready For You"),
-          navigateAfterSeconds: Register(),
+          navigateAfterSeconds: home_page(),
         ),
       ),
     );
