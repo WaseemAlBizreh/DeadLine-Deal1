@@ -265,7 +265,7 @@ class _RegisterState extends State<Register> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Alredy have have an account?",
+                            "Alredy have an account?",
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
