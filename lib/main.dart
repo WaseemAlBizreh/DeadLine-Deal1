@@ -63,7 +63,9 @@ class _RegisterState extends State<Register> {
           style: TextStyle(fontSize: 25),
         ),
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_)=> home_page()));
+          },
           icon: const Icon(Icons.arrow_back_ios),
         ),
         backgroundColor: c1,
