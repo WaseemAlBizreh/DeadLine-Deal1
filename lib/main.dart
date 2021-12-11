@@ -241,21 +241,30 @@ class _RegisterState extends State<Register> {
                         ),
                       ),
                       ElevatedButton(
+                        child: Ink(
+                          padding: const EdgeInsets.fromLTRB(60, 15, 60, 15),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(30),
+                            gradient: LinearGradient(colors: [c2, c1]),
+                          ),
+                          child: Container(
+                            child: const Text(
+                              'CREATE ACCOUNT',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
                         style: ButtonStyle(
                           shape: MaterialStateProperty.all(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          backgroundColor: MaterialStateProperty.all(c1),
-                          padding: MaterialStateProperty.all(
-                              const EdgeInsets.fromLTRB(60, 15, 60, 15)),
-                        ),
-                        child: const Text(
-                          'CREATE ACCOUNT',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
+                          padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                          elevation: MaterialStateProperty.all(10),
+                          backgroundColor: MaterialStateProperty.all(Colors.transparent),
                         ),
                         onPressed: () {
                           _formkey.currentState!.validate();

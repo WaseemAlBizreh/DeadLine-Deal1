@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 import 'login_page.dart';
 
-
 var c1 = const Color(0xFF06487f);
 var c2 = const Color(0xFF86a9db);
 var c3 = const Color(0xffdcdcf6);
@@ -12,10 +11,12 @@ var c4 = const Color(0xff345b8e);
 var c5 = const Color(0xff5c97d5);
 
 void selectScreen(BuildContext cntxt, bool scrn) {
-  Navigator.of(cntxt).pushReplacement(MaterialPageRoute(
-      builder: (_) {
-    if (scrn ==false){return login_page();}
-    else {return Register();}
+  Navigator.of(cntxt).pushReplacement(MaterialPageRoute(builder: (_) {
+    if (scrn == false) {
+      return login_page();
+    } else {
+      return Register();
+    }
   }));
 }
 
@@ -29,75 +30,87 @@ class _home_pageState extends State<home_page> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-      height: double.infinity,
-      width: double.infinity,
-      child: Column(mainAxisAlignment: MainAxisAlignment.center,
-          //crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-        const Text(
-          "WELCOME TO OUR SHOP",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        Container(
-          margin: EdgeInsets.symmetric(vertical: 10),
-          child: ElevatedButton(
-            child: Ink(
-              padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                gradient: LinearGradient(colors: [c1, c2]),
-              ),
-              child: Container(
-                child: const Text(
-                  'Log In',
-                  style: TextStyle(
-                    fontSize: 20,
+          height: double.infinity,
+          width: double.infinity,
+          // decoration: const BoxDecoration(
+          //   image: DecorationImage(
+          //     alignment: Alignment.topCenter,
+          //     image: AssetImage('assets/imgs/15.jpg'),
+          //     fit: BoxFit.cover,
+          //   ),
+          // ),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center,
+              //crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Text(
+                  "WELCOME TO OUR SHOP",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  child: ElevatedButton(
+                    child: Ink(
+                      padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        gradient: LinearGradient(colors: [c1, c2]),
+                      ),
+                      child: Container(
+                        child: const Text(
+                          'Log In',
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ),
+                    ),
+                    style: ButtonStyle(
+                      shape: MaterialStateProperty.all(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                      elevation: MaterialStateProperty.all(0),
+                      backgroundColor:
+                      MaterialStateProperty.all(Colors.transparent),
+                    ),
+                    onPressed: () {
+                      return selectScreen(context, false);
+                    },
                   ),
                 ),
-              ),
-            ),
-            style: ButtonStyle(
-              shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+                ElevatedButton(
+                  child: Ink(
+                    padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      gradient: LinearGradient(colors: [c2, c1]),
+                    ),
+                    child: Container(
+                      child: const Text(
+                        'Sign Up',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ),
+                  ),
+                  style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                    padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                    elevation: MaterialStateProperty.all(0),
+                    backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                  ),
+                  onPressed: () {
+                    return selectScreen(context, true);
+                  },
                 ),
-              ),
-              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-              elevation: MaterialStateProperty.all(0),
-              backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            ),
-            onPressed: () {return selectScreen(context, false);},
-          ),
-        ),
-        ElevatedButton(
-          child: Ink(
-            padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              gradient: LinearGradient(colors: [c2, c1]),
-            ),
-            child: Container(
-              child: const Text(
-                'Sign Up',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
-              ),
-            ),
-          ),
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
-            padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-            elevation: MaterialStateProperty.all(0),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-          ),
-          onPressed:(){return selectScreen(context, true);},
-        ),
-      ]),
-    ));
+              ]),
+        ));
   }
 }
