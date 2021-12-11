@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'main.dart';
+import '../main.dart';
+import 'login_page.dart';
 
 
 var c1 = const Color(0xFF06487f);
@@ -10,9 +11,11 @@ var c3 = const Color(0xffdcdcf6);
 var c4 = const Color(0xff345b8e);
 var c5 = const Color(0xff5c97d5);
 
-void selectScreen(BuildContext cntxt) {
-  Navigator.of(cntxt).pushReplacement(MaterialPageRoute(builder: (_) {
-    return Register();
+void selectScreen(BuildContext cntxt, bool scrn) {
+  Navigator.of(cntxt).pushReplacement(MaterialPageRoute(
+      builder: (_) {
+    if (scrn ==false){return login_page();}
+    else {return Register();}
   }));
 }
 
@@ -63,7 +66,7 @@ class _home_pageState extends State<home_page> {
               elevation: MaterialStateProperty.all(0),
               backgroundColor: MaterialStateProperty.all(Colors.transparent),
             ),
-            onPressed: () {},
+            onPressed: () {return selectScreen(context, false);},
           ),
         ),
         ElevatedButton(
@@ -92,7 +95,7 @@ class _home_pageState extends State<home_page> {
             elevation: MaterialStateProperty.all(0),
             backgroundColor: MaterialStateProperty.all(Colors.transparent),
           ),
-          onPressed: null,
+          onPressed:(){return selectScreen(context, true);},
         ),
       ]),
     ));

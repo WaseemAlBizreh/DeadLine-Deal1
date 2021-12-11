@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 
 import 'MyPages/login_page.dart';
+import 'MyPages/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
       title: 'Product App',
       debugShowCheckedModeBanner: false,
       home: SplashScreenView(
-        navigateRoute: Register(),
+        navigateRoute: home_page(),
         duration: 2000,
         imageSize: 130,
         imageSrc: "assets/imgs/1.png",
