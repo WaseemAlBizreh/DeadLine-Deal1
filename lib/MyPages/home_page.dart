@@ -84,7 +84,7 @@ class _home_pageState extends State<home_page> {
                             ),
                             ),
                             padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                            elevation: MaterialStateProperty.all(0),
+                            elevation: MaterialStateProperty.all(10),
                             backgroundColor: MaterialStateProperty.all(Colors.transparent),
                           ),
                           onPressed: () {
@@ -116,7 +116,7 @@ class _home_pageState extends State<home_page> {
                               ),
                             ),
                             padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                            elevation: MaterialStateProperty.all(0),
+                            elevation: MaterialStateProperty.all(10),
                             backgroundColor: MaterialStateProperty.all(Colors.transparent),
                           ),
                           onPressed: () {
