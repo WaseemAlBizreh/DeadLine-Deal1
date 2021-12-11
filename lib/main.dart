@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:splash_screen_view/SplashScreenView.dart';
 
 import 'MyPages/login_page.dart';
 import 'MyPages/home_page.dart';
@@ -28,13 +27,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Product App',
       debugShowCheckedModeBanner: false,
-      home: SplashScreenView(
-        navigateRoute: home_page(),
-        duration: 2000,
-        imageSize: 150,
-        imageSrc: "assets/imgs/logo_v1.1.png",
-        backgroundColor: Color(0xff115eff),
-      ),
+      home: home_page(),
     );
   }
 }

@@ -48,12 +48,12 @@ class _home_pageState extends State<home_page> {
                   gradient: LinearGradient(colors: [c1,c2]),
                 ),
                 child: const CircleAvatar(
-                  radius: 75.0,
+                  radius: 90.0,
                   backgroundImage: AssetImage('assets/imgs/logo_transparent.png'),
                   backgroundColor: Colors.transparent,
                 ),
               ),
-              SizedBox(height: 170,),
+              SizedBox(height: 100,),
               Card(
                 elevation: 75,
                 color: Colors.white.withOpacity(0.4),

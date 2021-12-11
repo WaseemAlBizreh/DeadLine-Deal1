@@ -54,7 +54,7 @@ class _login_pageState extends State<login_page> {
                   gradient: LinearGradient(colors: [c1,c2]),
                 ),
                 child: const CircleAvatar(
-                  radius: 75.0,
+                  radius: 90.0,
                   backgroundImage: AssetImage('assets/imgs/logo_transparent.png'),
                   backgroundColor: Colors.transparent,
                 ),
