@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Product App',
+      title: 'Deadline Deals',
       debugShowCheckedModeBanner: false,
       home: home_page(),
     );
@@ -273,7 +273,7 @@ class _RegisterState extends State<Register> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Alredy have an account?",
+                            "Already have an account?",
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
