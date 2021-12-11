@@ -31,9 +31,9 @@ class _MyAppState extends State<MyApp> {
       home: SplashScreenView(
         navigateRoute: home_page(),
         duration: 2000,
-        imageSize: 130,
-        imageSrc: "assets/imgs/1.png",
-        backgroundColor: c3,
+        imageSize: 150,
+        imageSrc: "assets/imgs/logo_v1.1.png",
+        backgroundColor: Color(0xff115eff),
       ),
     );
   }
@@ -64,7 +64,8 @@ class _RegisterState extends State<Register> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_)=> home_page()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => home_page()));
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
@@ -82,7 +83,7 @@ class _RegisterState extends State<Register> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 100),
+              const SizedBox(height: 105),
               Card(
                 elevation: 75,
                 color: Colors.white.withOpacity(0.4),
@@ -264,9 +265,11 @@ class _RegisterState extends State<Register> {
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
-                          padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                          padding: MaterialStateProperty.all(
+                              const EdgeInsets.all(0)),
                           elevation: MaterialStateProperty.all(10),
-                          backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                          backgroundColor:
+                          MaterialStateProperty.all(Colors.transparent),
                         ),
                         onPressed: () {
                           _formkey.currentState!.validate();
@@ -286,7 +289,10 @@ class _RegisterState extends State<Register> {
                           ),
                           TextButton(
                               onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (_)=> login_page()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (_) => login_page()));
                               },
                               style: TextButton.styleFrom(
                                 primary: c1,

@@ -47,7 +47,19 @@ class _login_pageState extends State<login_page> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 200),
+              SizedBox(height: 20,),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(75.0),
+                  gradient: LinearGradient(colors: [c1,c2]),
+                ),
+                child: const CircleAvatar(
+                  radius: 75.0,
+                  backgroundImage: AssetImage('assets/imgs/logo_transparent.png'),
+                  backgroundColor: Colors.transparent,
+                ),
+              ),
+              SizedBox(height: 20,),
               Card(
                 elevation: 75,
                 color: Colors.white.withOpacity(0.4),

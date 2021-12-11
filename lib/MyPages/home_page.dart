@@ -32,85 +32,102 @@ class _home_pageState extends State<home_page> {
         body: Container(
           height: double.infinity,
           width: double.infinity,
-          // decoration: const BoxDecoration(
-          //   image: DecorationImage(
-          //     alignment: Alignment.topCenter,
-          //     image: AssetImage('assets/imgs/15.jpg'),
-          //     fit: BoxFit.cover,
-          //   ),
-          // ),
-          child: Column(mainAxisAlignment: MainAxisAlignment.center,
-              //crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const Text(
-                  "WELCOME TO OUR SHOP",
-                  style: TextStyle(fontWeight: FontWeight.bold),
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              alignment: Alignment.topCenter,
+              image: AssetImage('assets/imgs/home.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            children: [
+              SizedBox(height: 100,),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(75.0),
+                  gradient: LinearGradient(colors: [c1,c2]),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  child: ElevatedButton(
-                    child: Ink(
-                      padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(30),
-                        gradient: LinearGradient(colors: [c1, c2]),
-                      ),
-                      child: Container(
-                        child: const Text(
-                          'Log In',
-                          style: TextStyle(
-                            fontSize: 20,
+                child: const CircleAvatar(
+                  radius: 75.0,
+                  backgroundImage: AssetImage('assets/imgs/logo_transparent.png'),
+                  backgroundColor: Colors.transparent,
+                ),
+              ),
+              SizedBox(height: 170,),
+              Card(
+                elevation: 75,
+                color: Colors.white.withOpacity(0.4),
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.fromLTRB(70,30,70,10),
+                        child: ElevatedButton(
+                          child: Ink(
+                            padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              gradient: LinearGradient(colors: [c1, c2]),
+                            ),
+                            child: Container(
+                              child: const Text(
+                                'Log In',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ),
                           ),
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            ),
+                            padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                            elevation: MaterialStateProperty.all(0),
+                            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                          ),
+                          onPressed: () {
+                            return selectScreen(context, false);},
                         ),
                       ),
-                    ),
-                    style: ButtonStyle(
-                      shape: MaterialStateProperty.all(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0,0,0,30),
+                        child: ElevatedButton(
+                          child: Ink(
+                              padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30),
+                                gradient: LinearGradient(colors: [c2, c1]),
+                              ),
+                              child: Container(
+                                child: const Text(
+                                  'Sign Up',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              )
+                          ),
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+                            elevation: MaterialStateProperty.all(0),
+                            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                          ),
+                          onPressed: () {
+                            return selectScreen(context, true);},
                         ),
                       ),
-                      padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                      elevation: MaterialStateProperty.all(0),
-                      backgroundColor:
-                      MaterialStateProperty.all(Colors.transparent),
-                    ),
-                    onPressed: () {
-                      return selectScreen(context, false);
-                    },
-                  ),
-                ),
-                ElevatedButton(
-                  child: Ink(
-                    padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      gradient: LinearGradient(colors: [c2, c1]),
-                    ),
-                    child: Container(
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ),
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                    ),
-                    padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-                    elevation: MaterialStateProperty.all(0),
-                    backgroundColor: MaterialStateProperty.all(Colors.transparent),
-                  ),
-                  onPressed: () {
-                    return selectScreen(context, true);
-                  },
-                ),
-              ]),
-        ));
+                    ]),
+              ),
+            ],
+          ),
+        )
+    );
   }
 }
