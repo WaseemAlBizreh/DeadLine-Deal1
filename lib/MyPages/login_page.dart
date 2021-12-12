@@ -185,7 +185,7 @@ class _login_pageState extends State<login_page> {
                             style: TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
-                              color: c4,
+                              color: c3,
                             ),
                           ),
                           TextButton(
