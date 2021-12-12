@@ -29,7 +29,7 @@ class _login_pageState extends State<login_page> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (_)=> home_page()));
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=> home_page()));
           },
           icon: const Icon(Icons.arrow_back_ios),
         ),
@@ -51,15 +51,16 @@ class _login_pageState extends State<login_page> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(75.0),
-                  gradient: LinearGradient(colors: [c1,c2]),
+                  // gradient: LinearGradient(colors: [c1,c2]),
+                  color: Color(0xff3B589A),
                 ),
                 child: const CircleAvatar(
-                  radius: 90.0,
-                  backgroundImage: AssetImage('assets/imgs/logo_transparent.png'),
+                  radius: 90,
+                  backgroundImage: AssetImage('assets/imgs/logo_transparent_mid.png'),
                   backgroundColor: Colors.transparent,
                 ),
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 80,),
               Card(
                 elevation: 75,
                 color: Colors.white.withOpacity(0.4),
@@ -206,7 +207,8 @@ class _login_pageState extends State<login_page> {
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 17,
-                                    color: c1),
+                                    color: c1
+                                ),
                               )),
                         ],
                       ),

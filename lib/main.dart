@@ -57,7 +57,7 @@ class _RegisterState extends State<Register> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
+            Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (_) => home_page()));
           },
           icon: const Icon(Icons.arrow_back_ios),

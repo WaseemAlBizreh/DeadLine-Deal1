@@ -45,11 +45,15 @@ class _home_pageState extends State<home_page> {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(75.0),
-                  gradient: LinearGradient(colors: [c1,c2]),
+                  gradient: LinearGradient(
+                      colors: [
+                        Color(0xffB6DCEF),
+                        Color(0xff3091D5),
+                        Color(0xff265B7B)]),
                 ),
                 child: const CircleAvatar(
                   radius: 90.0,
-                  backgroundImage: AssetImage('assets/imgs/logo_transparent.png'),
+                  backgroundImage: AssetImage('assets/imgs/logo_transparent_mid.png'),
                   backgroundColor: Colors.transparent,
                 ),
               ),
