@@ -64,7 +64,7 @@ class _home_pageState extends State<home_page> {
                         margin: EdgeInsets.fromLTRB(70,30,70,10),
                         child: ElevatedButton(
                           child: Ink(
-                            padding: const EdgeInsets.fromLTRB(100, 15, 100, 15),
+                            padding:  EdgeInsets.fromLTRB(92, 15, 92, 15),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               gradient: LinearGradient(colors: [c1, c2]),
@@ -73,7 +73,7 @@ class _home_pageState extends State<home_page> {
                               child: const Text(
                                 'Log In',
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 16,
                                 ),
                               ),
                             ),
