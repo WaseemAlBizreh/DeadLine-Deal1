@@ -54,10 +54,8 @@ class _login_pageState extends State<login_page> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.fromLTRB(
-                              Devwidth * 0.06, 0.04,
-                              Devwidth * 0.06, Devheight * 0.025
-                          ),
+                          margin: EdgeInsets.fromLTRB(Devwidth * 0.06, 0.04,
+                              Devwidth * 0.06, Devheight * 0.025),
                           child: TextFormField(
                             controller: _EmailController,
                             onFieldSubmitted: (value) {
@@ -89,10 +87,8 @@ class _login_pageState extends State<login_page> {
                           ),
                         ),
                         Container(
-                          margin: EdgeInsets.fromLTRB(
-                              Devwidth * 0.06, 0,
-                              Devwidth * 0.06, Devheight * 0.025
-                          ),
+                          margin: EdgeInsets.fromLTRB(Devwidth * 0.06, 0,
+                              Devwidth * 0.06, Devheight * 0.025),
                           child: TextFormField(
                             controller: _PassController,
                             onFieldSubmitted: (value) {
@@ -138,10 +134,11 @@ class _login_pageState extends State<login_page> {
                         ),
                         ElevatedButton(
                           child: Ink(
-                            padding:EdgeInsets.fromLTRB(
-                                Devwidth * 0.2, Devheight * 0.02,
-                                Devwidth * 0.2, Devheight * 0.02
-                            ),
+                            padding: EdgeInsets.fromLTRB(
+                                Devwidth * 0.2,
+                                Devheight * 0.02,
+                                Devwidth * 0.2,
+                                Devheight * 0.02),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               gradient: LinearGradient(colors: [c2, c1]),
@@ -164,8 +161,7 @@ class _login_pageState extends State<login_page> {
                             padding: MaterialStateProperty.all(
                                 const EdgeInsets.all(0)),
                             elevation: MaterialStateProperty.all(10),
-                            backgroundColor:
-                            MaterialStateProperty.all(Colors.transparent),
+                            backgroundColor: MaterialStateProperty.all(Colors.transparent),
                           ),
                           onPressed: () {
                             _formkey1.currentState!.validate();
@@ -179,7 +175,7 @@ class _login_pageState extends State<login_page> {
                               "Don't have an account?",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                fontSize: Devwidth * 0.04 ,
+                                fontSize: Devwidth * 0.04,
                                 color: c5,
                               ),
                             ),
@@ -188,7 +184,8 @@ class _login_pageState extends State<login_page> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (_) => Register()));},
+                                          builder: (_) => Register()));
+                                },
                                 style: TextButton.styleFrom(
                                   primary: c1,
                                   shape: RoundedRectangleBorder(
