@@ -287,7 +287,7 @@ class _RegisterState extends State<Register> {
                               "Already have an account?",
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
-                                fontSize: 16,
+                                fontSize: Devwidth * 0.04 ,
                                 color: c5,
                               ),
                             ),
@@ -307,7 +307,7 @@ class _RegisterState extends State<Register> {
                                   "Sign in",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 17,
+                                      fontSize: Devwidth * 0.05,
                                       color: c4),
                                 )),
                           ],
