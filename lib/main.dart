@@ -68,7 +68,7 @@ class _RegisterState extends State<Register> {
                 ),
               ),
               Container(
-                height: Devheight * 0.64,
+                height: Devheight * 0.66,
                 child: Card(
                   margin: EdgeInsets.all(Devwidth * 0.05),
                   shape: RoundedRectangleBorder(
@@ -255,10 +255,10 @@ class _RegisterState extends State<Register> {
                               gradient: LinearGradient(colors: [c2, c1]),
                             ),
                             child: Container(
-                              child: const Text(
+                              child:Text(
                                 'CREATE ACCOUNT',
                                 style: TextStyle(
-                                  fontSize: 20,
+                                  fontSize: Devwidth * 0.05,
                                 ),
                               ),
                             ),
