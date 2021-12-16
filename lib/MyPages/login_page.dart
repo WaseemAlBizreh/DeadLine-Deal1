@@ -55,7 +55,7 @@ class _login_pageState extends State<login_page> {
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.fromLTRB(
-                              Devwidth * 0.06, 0,
+                              Devwidth * 0.06, 0.04,
                               Devwidth * 0.06, Devheight * 0.025
                           ),
                           child: TextFormField(
@@ -199,7 +199,7 @@ class _login_pageState extends State<login_page> {
                                   "Sign up",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
-                                      fontSize: Devwidth * 0.05,
+                                      fontSize: Devwidth * 0.04,
                                       color: c4),
                                 )),
                           ],
