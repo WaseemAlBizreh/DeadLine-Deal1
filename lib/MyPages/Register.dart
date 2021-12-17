@@ -269,7 +269,7 @@ class _RegisterState extends State<Register> {
                               ),
                               TextButton(
                                   onPressed: () {
-                                    Navigator.push(
+                                    Navigator.pushReplacement(
                                         context,
                                         MaterialPageRoute(
                                             builder: (_) => login_page()));},
