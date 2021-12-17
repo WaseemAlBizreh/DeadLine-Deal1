@@ -200,7 +200,7 @@ class _HomeState extends State<Home> {
 //     if (scrn == false) {
 //       return login_page();
 //     } else {
-//       return Register();
+//       return Register.dart();
 //     }
 //   }));
 // }

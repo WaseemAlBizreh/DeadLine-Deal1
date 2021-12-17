@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:waseem/MyPages/GridView.dart';
 import 'package:waseem/main.dart';
 
+import 'Register.dart';
+
 class login_page extends StatefulWidget {
   @override
   State<login_page> createState() => _login_pageState();
