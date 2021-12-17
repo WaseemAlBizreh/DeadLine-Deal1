@@ -1,7 +1,4 @@
-
-
 import 'package:flutter/material.dart';
-
 import 'login_page.dart';
 
 var c1 = const Color(0xFF06487f);
