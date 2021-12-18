@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 // import 'package:waseem/MyPages/GridView.dart';
 // import 'package:waseem/main.dart';
-import 'package:intl/intl.dart';
+//import 'package:intl/intl.dart';
 import 'Register.dart';
+import 'package:waseem/login_model.dart';
+//import 'package:waseem/api_service.dart';
 
 class login_page extends StatefulWidget {
   @override
@@ -21,6 +23,13 @@ class _login_pageState extends State<login_page> {
   TextEditingController _PassController = TextEditingController();
 
   final _formkey1 = GlobalKey<FormState>();
+  late LoginRequestModel requestModel;
+
+  @override
+  void initState(){
+    super.initState();
+    requestModel= new LoginRequestModel();
+  }
   @override
   Widget build(BuildContext context) {
     var Devheight = MediaQuery.of(context).size.height;
@@ -65,6 +74,7 @@ class _login_pageState extends State<login_page> {
                                 _EmailController.text = value;
                               });
                             },
+                            onSaved: (input)=>requestModel.email=input!,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'please enter EmailAddress';
@@ -98,6 +108,7 @@ class _login_pageState extends State<login_page> {
                                 _PassController.text = value;
                               });
                             },
+                            onSaved:(input)=> requestModel.password=input!,
                             validator: (value) {
                               if (value!.isEmpty) {
                                 return 'please enter Password';
@@ -167,6 +178,7 @@ class _login_pageState extends State<login_page> {
                           ),
                           onPressed: () {
                             _formkey1.currentState!.validate();
+                            print(requestModel.toJson());
                           },
                         ),
                         SizedBox(height: Devheight * 0.01),
