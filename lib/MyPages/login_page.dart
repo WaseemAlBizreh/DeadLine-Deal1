@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:waseem/Model/loginModel.dart';
+import 'package:waseem/Service/loginApi.dart';
 // import 'package:waseem/MyPages/ProductList.dart';
 // import 'package:waseem/main.dart';
 // import 'package:intl/intl.dart';
@@ -16,6 +18,10 @@ class _login_pageState extends State<login_page> {
   var c3 = const Color(0xffdcdcf6);
   var c4 = const Color(0xff345b8e);
   var c5 = const Color(0xff5c97d5);
+
+  late loginRequestModel requestModel;
+  loginApi api = loginApi();
+  late String token;
 
   TextEditingController _EmailController = TextEditingController();
   TextEditingController _PassController = TextEditingController();
@@ -56,8 +62,11 @@ class _login_pageState extends State<login_page> {
                       child: Column(
                         children: <Widget>[
                           Container(
-                            margin: EdgeInsets.fromLTRB(Devwidth * 0.06, Devheight * 0.04,
-                                Devwidth * 0.06, Devheight * 0.025),
+                            margin: EdgeInsets.fromLTRB(
+                                Devwidth * 0.06,
+                                Devheight * 0.04,
+                                Devwidth * 0.06,
+                                Devheight * 0.025),
                             child: TextFormField(
                               controller: _EmailController,
                               onFieldSubmitted: (value) {
@@ -163,10 +172,26 @@ class _login_pageState extends State<login_page> {
                               padding: MaterialStateProperty.all(
                                   const EdgeInsets.all(0)),
                               elevation: MaterialStateProperty.all(10),
-                              backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                              backgroundColor:
+                              MaterialStateProperty.all(Colors.transparent),
                             ),
                             onPressed: () {
                               _formkey1.currentState!.validate();
+                              if (_formkey1.currentState!.validate()) {
+                                String email = _EmailController.text;
+                                String password = _PassController.text;
+                                requestModel = loginRequestModel(
+                                    email: email,
+                                    password: password
+                                );
+                                api.login(requestModel).then((response) {
+                                  setState(() {
+                                    token = response.token;
+                                  });
+                                  print(token);
+                                  print(response.error);
+                                });
+                              }
                             },
                           ),
                           SizedBox(height: Devheight * 0.01),
@@ -203,7 +228,9 @@ class _login_pageState extends State<login_page> {
                                   )),
                             ],
                           ),
-                          SizedBox(height: Devheight * 0.02,)
+                          SizedBox(
+                            height: Devheight * 0.02,
+                          )
                         ],
                       ),
                     ),

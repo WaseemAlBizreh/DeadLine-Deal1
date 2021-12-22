@@ -1,4 +1,5 @@
 class product{
+  // change product model
   late String name;
   late String image;
   late String expiration_date;

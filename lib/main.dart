@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Deadline Deals',
       debugShowCheckedModeBanner: false,
-      home: Product_list(),
+      home: login_page(),
     );
   }
 }
