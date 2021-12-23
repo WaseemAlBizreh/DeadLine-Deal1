@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:waseem/Model/loginModel.dart';
+import 'package:waseem/Provider/LoginProvider.dart';
 import 'package:waseem/Service/loginApi.dart';
-// import 'package:waseem/MyPages/ProductList.dart';
-// import 'package:waseem/main.dart';
 // import 'package:intl/intl.dart';
+import '../Variables.dart';
 import 'Register.dart';
 
 class login_page extends StatefulWidget {
@@ -13,24 +14,17 @@ class login_page extends StatefulWidget {
 
 class _login_pageState extends State<login_page> {
   bool visible1 = true;
-  var c1 = const Color(0xFF06487f);
-  var c2 = const Color(0xFF86a9db);
-  var c3 = const Color(0xffdcdcf6);
-  var c4 = const Color(0xff345b8e);
-  var c5 = const Color(0xff5c97d5);
 
   late loginRequestModel requestModel;
   loginApi api = loginApi();
   late String token;
-
-  TextEditingController _EmailController = TextEditingController();
-  TextEditingController _PassController = TextEditingController();
 
   final _formkey1 = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     var Devheight = MediaQuery.of(context).size.height;
     var Devwidth = MediaQuery.of(context).size.width;
+    var ProRead = context.read<LoginProvider>();
     return Scaffold(
       body: Container(
         color: c1,
@@ -68,17 +62,13 @@ class _login_pageState extends State<login_page> {
                                 Devwidth * 0.06,
                                 Devheight * 0.025),
                             child: TextFormField(
-                              controller: _EmailController,
-                              onFieldSubmitted: (value) {
-                                setState(() {
-                                  _EmailController.text = value;
-                                });
-                              },
+                              controller: ProRead.email,
+                              onFieldSubmitted:ProRead.setEmail,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'please enter EmailAddress';
                                 }
-                                if (!_EmailController.text.contains('@')) {
+                                if (!ProRead.email.text.contains('@')) {
                                   return 'please enter valid Email';
                                 }
                               },
@@ -101,12 +91,8 @@ class _login_pageState extends State<login_page> {
                             margin: EdgeInsets.fromLTRB(Devwidth * 0.06, 0,
                                 Devwidth * 0.06, Devheight * 0.025),
                             child: TextFormField(
-                              controller: _PassController,
-                              onFieldSubmitted: (value) {
-                                setState(() {
-                                  _PassController.text = value;
-                                });
-                              },
+                              controller: ProRead.pass,
+                              onFieldSubmitted: ProRead.setPass,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'please enter Password';
@@ -172,14 +158,14 @@ class _login_pageState extends State<login_page> {
                               padding: MaterialStateProperty.all(
                                   const EdgeInsets.all(0)),
                               elevation: MaterialStateProperty.all(10),
-                              backgroundColor:
-                              MaterialStateProperty.all(Colors.transparent),
+                              backgroundColor: MaterialStateProperty.all(
+                                  Colors.transparent),
                             ),
                             onPressed: () {
                               _formkey1.currentState!.validate();
                               if (_formkey1.currentState!.validate()) {
-                                String email = _EmailController.text;
-                                String password = _PassController.text;
+                                String email = ProRead.email.text;
+                                String password = ProRead.pass.text;
                                 requestModel = loginRequestModel(
                                     email: email,
                                     password: password
@@ -192,6 +178,8 @@ class _login_pageState extends State<login_page> {
                                   print(response.error);
                                 });
                               }
+                              print(ProRead.email.text);
+                              print(ProRead.pass.text);
                             },
                           ),
                           SizedBox(height: Devheight * 0.01),
