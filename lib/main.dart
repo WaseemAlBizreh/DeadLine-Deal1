@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import 'package:waseem/Provider/LoginProvider.dart';
 // import 'package:intl/intl.dart';
-import 'MyPages/ProductList.dart';
 import 'MyPages/login_page.dart';
 
 void main() {
@@ -29,10 +26,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Deadline Deals',
       debugShowCheckedModeBanner: false,
-      home: ChangeNotifierProvider<LoginProvider>(
-          create: (_) => LoginProvider(),
-          child: login_page()
-      ),
+      home: login_page(),
     );
   }
 }
