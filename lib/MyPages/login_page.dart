@@ -13,7 +13,6 @@ class login_page extends StatefulWidget {
 }
 
 class _login_pageState extends State<login_page> {
-  bool visible1 = true;
 
   late loginRequestModel requestModel;
   loginApi api = loginApi();
