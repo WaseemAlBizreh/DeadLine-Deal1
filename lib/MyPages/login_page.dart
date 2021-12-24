@@ -105,7 +105,7 @@ class _login_pageState extends State<login_page> {
                                           return 'Must be more than 8 number or characters';
                                         }
                                       },
-                                      obscureText: visible1,
+                                      obscureText: log.visible,
                                       autocorrect: false,
                                       keyboardType: TextInputType.text,
                                       textInputAction: TextInputAction.next,
@@ -116,13 +116,9 @@ class _login_pageState extends State<login_page> {
                                         prefixIcon:
                                         Icon(Icons.lock_rounded, color: c4),
                                         suffixIcon: IconButton(
-                                          onPressed: () {
-                                            setState(() {
-                                              visible1 = !visible1;
-                                            });
-                                          },
+                                          onPressed: log.setvisible,
                                           icon: Icon(
-                                              visible1
+                                              log.visible
                                                   ? Icons.visibility
                                                   : Icons.visibility_off,
                                               color: c2),

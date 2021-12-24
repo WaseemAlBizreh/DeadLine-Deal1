@@ -67,7 +67,7 @@ class _RegisterState extends State<Register> {
                                       Devheight * 0.025),
                                   child: TextFormField(
                                     controller: reg.name,
-                                    onFieldSubmitted: reg.setEmail,
+                                    onFieldSubmitted: reg.setname,
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'please enter UserName';

@@ -4,7 +4,7 @@ class RegisterProvider with ChangeNotifier{
   TextEditingController _NameController = TextEditingController();
 
   TextEditingController get name => _NameController;
-  setEmail(String name) {
+  setname(String name) {
     _NameController.text = name;
     notifyListeners();
   }
