@@ -3,15 +3,14 @@ class loginResponseModel {
   late String token;
 
   loginResponseModel({
-    required this.token,
     this.error,
+    required this.token,
   });
 
-  factory loginResponseModel.fromJson(Map<String , dynamic> jsonData){
+  factory loginResponseModel.fromJson(Map<String, dynamic> jsonData) {
     return loginResponseModel(
-        token: jsonData['token'] != null? jsonData['token'] : "",
-        error: jsonData['error'] != null? jsonData['error'] : ""
-    );
+        token: jsonData['token'] != null ? jsonData['token'] : "",
+        error: jsonData['error'] != null ? jsonData['error'] : "");
   }
 }
 
@@ -24,8 +23,8 @@ class loginRequestModel {
     required this.email,
   });
 
-  Map<String , dynamic> toJson(){
-    Map<String , dynamic> loginMap = {
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> loginMap = {
       'email': email.trim(),
       'password': password.trim(),
     };
