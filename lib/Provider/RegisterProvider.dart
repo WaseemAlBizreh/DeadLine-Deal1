@@ -6,6 +6,20 @@ class RegisterProvider with ChangeNotifier {
   TextEditingController _PassController = TextEditingController();
   TextEditingController _CPassController = TextEditingController();
 
+  bool _visible = true;
+  bool _visible1 = true;
+
+  bool get visible => _visible;
+  setvisible(){
+    _visible = !_visible;
+    notifyListeners();
+  }
+  bool get visible1 => _visible1;
+  setvisible1(){
+    _visible1 = !_visible1;
+    notifyListeners();
+  }
+
   TextEditingController get name => _NameController;
   setName(String name) {
     _NameController.text = name;

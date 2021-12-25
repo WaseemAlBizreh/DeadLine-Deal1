@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:waseem/Provider/RegisterProvider.dart';
+
 import '../Variables.dart';
 import 'login_page.dart';
-import 'package:provider/provider.dart';
+
 
 class Register extends StatefulWidget {
   @override
@@ -10,11 +12,6 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  bool visible = true;
-  bool visible1 = true;
-  TextEditingController _EmailController = TextEditingController();
-  TextEditingController _PassController = TextEditingController();
-  //TextEditingController _CPassController = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
   @override
@@ -40,7 +37,7 @@ class _RegisterState extends State<Register> {
                       child: CircleAvatar(
                         radius: 110,
                         backgroundImage:
-                            AssetImage('assets/imgs/logo_transparent_mid.png'),
+                        AssetImage('assets/imgs/logo_transparent_mid.png'),
                         backgroundColor: Colors.transparent,
                       ),
                     ),
@@ -79,11 +76,11 @@ class _RegisterState extends State<Register> {
                                       filled: true,
                                       hintText: "UserName",
                                       prefixIcon:
-                                          Icon(Icons.person_sharp, color: c4),
+                                      Icon(Icons.person_sharp, color: c4),
                                       border: OutlineInputBorder(
                                         borderSide: BorderSide(width: 0.4),
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                        BorderRadius.circular(15.0),
                                       ),
                                     ),
                                     keyboardType: TextInputType.name,
@@ -91,8 +88,12 @@ class _RegisterState extends State<Register> {
                                   ),
                                 ),
                                 Container(
-                                  margin: EdgeInsets.fromLTRB(Devwidth * 0.06,
-                                      0, Devwidth * 0.06, Devheight * 0.025),
+                                  margin: EdgeInsets.fromLTRB(
+                                      Devwidth * 0.06,
+                                      0,
+                                      Devwidth * 0.06,
+                                      Devheight * 0.025
+                                  ),
                                   child: TextFormField(
                                     controller: reg.email,
                                     onFieldSubmitted: reg.setEmail,
@@ -100,8 +101,7 @@ class _RegisterState extends State<Register> {
                                       if (value!.isEmpty) {
                                         return 'please enter EmailAddress';
                                       }
-                                      if (!_EmailController.text
-                                          .contains('@')) {
+                                      if (!reg.email.text.contains('@')) {
                                         return 'please enter valid Email';
                                       }
                                     },
@@ -135,7 +135,7 @@ class _RegisterState extends State<Register> {
                                         return 'Must be more than 8 number or characters';
                                       }
                                     },
-                                    obscureText: visible1,
+                                    obscureText: reg.visible1,
                                     autocorrect: false,
                                     keyboardType: TextInputType.text,
                                     textInputAction: TextInputAction.next,
@@ -144,15 +144,11 @@ class _RegisterState extends State<Register> {
                                       fillColor: c3,
                                       filled: true,
                                       prefixIcon:
-                                          Icon(Icons.lock_rounded, color: c4),
+                                      Icon(Icons.lock_rounded, color: c4),
                                       suffixIcon: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            visible1 = !visible1;
-                                          });
-                                        },
+                                        onPressed: reg.setvisible1,
                                         icon: Icon(
-                                            visible1
+                                            reg.visible1
                                                 ? Icons.visibility
                                                 : Icons.visibility_off,
                                             color: c2),
@@ -175,25 +171,21 @@ class _RegisterState extends State<Register> {
                                       if (value!.isEmpty) {
                                         return 'please Confirm Password';
                                       }
-                                      if (value != _PassController.text) {
+                                      if (value != reg.pass.text) {
                                         return 'Not Match with password';
                                       }
                                     },
                                     autocorrect: false,
-                                    obscureText: visible,
+                                    obscureText: reg.visible,
                                     decoration: InputDecoration(
                                       fillColor: c3,
                                       filled: true,
                                       hintText: "Confirm Password",
                                       prefixIcon: Icon(Icons.lock, color: c4),
                                       suffixIcon: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            visible = !visible;
-                                          });
-                                        },
+                                        onPressed:reg.setvisible,
                                         icon: Icon(
-                                            visible
+                                            reg.visible
                                                 ? Icons.visibility
                                                 : Icons.visibility_off,
                                             color: c2),
@@ -201,7 +193,7 @@ class _RegisterState extends State<Register> {
                                       border: OutlineInputBorder(
                                         borderSide: BorderSide(width: 0.4),
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                        BorderRadius.circular(15.0),
                                       ),
                                     ),
                                     keyboardType: TextInputType.text,
@@ -218,7 +210,7 @@ class _RegisterState extends State<Register> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(30),
                                       gradient:
-                                          LinearGradient(colors: [c2, c1]),
+                                      LinearGradient(colors: [c2, c1]),
                                     ),
                                     child: Container(
                                       child: Text(
@@ -243,7 +235,12 @@ class _RegisterState extends State<Register> {
                                   ),
                                   onPressed: () {
                                     _formkey.currentState!.validate();
-                                    print(reg.name.text);
+                                    if(_formkey.currentState!.validate()){
+                                      print(reg.name.text);
+                                      print(reg.email.text);
+                                      print(reg.pass.text);
+                                      print(reg.cpass.text);
+                                    }
                                   },
                                 ),
                                 SizedBox(height: Devheight * 0.01),
@@ -270,7 +267,7 @@ class _RegisterState extends State<Register> {
                                           primary: c1,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(32.0),
+                                            BorderRadius.circular(32.0),
                                           ),
                                         ),
                                         child: Text(

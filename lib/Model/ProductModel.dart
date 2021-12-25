@@ -34,13 +34,13 @@ class RequestProduct{
 
   Map<String , dynamic> toJson(){
     Map<String , dynamic> ProductMap = {
-      'name': name.trim(),
+      'name': name,
       'image': image,
       'endDate': endDate,
       'price': price,
       'quantity': quantity,
-      'contact': contact.trim(),
-      'category': category.trim(),
+      'contact': contact,
+      'category': category,
       'r1': days1,
       'r2': days2,
       'r3': days3,
