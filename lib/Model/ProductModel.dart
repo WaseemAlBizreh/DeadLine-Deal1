@@ -86,7 +86,7 @@ class ResponseProduct{
 
   factory ResponseProduct.fromJson(Map<String , dynamic> jsonData){
     return ResponseProduct(
-      name: jsonData['name'],
+      name: jsonData['name'] as String,
       image: jsonData['image'],
       endDate: jsonData['endDate'],
       price: jsonData['price'],

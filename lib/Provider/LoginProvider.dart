@@ -4,13 +4,6 @@ class LoginProvider with ChangeNotifier{
   TextEditingController _EmailController = TextEditingController();
   TextEditingController _PassController = TextEditingController();
   bool _visible = true;
-  // late String _token;
-  //
-  // String get token => _token;
-  // setToken(String token) {
-  //   _token = token;
-  //   notifyListeners();
-  // }
 
   bool get visible => _visible;
   setvisible(){

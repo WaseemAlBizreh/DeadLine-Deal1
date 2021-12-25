@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:waseem/Model/loginModel.dart';
 import 'package:waseem/Provider/LoginProvider.dart';
 import 'package:waseem/Service/loginApi.dart';
-// import 'package:intl/intl.dart';
+
 import '../Variables.dart';
 import 'Register.dart';
 
@@ -169,7 +169,8 @@ class _login_pageState extends State<login_page> {
                                             email: email, password: password);
                                         await api.login(requestModel).then((response) {
                                           print(response.token.toString());
-                                          print(response.error);
+                                        }).catchError((e){
+                                          print(e.toString());
                                         });
                                       }
                                       print(log.email.text);

@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:waseem/Model/ProductModel.dart';
 
@@ -26,15 +27,17 @@ class ProductApi {
         Uri.parse(url),
         headers: {'Accept': 'application/json'},
         body: requestModel.toJson()
-    );
+    ).catchError((e){
+      throw e;
+    });
     //change response status
-    if (response.statusCode == 200 || response.statusCode == 400 ){
+    if (response.statusCode == 200){
       String Data = response.body;
       var jsonData = jsonDecode(Data);
       return ResponseProduct.fromJson(jsonData);
     }
     else{
-      throw Exception('Failed to load User');
+      throw Exception('Failed to load products');
     }
   }
 }
