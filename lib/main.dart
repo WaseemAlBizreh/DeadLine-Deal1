@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 // import 'package:intl/intl.dart';
+// import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:provider/provider.dart';
+
+import 'MyPages/ProductList.dart';
 import 'MyPages/login_page.dart';
+import 'Provider/MainProvider.dart';
 
 void main() {
-  runApp(MyApp());
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [
         DeviceOrientation.portraitUp,
         DeviceOrientation.portraitDown
       ]);
+  runApp(
+      ChangeNotifierProvider<MainProvider>(
+          create: (_) => MainProvider(),
+          child: MyApp()
+      ));
 }
 
 class MyApp extends StatefulWidget {
@@ -26,7 +35,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Deadline Deals',
       debugShowCheckedModeBanner: false,
-      home: login_page(),
+      home: Product_list(),
     );
   }
 }

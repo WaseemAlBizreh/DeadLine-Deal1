@@ -16,6 +16,7 @@ class _Product_listState extends State<Product_list> {
   @override
   void initState() {
     super.initState();
+    fetch_list();
   }
 
   @override

@@ -16,7 +16,6 @@ class _login_pageState extends State<login_page> {
 
   late loginRequestModel requestModel;
   loginApi api = loginApi();
-  late String token;
 
   final _formkey1 = GlobalKey<FormState>();
   @override
@@ -161,18 +160,15 @@ class _login_pageState extends State<login_page> {
                                       backgroundColor: MaterialStateProperty.all(
                                           Colors.transparent),
                                     ),
-                                    onPressed: () {
+                                    onPressed: () async{
                                       _formkey1.currentState!.validate();
                                       if (_formkey1.currentState!.validate()) {
                                         String email = log.email.text;
                                         String password = log.pass.text;
                                         requestModel = loginRequestModel(
                                             email: email, password: password);
-                                        api.login(requestModel).then((response) {
-                                          setState(() {
-                                            token = response.token;
-                                          });
-                                          print(token);
+                                        await api.login(requestModel).then((response) {
+                                          print(response.token.toString());
                                           print(response.error);
                                         });
                                       }
