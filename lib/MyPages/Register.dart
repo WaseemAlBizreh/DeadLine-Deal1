@@ -14,7 +14,7 @@ class _RegisterState extends State<Register> {
   bool visible1 = true;
   TextEditingController _EmailController = TextEditingController();
   TextEditingController _PassController = TextEditingController();
-  TextEditingController _CPassController = TextEditingController();
+  //TextEditingController _CPassController = TextEditingController();
 
   final _formkey = GlobalKey<FormState>();
   @override
@@ -67,7 +67,7 @@ class _RegisterState extends State<Register> {
                                       Devheight * 0.025),
                                   child: TextFormField(
                                     controller: reg.name,
-                                    onFieldSubmitted: reg.setname,
+                                    onFieldSubmitted: reg.setName,
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'please enter UserName';
@@ -79,10 +79,11 @@ class _RegisterState extends State<Register> {
                                       filled: true,
                                       hintText: "UserName",
                                       prefixIcon:
-                                      Icon(Icons.person_sharp, color: c4),
+                                          Icon(Icons.person_sharp, color: c4),
                                       border: OutlineInputBorder(
                                         borderSide: BorderSide(width: 0.4),
-                                        borderRadius:BorderRadius.circular(15.0),
+                                        borderRadius:
+                                            BorderRadius.circular(15.0),
                                       ),
                                     ),
                                     keyboardType: TextInputType.name,
@@ -93,12 +94,8 @@ class _RegisterState extends State<Register> {
                                   margin: EdgeInsets.fromLTRB(Devwidth * 0.06,
                                       0, Devwidth * 0.06, Devheight * 0.025),
                                   child: TextFormField(
-                                    controller: _EmailController,
-                                    onFieldSubmitted: (value) {
-                                      setState(() {
-                                        _EmailController.text = value;
-                                      });
-                                    },
+                                    controller: reg.email,
+                                    onFieldSubmitted: reg.setEmail,
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'please enter EmailAddress';
@@ -128,12 +125,8 @@ class _RegisterState extends State<Register> {
                                   margin: EdgeInsets.fromLTRB(Devwidth * 0.06,
                                       0, Devwidth * 0.06, Devheight * 0.025),
                                   child: TextFormField(
-                                    controller: _PassController,
-                                    onFieldSubmitted: (value) {
-                                      setState(() {
-                                        _PassController.text = value;
-                                      });
-                                    },
+                                    controller: reg.pass,
+                                    onFieldSubmitted: reg.setPass,
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'please enter Password';
@@ -176,12 +169,8 @@ class _RegisterState extends State<Register> {
                                   margin: EdgeInsets.fromLTRB(Devwidth * 0.06,
                                       0, Devwidth * 0.06, Devheight * 0.025),
                                   child: TextFormField(
-                                    controller: _CPassController,
-                                    onFieldSubmitted: (value) {
-                                      setState(() {
-                                        _CPassController.text = value;
-                                      });
-                                    },
+                                    controller: reg.cpass,
+                                    onFieldSubmitted: reg.setCPass,
                                     validator: (value) {
                                       if (value!.isEmpty) {
                                         return 'please Confirm Password';
@@ -274,7 +263,8 @@ class _RegisterState extends State<Register> {
                                           Navigator.pushReplacement(
                                               context,
                                               MaterialPageRoute(
-                                                  builder: (_) => login_page()));
+                                                  builder: (_) =>
+                                                      login_page()));
                                         },
                                         style: TextButton.styleFrom(
                                           primary: c1,
