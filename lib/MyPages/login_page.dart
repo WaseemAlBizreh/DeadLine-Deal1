@@ -171,8 +171,7 @@ class _login_pageState extends State<login_page> {
                                         .then((response) {
                                       if (response.token.isNotEmpty) {
                                         final snackBar = SnackBar(
-                                            content:
-                                                Text("Logged In Successfully"));
+                                            content: Text("Logged In Successfully"));
                                       } else {
                                         final snackBar = SnackBar(
                                             content: Text("Log In Failed Due To ${response.error}"));
