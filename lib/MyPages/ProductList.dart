@@ -9,7 +9,7 @@ class Product_list extends StatefulWidget {
 class _Product_listState extends State<Product_list> {
   Future fetch_list() async{
     var p = ProductApi();
-    var data = await p.fetchData();
+    var data = await p.fetchAllData();
     print(data[0].name);
   }
 

@@ -6,11 +6,15 @@ import 'package:waseem/Model/ProductModel.dart';
 
 class ProductApi {
 
-  Future<List<ResponseProduct>> fetchData() async {
+  Future<List<ResponseProduct>> fetchAllData() async {
     //change this
     String url = "https://pastebin.com/raw/zFjt73zf";
     http.Response response = await http.get(
-        Uri.parse(url)).catchError((e){
+        Uri.parse(url),
+        headers: {
+          'Accept': 'application/json',
+        }
+    ).catchError((e){
       if(e is SocketException){
         throw 'No Internet Connection';
       }
@@ -29,10 +33,12 @@ class ProductApi {
 
   Future<ResponseProduct> SendData(RequestProduct requestModel) async {
     //change url
-    String url = 'C:/Users/USER/StudioProjects/waseem/lib/json.json';
+    String url = " ";
     http.Response response = await http.post(
         Uri.parse(url),
-        headers: {'Accept': 'application/json'},
+        headers: {
+          'Accept': 'application/json',
+        },
         body: requestModel.toJson()
     ).catchError((e){
       if(e is SocketException){
