@@ -8,7 +8,8 @@ class ProductApi {
   Future<List<ResponseProduct>> fetchData() async {
     //change this
     String url = "https://pastebin.com/raw/zFjt73zf";
-    http.Response response = await http.get(Uri.parse(url));
+    http.Response response = await http.get(
+        Uri.parse(url)).catchError((e){throw e;});
     if (response.statusCode == 200) {
       String Data = response.body;
       var jsonData = jsonDecode(Data);
