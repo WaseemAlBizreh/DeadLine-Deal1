@@ -47,8 +47,15 @@ class AuthApi {
       String Data = response.body;
       var jsonData = jsonDecode(Data);
       return registerResponseModel.fromJson(jsonData);
-    } else {
-      throw Exception('Failed to register User');
+    }
+    else if(response.statusCode == 400 || response.statusCode == 404) {
+      throw HttpException('User Not Found');
+    }
+    else if(response.statusCode == 408) {
+      throw HttpException('No Connection to the Internet');
+    }
+    else{
+      throw HttpException('Request Error: ${response.statusCode}');
     }
   }
 
