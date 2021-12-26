@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:waseem/Model/loginModel.dart';
-import 'package:waseem/Model/registerModel.dart';
+import 'package:waseem/Model/RegisterModel.dart';
 
 class AuthApi {
 
@@ -35,11 +35,15 @@ class AuthApi {
 
   Future<registerResponseModel> register(registerRequestModel registerRequest) async {
     String url = "https://reqres.in/api/register"; //to be filled from backend
-    http.Response response = await http.post(Uri.parse(url),
+    http.Response response = await http.post(
+        Uri.parse(url),
         headers: {'Accept': 'application/json'},
-        body: registerRequest.toJson());
+        body: registerRequest.toJson()
+    ).catchError((e){
+      throw e;
+    });
     //change response status
-    if (response.statusCode == 200 || response.statusCode == 400) {
+    if (response.statusCode == 200 || response.statusCode == 401) {
       String Data = response.body;
       var jsonData = jsonDecode(Data);
       return registerResponseModel.fromJson(jsonData);
@@ -47,4 +51,5 @@ class AuthApi {
       throw Exception('Failed to register User');
     }
   }
+
 }
