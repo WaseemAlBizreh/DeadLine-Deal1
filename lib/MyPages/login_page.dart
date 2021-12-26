@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Model/loginModel.dart';
 import 'package:waseem/Provider/LoginProvider.dart';
-import 'package:waseem/Service/loginApi.dart';
-// import 'package:intl/intl.dart';
+import 'package:waseem/Service/authApi.dart';
+
 import '../Variables.dart';
 import 'Register.dart';
 
@@ -15,7 +15,7 @@ class login_page extends StatefulWidget {
 class _login_pageState extends State<login_page> {
 
   late loginRequestModel requestModel;
-  loginApi api = loginApi();
+  AuthApi api = AuthApi();
 
   final _formkey1 = GlobalKey<FormState>();
   @override

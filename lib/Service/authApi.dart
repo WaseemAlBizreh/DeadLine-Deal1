@@ -1,28 +1,39 @@
 import 'dart:convert';
+import 'dart:io';
+
 import 'package:http/http.dart' as http;
 import 'package:waseem/Model/loginModel.dart';
 import 'package:waseem/Model/registerModel.dart';
 
-class loginApi {
-  Future<loginResponseModel> login(loginRequestModel loginRequest) async {
+class AuthApi {
+
+  Future<loginResponseModel> login(loginRequestModel requestModel) async {
     //change url
     String url = "https://reqres.in/api/login";
-    http.Response response = await http.post(Uri.parse(url),
-        headers: {'Accept': 'application/json'}, body: loginRequest.toJson());
-    //change response status
-    if (response.statusCode == 200 || response.statusCode == 400) {
+    http.Response response = await http.post(
+        Uri.parse(url),
+        headers: {'Accept': 'application/json'},
+        body: requestModel.toJson()
+    ).catchError((e){
+      throw e;
+    });
+    if (response.statusCode == 200 || response.statusCode == 401) {
       String Data = response.body;
       var jsonData = jsonDecode(Data);
       return loginResponseModel.fromJson(jsonData);
-    } else {
-      throw Exception('Failed to load User');
+    }
+    else if(response.statusCode == 400 || response.statusCode == 404) {
+      throw HttpException('User Not Found');
+    }
+    else if(response.statusCode == 408) {
+      throw HttpException('No Connection to the Internet');
+    }
+    else{
+      throw HttpException('Request Error: ${response.statusCode}');
     }
   }
-}
 
-class regApi {
-  Future<registerResponseModel> register(
-      registerRequestModel registerRequest) async {
+  Future<registerResponseModel> register(registerRequestModel registerRequest) async {
     String url = "https://reqres.in/api/register"; //to be filled from backend
     http.Response response = await http.post(Uri.parse(url),
         headers: {'Accept': 'application/json'},
@@ -37,15 +48,3 @@ class regApi {
     }
   }
 }
-// await http.post(
-//     Uri.parse(url),
-//     headers: {
-//       'Accept': 'application/json',
-//     },
-//     body: {
-//       "email": "eve.holt@reqres.in",
-//       "password": "cityslicka"
-//     }).then((response){
-//   print('res st: ${response.statusCode}');
-//   print('res body: ${response.body}');
-// })};
