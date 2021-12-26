@@ -15,6 +15,9 @@ class AuthApi {
         headers: {'Accept': 'application/json'},
         body: requestModel.toJson()
     ).catchError((e){
+      if(e is SocketException){
+        throw 'No Internet Connection';
+      }
       throw e;
     });
     if (response.statusCode == 200 || response.statusCode == 401) {
@@ -23,13 +26,13 @@ class AuthApi {
       return loginResponseModel.fromJson(jsonData);
     }
     else if(response.statusCode == 400 || response.statusCode == 404) {
-      throw HttpException('User Not Found');
+      throw 'User Not Found';
     }
     else if(response.statusCode == 408) {
-      throw HttpException('No Connection to the Internet');
+      throw 'No Internet Connection';
     }
     else{
-      throw HttpException('Request Error: ${response.statusCode}');
+      throw 'Request Error: ${response.statusCode}';
     }
   }
 
@@ -49,13 +52,13 @@ class AuthApi {
       return registerResponseModel.fromJson(jsonData);
     }
     else if(response.statusCode == 400 || response.statusCode == 404) {
-      throw HttpException('User Not Found');
+      throw 'User Not Found';
     }
     else if(response.statusCode == 408) {
-      throw HttpException('No Connection to the Internet');
+      throw 'No Internet Connection';
     }
     else{
-      throw HttpException('Request Error: ${response.statusCode}');
+      throw 'Request Error: ${response.statusCode}';
     }
   }
 

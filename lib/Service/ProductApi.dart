@@ -23,7 +23,7 @@ class ProductApi {
 
   Future<ResponseProduct> SendData(RequestProduct requestModel) async {
     //change url
-    String url = "C:\Users\USER\StudioProjects\waseem\lib\json.json";
+    String url = 'C:/Users/USER/StudioProjects/waseem/lib/json.json';
     http.Response response = await http.post(
         Uri.parse(url),
         headers: {'Accept': 'application/json'},
