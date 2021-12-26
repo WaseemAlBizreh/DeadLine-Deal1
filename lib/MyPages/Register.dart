@@ -255,10 +255,9 @@ class _RegisterState extends State<Register> {
                                           final snackBar = SnackBar(
                                               content: Text("Registration Failed Due To ${response.error}"));
                                         }
-                                          print(response.token.toString());
-                                          print(response.error);
+                                        print(response.token.toString());
+                                        print(response.error);
                                       });
-
                                       print(reg.name.text);
                                       print(reg.email.text);
                                       print(reg.pass.text);
