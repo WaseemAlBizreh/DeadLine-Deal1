@@ -2,10 +2,7 @@ class registerResponseModel {
   String? error;
   late String token;
 
-  registerResponseModel({
-    this.error,
-    required this.token
-  });
+  registerResponseModel({this.error, required this.token});
 
   factory registerResponseModel.fromJson(Map<String, dynamic> jsonRegData) {
     return registerResponseModel(
@@ -14,7 +11,7 @@ class registerResponseModel {
   }
 }
 
-class registerRequestModel{
+class registerRequestModel {
   late String UserName;
   late String Email;
   late String Password;
@@ -27,12 +24,12 @@ class registerRequestModel{
     required this.C_Password,
   });
 
-  Map<String,dynamic> toJson(){
-    Map<String,dynamic> regMap = {
-      'name':UserName,
-      'email':Email,
-      'password':Password,
-      'c_password':C_Password
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> regMap = {
+      'name': UserName,
+      'email': Email,
+      'password': Password,
+      'c_password': C_Password
     };
     return regMap;
   }
