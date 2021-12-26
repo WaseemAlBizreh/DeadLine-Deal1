@@ -43,6 +43,9 @@ class AuthApi {
         headers: {'Accept': 'application/json'},
         body: registerRequest.toJson()
     ).catchError((e){
+      if(e is SocketException){
+        throw 'No Internet Connection';
+      }
       throw e;
     });
     //change response status

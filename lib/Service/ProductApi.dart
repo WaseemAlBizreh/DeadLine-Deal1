@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:waseem/Model/ProductModel.dart';
@@ -9,7 +10,12 @@ class ProductApi {
     //change this
     String url = "https://pastebin.com/raw/zFjt73zf";
     http.Response response = await http.get(
-        Uri.parse(url)).catchError((e){throw e;});
+        Uri.parse(url)).catchError((e){
+      if(e is SocketException){
+        throw 'No Internet Connection';
+      }
+      throw e;
+    });
     if (response.statusCode == 200) {
       String Data = response.body;
       var jsonData = jsonDecode(Data);
@@ -29,6 +35,9 @@ class ProductApi {
         headers: {'Accept': 'application/json'},
         body: requestModel.toJson()
     ).catchError((e){
+      if(e is SocketException){
+        throw 'No Internet Connection';
+      }
       throw e;
     });
     //change response status
