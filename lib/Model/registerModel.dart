@@ -2,7 +2,10 @@ class registerResponseModel {
   String? error;
   late String token;
 
-  registerResponseModel({this.error, required this.token});
+  registerResponseModel({
+    this.error,
+    required this.token
+  });
 
   factory registerResponseModel.fromJson(Map<String, dynamic> jsonRegData) {
     return registerResponseModel(
