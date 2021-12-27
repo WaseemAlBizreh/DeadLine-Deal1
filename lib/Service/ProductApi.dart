@@ -9,7 +9,7 @@ import '../Variables.dart';
 class ProductApi {
   Future<List<ResProduct>> ShowAllData() async {
     //change this
-    String url = "https://pastebin.com/raw/zFjt73zf";
+    String url = "https://pastebin.com/raw/8tEqYshx";
     http.Response response = await http.get(
         Uri.parse(url),
         headers: {

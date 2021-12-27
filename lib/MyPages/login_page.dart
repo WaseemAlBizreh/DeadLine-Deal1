@@ -177,7 +177,7 @@ class _login_pageState extends State<login_page> {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(snackBar);
                                           token = response.token;
-                                          print(response.token);
+                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Register()));
                                         } else {
                                           final snackBar = SnackBar(
                                               content: Text(
@@ -185,10 +185,6 @@ class _login_pageState extends State<login_page> {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(snackBar);
                                         }
-                                        print(response.token);
-                                        print(response.error);
-                                        print(log.email.text);
-                                        print(log.pass.text);
                                       });
                                     } catch (e) {
                                       final snackBar =

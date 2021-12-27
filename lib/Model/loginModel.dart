@@ -9,7 +9,7 @@ class loginResponseModel {
 
   factory loginResponseModel.fromJson(Map<String, dynamic> jsonData) {
     return loginResponseModel(
-        token: jsonData['access_token'] != null ? jsonData['access_token'] : "",
+        token: jsonData['token'] != null ? jsonData['token'] : "",//access_token
         error: jsonData['error'] != null ? jsonData['error'] : "");
   }
 }

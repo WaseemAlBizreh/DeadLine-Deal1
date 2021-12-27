@@ -10,7 +10,7 @@ class Product_list extends StatefulWidget {
 }
 
 class _Product_listState extends State<Product_list> {
-  late List<ResProduct> product;
+  List<ResProduct> product = [];
   Future<List<ResProduct>> fetch_list() async{
     var p = ProductApi();
     var data = await p.ShowAllData();
@@ -18,9 +18,12 @@ class _Product_listState extends State<Product_list> {
   }
 
   @override
-  void initState() async{
+  void initState() {
     super.initState();
-    product = await fetch_list();
+    fetch_list().then((value){
+      product = value;
+      print(product[0].name);
+    });
   }
 
   @override

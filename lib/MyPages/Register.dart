@@ -244,25 +244,36 @@ class _RegisterState extends State<Register> {
                                           Email: email,
                                           Password: pass,
                                           C_Password: cpass);
-                                      await reg_api
-                                          .register(reg_requestModel)
-                                          .then((response) {
-                                        if (response.token != "") {
-                                          final snackBar = SnackBar(
-                                              content:
-                                              Text("Registered Successfully"));
-                                          token = response.token;
-                                        } else {
-                                          final snackBar = SnackBar(
-                                              content: Text("Registration Failed Due To ${response.error}"));
-                                        }
-                                        print(response.token.toString());
-                                        print(response.error);
-                                      });
-                                      print(reg.name.text);
-                                      print(reg.email.text);
-                                      print(reg.pass.text);
-                                      print(reg.cpass.text);
+                                      try{
+                                        await reg_api
+                                            .register(reg_requestModel)
+                                            .then((response) {
+                                          if (response.token != "") {
+                                            final snackBar = SnackBar(
+                                                content:
+                                                Text("Registered Successfully"));
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(snackBar);
+                                            token = response.token;
+                                          } else {
+                                            final snackBar = SnackBar(
+                                                content: Text("Registration Failed Due To"+
+                                                    response.error.toString()));
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(snackBar);
+                                            // final snackBar = SnackBar(
+                                            //     content: Text("Registration Failed Due To ${response.error}"));
+                                          }
+                                          print(response.token.toString());
+                                          print(response.error);
+                                        });
+                                      }catch(e){
+                                        final snackBar =
+                                        SnackBar(content: Text(e.toString()));
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(snackBar);
+                                        print(e.toString());
+                                      }
                                     }
                                   },
                                 ),
