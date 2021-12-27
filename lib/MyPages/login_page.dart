@@ -166,21 +166,29 @@ class _login_pageState extends State<login_page> {
                                     login_requestModel = loginRequestModel(
                                         email: email,
                                         password: password);
-                                    await login_api.login(login_requestModel).then((response) {
-                                      if (response.token != "") {
-                                        final snackBar = SnackBar(
-                                            content: Text("Logged In Successfully"));
-                                        token = response.token;
-                                      } else {
-                                        final snackBar = SnackBar(
-                                            content: Text("Log In Failed Due To ${response.error}"));
-                                      }
-                                      print(response.token.toString());
-                                      print(response.error);
-                                    });
+                                    try{
+                                      await login_api.login(login_requestModel).then((response) {
+                                        if (response.token != "") {
+                                          final snackBar = SnackBar(
+                                              content: Text("Logged In Successfully"));
+                                          token = response.token;
+                                        }else{
+                                          final snackBar = SnackBar(
+                                              content: Text(response.error.toString()));
+                                        }
+                                        print(response.token);
+                                        print(response.error);
+                                        print(log.email.text);
+                                        print(log.pass.text);
+                                      });
+                                    }catch(e){
+                                      final snackBar = SnackBar(
+                                          content: Text(e.toString()));
+                                      print(log.email.text);
+                                      print(log.pass.text);
+                                      print(e.toString());
+                                    }
                                   }
-                                  print(log.email.text);
-                                  print(log.pass.text);
                                 },
                               ),
                               SizedBox(height: Devheight * 0.01),
@@ -206,7 +214,7 @@ class _login_pageState extends State<login_page> {
                                         primary: c1,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(32.0),
+                                          BorderRadius.circular(32.0),
                                         ),
                                       ),
                                       child: Text(

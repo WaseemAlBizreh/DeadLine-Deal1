@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-late String token;
+String token = "";
 
 var c1 = const Color(0xFF06487f);
 var c2 = const Color(0xFF86a9db);
