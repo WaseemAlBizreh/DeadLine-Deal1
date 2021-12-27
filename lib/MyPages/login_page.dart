@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Model/loginModel.dart';
 import 'package:waseem/Provider/LoginProvider.dart';
@@ -164,26 +165,36 @@ class _login_pageState extends State<login_page> {
                                     String email = log.email.text;
                                     String password = log.pass.text;
                                     login_requestModel = loginRequestModel(
-                                        email: email,
-                                        password: password);
-                                    try{
-                                      await login_api.login(login_requestModel).then((response) {
+                                        email: email, password: password);
+                                    try {
+                                      await login_api
+                                          .login(login_requestModel)
+                                          .then((response) {
                                         if (response.token != "") {
                                           final snackBar = SnackBar(
-                                              content: Text("Logged In Successfully"));
+                                              content: Text(
+                                                  "Logged In Successfully"));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(snackBar);
                                           token = response.token;
-                                        }else{
+                                          print(response.token);
+                                        } else {
                                           final snackBar = SnackBar(
-                                              content: Text(response.error.toString()));
+                                              content: Text(
+                                                  response.error.toString()));
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(snackBar);
                                         }
                                         print(response.token);
                                         print(response.error);
                                         print(log.email.text);
                                         print(log.pass.text);
                                       });
-                                    }catch(e){
-                                      final snackBar = SnackBar(
-                                          content: Text(e.toString()));
+                                    } catch (e) {
+                                      final snackBar =
+                                          SnackBar(content: Text(e.toString()));
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackBar);
                                       print(log.email.text);
                                       print(log.pass.text);
                                       print(e.toString());
@@ -214,7 +225,7 @@ class _login_pageState extends State<login_page> {
                                         primary: c1,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(32.0),
+                                              BorderRadius.circular(32.0),
                                         ),
                                       ),
                                       child: Text(
