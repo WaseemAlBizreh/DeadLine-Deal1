@@ -247,10 +247,11 @@ class _RegisterState extends State<Register> {
                                       await reg_api
                                           .register(reg_requestModel)
                                           .then((response) {
-                                        if (response.token.isNotEmpty) {
+                                        if (response.token != "") {
                                           final snackBar = SnackBar(
                                               content:
                                               Text("Registered Successfully"));
+                                          token = response.token;
                                         } else {
                                           final snackBar = SnackBar(
                                               content: Text("Registration Failed Due To ${response.error}"));

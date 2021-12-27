@@ -166,12 +166,11 @@ class _login_pageState extends State<login_page> {
                                     login_requestModel = loginRequestModel(
                                         email: email,
                                         password: password);
-                                    await login_api
-                                        .login(login_requestModel)
-                                        .then((response) {
-                                      if (response.token.isNotEmpty) {
+                                    await login_api.login(login_requestModel).then((response) {
+                                      if (response.token != "") {
                                         final snackBar = SnackBar(
                                             content: Text("Logged In Successfully"));
+                                        token = response.token;
                                       } else {
                                         final snackBar = SnackBar(
                                             content: Text("Log In Failed Due To ${response.error}"));
