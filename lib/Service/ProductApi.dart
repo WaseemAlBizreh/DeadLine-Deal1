@@ -7,7 +7,7 @@ import 'package:waseem/Model/ProductModel.dart';
 import '../Variables.dart';
 
 class ProductApi {
-  Future<List<Product>> ShowAllData() async {
+  Future<List<ResProduct>> ShowAllData() async {
     //change this
     String url = "https://pastebin.com/raw/zFjt73zf";
     http.Response response = await http.get(
@@ -26,20 +26,21 @@ class ProductApi {
       String Data = response.body;
       var jsonData = jsonDecode(Data);
       product_list Singlelist = product_list.fromJson(jsonData);
-      List<Product> products = Singlelist.products_list.map((e) => Product.fromJson(e)).toList();
+      List<ResProduct> products = Singlelist.products_list.map((e) => ResProduct.fromJson(e)).toList();
       return products;
     } else {
       throw Exception('Failed to load products');
     }
   }
 
-  Future<Product> AddProduct(Product requestModel) async {
+  Future<ResProduct> AddProduct(ReqProduct requestModel) async {
     //change url
     String url = " ";
     http.Response response = await http.post(
         Uri.parse(url),
         headers: {
           'Accept': 'application/json',
+          'auth-token': token.toString(),
         },
         body: requestModel.toJson()
     ).catchError((e){
@@ -52,7 +53,7 @@ class ProductApi {
     if (response.statusCode == 200){
       String Data = response.body;
       var jsonData = jsonDecode(Data);
-      return Product.fromJson(jsonData);
+      return ResProduct.fromJson(jsonData);
     }
     else{
       throw Exception('Failed to load products');
