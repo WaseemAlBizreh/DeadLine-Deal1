@@ -110,7 +110,7 @@ class _login_pageState extends State<login_page> {
                                     fillColor: c3,
                                     filled: true,
                                     prefixIcon:
-                                        Icon(Icons.lock_rounded, color: c4),
+                                    Icon(Icons.lock_rounded, color: c4),
                                     suffixIcon: IconButton(
                                       onPressed: log.setvisible,
                                       icon: Icon(
