@@ -59,4 +59,8 @@ class AuthApi {
     }
   }
 
+  void logout(){
+    String url = "please put logout url here"; //to be filled from backend
+    http.post(Uri.parse(url));
+  }
 }

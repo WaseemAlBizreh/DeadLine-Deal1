@@ -14,6 +14,17 @@ class Product_list extends StatelessWidget {
           return LayoutBuilder(
             builder: (context, constraints) {
               return Scaffold(
+                drawer: Drawer(
+                  child: ListView(
+                    children: <Widget>[
+                      Container(
+
+                      ),
+                      ListTile(
+                        title: Text(""),
+                      )
+                    ],
+                  )),
                 body: ListView.builder(
                   itemCount: data.product.length,
                   itemBuilder: (context,index) {
