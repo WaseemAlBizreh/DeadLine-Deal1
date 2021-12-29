@@ -10,57 +10,65 @@
     "init_price": 700.0,
     "days": 5,
     "id": 1
-
   },
   {
     "name": "product-1",
     "cat_Id": "food",
     "image": "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png",
     "contact": "0937438298",
-    "quantity": 5,
-    "price": 500,
+    "quantity": 5.0,
+    "price": 500.0,
     "endDate": "2022-1-1",
-    "init_price": 700,
+    "init_price": 700.0,
     "days": 5,
     "id": 2
-
   },
   {
     "name": "product-1",
     "cat_Id": "food",
     "image": "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png",
     "contact": "0937438298",
-    "quantity": 5,
-    "price": 500,
+    "quantity": 5.0,
+    "price": 500.0,
     "endDate": "2022-1-1",
-    "init_price": 700,
+    "init_price": 700.0,
     "days": 5,
     "id": 3
-
   },
   {
     "name": "product-1",
     "cat_Id": "food",
     "image": "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png",
     "contact": "0937438298",
-    "quantity": 5,
-    "price": 500,
+    "quantity": 5.0,
+    "price": 500.0,
     "endDate": "2022-1-1",
-    "init_price": 700,
+    "init_price": 700.0,
     "days": 5,
     "id": 4
-
   },
   {
     "name": "product-1",
     "cat_Id": "food",
     "image": "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png",
     "contact": "0937438298",
-    "quantity": 5,
-    "price": 500,
+    "quantity": 5.0,
+    "price": 500.0,
     "endDate": "2022-1-1",
-    "init_price": 700,
+    "init_price": 700.0,
     "days": 5,
     "id": 5
+  },
+  {
+    "name": "product-1",
+    "cat_Id": "food",
+    "image": "https://cdn0.iconfinder.com/data/icons/cosmo-layout/40/box-512.png",
+    "contact": "0937438298",
+    "quantity": 5.0,
+    "price": 500.0,
+    "endDate": "2022-1-1",
+    "init_price": 700.0,
+    "days": 5,
+    "id": 6
   }
 ]

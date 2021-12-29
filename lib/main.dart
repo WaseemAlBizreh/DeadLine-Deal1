@@ -31,10 +31,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Deadline Deals',
       debugShowCheckedModeBanner: false,
-      home: ChangeNotifierProvider<MainProvider>(
-          create: (_) => MainProvider(),
-          child: Product_list()
-      ),
+      home: Product_list(),
     );
   }
 }

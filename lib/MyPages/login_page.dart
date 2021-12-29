@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Model/loginModel.dart';
 import 'package:waseem/Provider/LoginProvider.dart';
@@ -167,15 +166,11 @@ class _login_pageState extends State<login_page> {
                                     login_requestModel = loginRequestModel(
                                         email: email, password: password);
                                     try {
-                                      await login_api
-                                          .login(login_requestModel)
-                                          .then((response) {
+                                      await login_api.login(login_requestModel).then((response) {
                                         if (response.token != "") {
                                           final snackBar = SnackBar(
-                                              content: Text(
-                                                  "Logged In Successfully"));
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(snackBar);
+                                              content: Text("Logged In Successfully"));
+                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                                           token = response.token;
                                           Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Register()));
                                         } else {
@@ -187,8 +182,7 @@ class _login_pageState extends State<login_page> {
                                         }
                                       });
                                     } catch (e) {
-                                      final snackBar =
-                                          SnackBar(content: Text(e.toString()));
+                                      final snackBar = SnackBar(content: Text(e.toString()));
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(snackBar);
                                       print(log.email.text);
