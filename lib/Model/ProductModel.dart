@@ -2,13 +2,13 @@ import 'dart:io';
 
 class ReqProduct {
   // change product model
-  late String name;
+  late String name;//
   late File image; // File
   late DateTime endDate; //Date
   late String contact;
   late String category;
-  double quantity;
-  double price;
+  double quantity;//
+  double price;//
   int days1;
   int days2;
   int days3;

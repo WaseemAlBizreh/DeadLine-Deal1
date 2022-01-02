@@ -4,6 +4,8 @@ import 'package:waseem/Service/ProductApi.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Variables.dart';
 
+import 'AddProductPage.dart';
+
 class Product_list extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -57,6 +59,16 @@ class Product_list extends StatelessWidget {
                       child: Text("hello"),
                     );
                   },
+                ),
+                floatingActionButton: FloatingActionButton(
+                    backgroundColor: c1,
+                    tooltip: 'AddProduct',
+                    child: const Icon(Icons.add),
+                    onPressed:() {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (_) =>AddProductPage()));
+
+                    }
                 ),
               );
             },
