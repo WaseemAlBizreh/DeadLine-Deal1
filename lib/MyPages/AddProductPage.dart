@@ -189,7 +189,7 @@ class AddProductPage extends StatelessWidget {
                           constraints.maxHeight * 0.01,
                         ),
                         child: DropdownButton<String>(
-                          value: "Category",
+                          value: addP.select_cat.text,
                           icon: const Icon(Icons.arrow_downward),
                           elevation: 16,
                           style: const TextStyle(color: Colors.deepPurple),
@@ -197,7 +197,9 @@ class AddProductPage extends StatelessWidget {
                             height: 2,
                             color: Colors.deepPurpleAccent,
                           ),
-                          onChanged: null,
+                          onChanged: (String? newValue) {
+                            addP.set_select_cat(newValue!);
+                          },
                           items: <String>['One', 'Two', 'Free', 'Four']
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
