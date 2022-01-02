@@ -66,7 +66,7 @@ class Product_list extends StatelessWidget {
                   tooltip: 'AddProduct',
                   child: const Icon(Icons.add),
                   onPressed:() {
-                    Navigator.pushReplacement(context, MaterialPageRoute(
+                    Navigator.push(context, MaterialPageRoute(
                         builder: (_) =>AddProductPage()));
 
                   }
