@@ -7,12 +7,16 @@ import 'package:http/http.dart' as http;
 import 'package:waseem/Model/ProductModel.dart';
 
 import '../Variables.dart';
-
 class ProductApiProvider with ChangeNotifier {
+
+  ProductApiProvider(){
+    ShowAllData();
+  }
+
   List<ResProduct> _product = [];
   List<ResProduct> get product => _product;
 
-  Future<void> ShowAllData() async {
+  Future<List<ResProduct>> ShowAllData() async {
     //change this
     String url = "https://pastebin.com/raw/Hx38Abcq";
     http.Response response = await http.get(
@@ -34,6 +38,7 @@ class ProductApiProvider with ChangeNotifier {
       List<ResProduct> products = Singlelist.products_list.map((e) => ResProduct.fromJson(e)).toList();
       _product = products;
       notifyListeners();
+      return products;
     } else {
       throw Exception('Failed to load products');
     }

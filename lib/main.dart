@@ -7,6 +7,7 @@ import 'package:waseem/Provider/MainProvider.dart';
 
 import 'MyPages/ProductList.dart';
 import 'MyPages/login_page.dart';
+import 'Service/ProductApi.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +32,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Deadline Deals',
       debugShowCheckedModeBanner: false,
-      home: Product_list(),
+      home: ChangeNotifierProvider<ProductApiProvider>(
+          create: (_) => ProductApiProvider(),
+          child: Product_list()
+      ),
     );
   }
 }
