@@ -5,6 +5,7 @@ import 'package:waseem/Provider/RegisterProvider.dart';
 import 'package:waseem/Service/authApi.dart';
 
 import '../Variables.dart';
+import 'ProductList.dart';
 import 'login_page.dart';
 
 class Register extends StatefulWidget {
@@ -275,6 +276,7 @@ class _RegisterState extends State<Register> {
                                         print(e.toString());
                                       }
                                     }
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>Product_list()));
                                   },
                                 ),
                                 SizedBox(height: Devheight * 0.01),

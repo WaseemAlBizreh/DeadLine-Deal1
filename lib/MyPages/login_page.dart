@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Model/loginModel.dart';
+import 'package:waseem/MyPages/ProductList.dart';
 import 'package:waseem/Provider/LoginProvider.dart';
 import 'package:waseem/Service/authApi.dart';
 // import 'package:intl/intl.dart';
@@ -190,6 +191,7 @@ class _login_pageState extends State<login_page> {
                                       print(e.toString());
                                     }
                                   }
+                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>Product_list()));
                                 },
                               ),
                               SizedBox(height: Devheight * 0.01),

@@ -1,10 +1,10 @@
 import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 
-class AddProductProvider with ChangeNotifier {
+class AddProduct with ChangeNotifier {
 
   AddProductProvider(){
-    this._select_cat.text = 'food';
+    this._select_cat.text = "food";
   }
 
   TextEditingController _NameController = TextEditingController();
@@ -16,10 +16,12 @@ class AddProductProvider with ChangeNotifier {
   TextEditingController _Dis1Controller = TextEditingController();
   TextEditingController _Dis2Controller = TextEditingController();
   TextEditingController _Dis3Controller = TextEditingController();
+  TextEditingController _Days1Controller = TextEditingController();
+  TextEditingController _Days2Controller = TextEditingController();
+  TextEditingController _Days3Controller = TextEditingController();
   TextEditingController _select_cat = TextEditingController();
 
   TextEditingController get select_cat => _select_cat;
-
   set_select_cat(String value) {
     _select_cat.text = value;
   }
@@ -81,6 +83,28 @@ class AddProductProvider with ChangeNotifier {
     assert(dadis3 is double);
     notifyListeners();
   }
+  TextEditingController get days1 => _Days1Controller;
+  setDays1(String days1) {
+    _Days1Controller.text = days1;
+    var dadays1=double.parse(days1);
+    assert(dadays1 is int);
+    notifyListeners();
+  }
 
+  TextEditingController get days2 => _Days2Controller;
+  setDays2(String days2) {
+    _Days2Controller.text = days2;
+    var dadays2=double.parse(days2);
+    assert(dadays2 is double);
+    notifyListeners();
+  }
+
+  TextEditingController get days3 => _Days3Controller;
+  setDays3(String days3) {
+    _Days3Controller.text = days3;
+    var dadays3=double.parse(days3);
+    assert(dadays3 is double);
+    notifyListeners();
+  }
 
 }
