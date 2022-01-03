@@ -11,6 +11,13 @@ class AddProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void _datepicker(){
+      showDatePicker(
+          context: context,
+          initialDate: DateTime(2020,12),
+          firstDate: DateTime(2020,12),
+          lastDate: DateTime(2020,12));
+    }
     return ChangeNotifierProvider(
         create: (_) => AddProductProvider(),
         child: Consumer<AddProductProvider>(builder: (context, addP, child) {
@@ -150,7 +157,7 @@ class AddProductPage extends StatelessWidget {
                           keyboardType: TextInputType.name,
                           textInputAction: TextInputAction.next,
                         ),
-                      ),
+                      ), //(delete this)for product cat
                       Container(
                         margin: EdgeInsets.fromLTRB(
                           constraints.maxWidth * 0.02,
@@ -180,7 +187,7 @@ class AddProductPage extends StatelessWidget {
                           keyboardType: TextInputType.name,
                           textInputAction: TextInputAction.next,
                         ),
-                      ),
+                      ), //for contact info
                       Container(
                         margin: EdgeInsets.fromLTRB(
                           constraints.maxWidth * 0.02,
@@ -198,7 +205,7 @@ class AddProductPage extends StatelessWidget {
                             color: Colors.deepPurpleAccent,
                           ),
                           onChanged: null,
-                          items: <String>['One', 'Two', 'Free', 'Four']
+                          items: <String>['food', 'medicine', 'cosmetics', 'chemicals']
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
@@ -206,7 +213,101 @@ class AddProductPage extends StatelessWidget {
                             );
                           }).toList(),
                         ),
-                      ),
+                      ), //for dropdown category
+                      Container(
+                        margin: EdgeInsets.fromLTRB(
+                          constraints.maxWidth * 0.02,
+                          constraints.maxHeight * 0.01,
+                          constraints.maxWidth * 0.02,
+                          constraints.maxHeight * 0.01,
+                        ),
+                        child: Row(children: [
+                          new Flexible(
+                            child: TextFormField(
+                              controller: addP.days1,
+                              onFieldSubmitted: addP.setDays1,
+                              textAlign: TextAlign.center,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'please enter the first days count';
+                                }
+                              },
+                              autocorrect: false,
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                hintText: "Days1",
+                                prefixIcon:
+                                Icon(Icons.emoji_symbols, color: c4),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(width: 0.4),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                              textInputAction: TextInputAction.next,
+                            ),
+                          ),
+                          new Flexible(
+                            child: TextFormField(
+                              controller: addP.days2,
+                              textAlign: TextAlign.center,
+                              onFieldSubmitted: addP.setDays2,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'please enter the second days count';
+                                }
+                              },
+                              autocorrect: false,
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                hintText: "Days2",
+                                prefixIcon:
+                                Icon(Icons.emoji_symbols, color: c4),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(width: 0.4),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                              textInputAction: TextInputAction.next,
+                            ),
+                          ),
+                          new Flexible(
+                            child: TextFormField(
+                              controller: addP.days3,
+                              textAlign: TextAlign.center,
+                              onFieldSubmitted: addP.setDays3,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'please enter the third days count';
+                                }
+                                //if (value<100) {
+                                //   return 'please enter the third discount';
+                                // }
+                              },
+                              autocorrect: false,
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                hintText: "Days3",
+                                prefixIcon:
+                                Icon(Icons.emoji_symbols, color: c4),
+                                border: OutlineInputBorder(
+                                  borderSide: BorderSide(width: 0.4),
+                                  borderRadius: BorderRadius.circular(15.0),
+                                ),
+                              ),
+                              keyboardType: TextInputType.number,
+                              textInputAction: TextInputAction.next,
+                            ),
+                          )
+                        ]
+                          // [
+                          //]
+                        ),
+                      ), //for days
                       Container(
                         margin: EdgeInsets.fromLTRB(
                           constraints.maxWidth * 0.02,
