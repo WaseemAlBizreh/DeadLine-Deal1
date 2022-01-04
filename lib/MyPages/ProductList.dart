@@ -90,15 +90,31 @@ class _Product_listState extends State<Product_list> {
                               ),
                               child: Row(
                                 children: [
-                                  Container(
-                                    width: constraints.maxWidth * 0.5,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: Image.network(
-                                        data.product[index].image,
-                                        fit: BoxFit.fitWidth,
+                                  Stack(
+                                    children:[
+                                      Container(
+                                        width: constraints.maxWidth * 0.5,
+                                        child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(8.0),
+                                          child: Image.network(
+                                            data.product[index].image,
+                                            fit: BoxFit.fitWidth,
+                                          ),
+                                        ),
                                       ),
-                                    ),
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        child: Container(
+                                          padding: EdgeInsets.all(
+                                              constraints.maxWidth * 0.01),
+                                          color: c3,
+                                          child: RotationTransition(
+                                            turns: AlwaysStoppedAnimation(-35/360),
+                                            child: Text('${data.product[index].quantity}'),
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                   SizedBox(
                                     width: constraints.maxWidth * 0.02,
@@ -118,14 +134,18 @@ class _Product_listState extends State<Product_list> {
                                         ),
                                       ),
                                       SizedBox(
-                                        height: constraints.maxHeight * 0.005,
+                                        height: constraints.maxHeight * 0.01,
                                       ),
                                       Text(
                                         data.product[index].category,
                                         style: TextStyle(
                                           fontSize: constraints.maxWidth * 0.04,
                                           fontWeight: FontWeight.w300,
+                                          color: c4,
                                         ),
+                                      ),
+                                      SizedBox(
+                                        height: constraints.maxHeight * 0.01,
                                       ),
                                       Text(
                                           '\$${data.product[index].init_price}',
@@ -133,7 +153,18 @@ class _Product_listState extends State<Product_list> {
                                             decoration:
                                             TextDecoration.lineThrough,
                                             fontWeight: FontWeight.w400,
+                                            color: c5,
                                           )),
+                                      SizedBox(
+                                        height: constraints.maxHeight * 0.01,
+                                      ),
+                                      Text(
+                                        '\$${data.product[index].main_price}',
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xff8e0000),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ],
