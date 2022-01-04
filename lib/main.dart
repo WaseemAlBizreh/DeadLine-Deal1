@@ -8,15 +8,14 @@ import 'package:waseem/Provider/MainProvider.dart';
 import 'MyPages/ProductList.dart';
 import 'MyPages/login_page.dart';
 import 'Service/ProductApi.dart';
+import 'Variables.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
-      [
-        DeviceOrientation.portraitUp,
-        DeviceOrientation.portraitDown
-      ]);
-  runApp(MyApp());
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  runApp(ChangeNotifierProvider(
+      create: (_) => ProductApiProvider(), child: MyApp()));
 }
 
 class MyApp extends StatefulWidget {
@@ -30,12 +29,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Deadline Deals',
-      debugShowCheckedModeBanner: false,
-      home: ChangeNotifierProvider<ProductApiProvider>(
-          create: (_) => ProductApiProvider(),
-          child: login_page()
-      ),
-    );
+        theme: ThemeData(
+          textTheme: Theme.of(context).textTheme.apply(bodyColor: c1),
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        title: 'Deadline Deals',
+        debugShowCheckedModeBanner: false,
+        home: login_page());
   }
 }

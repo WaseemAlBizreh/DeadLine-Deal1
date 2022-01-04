@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:waseem/Model/ProductModel.dart';
 
@@ -18,7 +17,7 @@ class ProductApiProvider with ChangeNotifier {
 
   Future<List<ResProduct>> ShowAllData() async {
     //change this
-    String url = "https://pastebin.com/raw/Hx38Abcq";
+    String url = "https://pastebin.com/raw/zTDh9VuM";
     http.Response response = await http.get(
         Uri.parse(url),
         headers: {

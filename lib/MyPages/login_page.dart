@@ -173,7 +173,6 @@ class _login_pageState extends State<login_page> {
                                               content: Text("Logged In Successfully"));
                                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                                           token = response.token;
-                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Register()));
                                         } else {
                                           final snackBar = SnackBar(
                                               content: Text(
@@ -190,8 +189,8 @@ class _login_pageState extends State<login_page> {
                                       print(log.pass.text);
                                       print(e.toString());
                                     }
+                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Product_list()));
                                   }
-                                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>Product_list()));
                                 },
                               ),
                               SizedBox(height: Devheight * 0.01),
@@ -217,7 +216,7 @@ class _login_pageState extends State<login_page> {
                                         primary: c1,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                              BorderRadius.circular(32.0),
+                                          BorderRadius.circular(32.0),
                                         ),
                                       ),
                                       child: Text(
