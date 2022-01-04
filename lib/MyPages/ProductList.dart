@@ -141,14 +141,46 @@ class _Product_listState extends State<Product_list> {
                             );
                           },
                         );
-                      } else if (snapshot.hasError) {
+                      }
+                      else if (snapshot.hasError) {
                         return Center(
-                            child: Text(
-                              '${snapshot.error}',
-                              style: TextStyle(
-                                  fontSize: constraints.maxWidth * 0.05,
-                                  fontWeight: FontWeight.bold),
-                            )
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  '${snapshot.error}',
+                                  style: TextStyle(
+                                      fontSize: constraints.maxWidth * 0.05,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                ElevatedButton(
+                                    onPressed: (){
+                                      Navigator.pushReplacement(context,
+                                          MaterialPageRoute(builder: (_) => Product_list()));
+                                    },
+                                    style:ButtonStyle(
+                                      backgroundColor: MaterialStateProperty.all(c1),
+                                      shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(15),),
+                                      ),
+                                    ),
+                                    child: Container(
+                                      margin: EdgeInsets.fromLTRB(
+                                        constraints.maxWidth * 0.03,
+                                        constraints.maxHeight * 0.01,
+                                        constraints.maxWidth * 0.03,
+                                        constraints.maxHeight * 0.01,
+                                      ),
+                                      child: Text(
+                                        'Refresh',
+                                        style: TextStyle(
+                                          fontSize:constraints.maxWidth * 0.04,
+                                        ),
+                                      ),
+                                    )
+                                )
+                              ]),
                         );
                       }
                       return Center(
