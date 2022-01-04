@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
-import 'package:waseem/Service/AddProduct.dart';
+import 'package:waseem/Service/AddProductApi.dart';
 
 import '../Variables.dart';
 
@@ -10,13 +10,6 @@ class AddProductPage extends StatelessWidget {
   String dropdownValue = "food";
   @override
   Widget build(BuildContext context) {
-    void _datepicker() {
-      showDatePicker(
-          context: context,
-          initialDate: DateTime(2020,12),
-          firstDate: DateTime(2020, 12),
-          lastDate: DateTime(2030, 12));
-    }
     return ChangeNotifierProvider(
         create: (_) => AddProduct(),
         child: Consumer<AddProduct>(builder: (context, addP, child) {
@@ -143,8 +136,12 @@ class AddProductPage extends StatelessWidget {
                               color: c2,
                               //shape: ,
                               child: ElevatedButton(
-                                onPressed: () { _datepicker(); },
-                                child: Text("Select Expiration Date"),
+                                onPressed: () {
+                                  addP.datepicker(context);
+                                },
+                                child: addP.date == DateTime(0)
+                                    ? Text('Expiration Date')
+                                    : Text('Date : ${addP.date}'),
                               )
                           ),
                         ), //for expire date

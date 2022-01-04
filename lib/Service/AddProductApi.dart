@@ -6,7 +6,7 @@ class AddProduct with ChangeNotifier {
   AddProductProvider(){
     this._select_cat.text = "food";
   }
-
+  DateTime date = DateTime(0);
   TextEditingController _NameController = TextEditingController();
   TextEditingController _CatController = TextEditingController();
   TextEditingController _ContactController = TextEditingController();
@@ -20,6 +20,21 @@ class AddProduct with ChangeNotifier {
   TextEditingController _Days2Controller = TextEditingController();
   TextEditingController _Days3Controller = TextEditingController();
   TextEditingController _select_cat = TextEditingController();
+
+  Future<void> datepicker(BuildContext context) async {
+    final DateTime? picker = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2050)
+    );
+    if (picker != null && picker != date){
+      date = picker;
+      notifyListeners();
+    }else{
+      return;
+    }
+  }
 
   TextEditingController get select_cat => _select_cat;
   set_select_cat(String value) {
