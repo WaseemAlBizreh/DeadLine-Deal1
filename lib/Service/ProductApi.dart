@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:waseem/Model/ProductModel.dart';
 
@@ -39,7 +39,7 @@ class ProductApiProvider with ChangeNotifier {
       notifyListeners();
       return products;
     } else {
-      throw Exception('Failed to load products');
+      throw 'Failed to load products';
     }
   }
 
@@ -66,7 +66,7 @@ class ProductApiProvider with ChangeNotifier {
       return ResProduct.fromJson(jsonData);
     }
     else{
-      throw Exception('Failed to load products');
+      throw 'Failed to load products';
     }
   }
 }
