@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Service/AddProductApi.dart';
 
@@ -21,6 +22,7 @@ class AddProductPage extends StatelessWidget {
               ),
               body: SingleChildScrollView(
                 child: Container(
+                  height: constraints.maxHeight * 0.9,
                   decoration: BoxDecoration(
                     color: c2,
                   ),
@@ -123,27 +125,22 @@ class AddProductPage extends StatelessWidget {
                         ), //for product quantity
                         Container(
                           margin: EdgeInsets.fromLTRB(
-                            constraints.maxWidth * 0.02,
+                            constraints.maxWidth * 0.05,
                             constraints.maxHeight * 0.01,
-                            constraints.maxWidth * 0.02,
+                            constraints.maxWidth * 0.1,
                             constraints.maxHeight * 0.01,
                           ),
                           child: Card(
-                              // width: constraints.maxWidth * 0.60,
-                              // decoration: BoxDecoration(
-                              //   color: Colors.white,
-                              // ),
                               color: c2,
-                              //shape: ,
                               child: ElevatedButton(
                                 onPressed: () {
                                   addP.datepicker(context);
                                 },
                                 child: addP.date == DateTime(0)
                                     ? Text('Expiration Date')
-                                    : Text('Date : ${addP.date}'),
-                              )
-                          ),
+                                    : Text(
+                                        'Date : ${DateFormat.yMMMd().format(addP.date)}'),
+                              )),
                         ), //for expire date
                         Container(
                           margin: EdgeInsets.fromLTRB(
@@ -175,42 +172,50 @@ class AddProductPage extends StatelessWidget {
                             textInputAction: TextInputAction.next,
                           ),
                         ), //for contact info
-                        Container(
-                          margin: EdgeInsets.fromLTRB(
-                            constraints.maxWidth * 0.02,
-                            constraints.maxHeight * 0.01,
-                            constraints.maxWidth * 0.02,
-                            constraints.maxHeight * 0.01,
-                          ),
-                          child: Container(
+                        Row(children: [
+                          Container(
+                            margin: EdgeInsets.fromLTRB(
+                              constraints.maxWidth * 0.02,
+                              constraints.maxHeight * 0.01,
+                              constraints.maxWidth * 0.48,
+                              constraints.maxHeight * 0.01,
+                            ),
                             width: constraints.maxWidth * 0.30,
                             decoration: BoxDecoration(
                               color: Colors.white,
                             ),
-                            child: DropdownButton<String>(
-                              value: dropdownValue,
-                              icon: const Icon(Icons.arrow_downward),
-                              elevation: 16,
-                              style: const TextStyle(color: Colors.deepPurple),
-                              underline: Container(
-                                height: 2,
-                                color: Colors.deepPurpleAccent,
+                            child: new Flexible(
+                              child: DropdownButton<String>(
+                                value: dropdownValue,
+                                icon: const Icon(Icons.arrow_downward),
+                                elevation: 16,
+                                style:
+                                    const TextStyle(color: Colors.deepPurple),
+                                underline: Container(
+                                  height: 2,
+                                  color: Colors.deepPurpleAccent,
+                                ),
+                                onChanged: null,
+                                items: <String>[
+                                  "food",
+                                  "medicine",
+                                  "cosmetics",
+                                  "chemicals"
+                                ].map<DropdownMenuItem<String>>((String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
                               ),
-                              onChanged: null,
-                              items: <String>[
-                                "food",
-                                "medicine",
-                                "cosmetics",
-                                "chemicals"
-                              ].map<DropdownMenuItem<String>>((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
                             ),
                           ),
-                        ), //for dropdown category
+                          new Flexible(
+                              child: FloatingActionButton(
+                            child: Icon(Icons.photo_camera_outlined),
+                            onPressed: () {},
+                          ))
+                        ]), //for dropdown category
                         Container(
                           margin: EdgeInsets.fromLTRB(
                             constraints.maxWidth * 0.02,
@@ -234,8 +239,7 @@ class AddProductPage extends StatelessWidget {
                                   fillColor: Colors.white,
                                   filled: true,
                                   hintText: "Days1",
-                                  prefixIcon:
-                                      Icon(Icons.emoji_symbols, color: c4),
+                                  prefixIcon: Icon(Icons.today, color: c4),
                                   border: OutlineInputBorder(
                                     borderSide: BorderSide(width: 0.4),
                                     borderRadius: BorderRadius.circular(15.0),
@@ -260,8 +264,7 @@ class AddProductPage extends StatelessWidget {
                                   fillColor: Colors.white,
                                   filled: true,
                                   hintText: "Days2",
-                                  prefixIcon:
-                                      Icon(Icons.emoji_symbols, color: c4),
+                                  prefixIcon: Icon(Icons.today, color: c4),
                                   border: OutlineInputBorder(
                                     borderSide: BorderSide(width: 0.4),
                                     borderRadius: BorderRadius.circular(15.0),
@@ -289,8 +292,7 @@ class AddProductPage extends StatelessWidget {
                                   fillColor: Colors.white,
                                   filled: true,
                                   hintText: "Days3",
-                                  prefixIcon:
-                                      Icon(Icons.emoji_symbols, color: c4),
+                                  prefixIcon: Icon(Icons.today, color: c4),
                                   border: OutlineInputBorder(
                                     borderSide: BorderSide(width: 0.4),
                                     borderRadius: BorderRadius.circular(15.0),
@@ -399,20 +401,29 @@ class AddProductPage extends StatelessWidget {
                               //]
                               ),
                         ), //product discounts
+                        Container(
+                          margin: EdgeInsets.fromLTRB(
+                            constraints.maxWidth * 0.27,
+                            constraints.maxHeight * 0.01,
+                            constraints.maxWidth * 0.27,
+                            constraints.maxHeight * 0.01,
+                          ),
+                          child: Card(
+                              color: c2,
+                              child: ElevatedButton(
+                                onPressed: () {},
+                                child: Row(children: [
+                                  Text("Add Product"),
+                                SizedBox(
+                                  width: constraints.maxWidth*0.03,
+                                ),
+                                Icon(Icons.my_library_add_outlined )]),
+                              )),
+                        ), //add button
                       ],
                     ),
                   ),
                 ),
-              ),
-              floatingActionButton: FloatingActionButton(
-                backgroundColor: c1,
-                tooltip: 'AddProduct',
-                child: const Icon(Icons.add),
-                onPressed: () {
-                  print(addP.dis1.value);
-                  print(addP.dis2.value);
-                  print(addP.dis3.value);
-                },
               ),
             );
           });
