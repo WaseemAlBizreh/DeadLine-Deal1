@@ -11,11 +11,13 @@ class ShowProduct extends StatelessWidget{
         builder: (context,data,child){
           return LayoutBuilder(
               builder: (context,constraints){
-                return Container(
-                  height: double.infinity,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: c3,
+                return Scaffold(
+                  body: Container(
+                    height: double.infinity,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: c3,
+                    ),
                   ),
                 );
               }
