@@ -13,6 +13,7 @@ class ProductApiProvider with ChangeNotifier {
   List<ResProduct> _product = [];
   List<ResProduct> _search = [];
   List<ResProduct> get product => _product;
+  List<ResProduct> get search => _search;
 
   Future<List<ResProduct>> ShowAllData() async {
     //change this
