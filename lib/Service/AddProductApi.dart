@@ -1,6 +1,3 @@
-import 'dart:io';
-import 'dart:convert';
-
 import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -48,7 +45,7 @@ class AddProduct with ChangeNotifier {
       return;
     }
   }
- // final XFile? image =
+  
   Future setImage() async {
     var choosedImage =  await ImagePicker().pickImage(source: ImageSource.gallery);
     _imageFile = choosedImage;
@@ -141,21 +138,31 @@ class AddProduct with ChangeNotifier {
     notifyListeners();
   }
   //Api
-//   Future<ResProduct> AddProductApi(XFile image , ReqProduct requestModel) async {
-//     //change url
-//     String url = " ";
-//     var request = http.MultipartRequest(
-//       'POST',Uri.parse(url));
-//     request.fields.addAll(requestModel.toJson());
-//     //change response status
-//     if (response.statusCode == 200){
-//       String Data = response.body;
-//       var jsonData = jsonDecode(Data);
-//       return ResProduct.fromJson(jsonData);
-//     }
-//     else{
-//       throw 'Failed to load products';
-//     }
-//   }
-//
+  Future AddProductApi(XFile image , ReqProduct requestModel) async {
+    //url
+    String url = " ";
+    var request = http.MultipartRequest(
+        'POST',Uri.parse(url));
+
+    //header
+    request.headers.addAll({
+      'Accept': 'application/json',
+      'auth-token': token.toString(),
+    });
+
+    //body
+    request.fields.addAll(requestModel.toJson());
+    var image_file = await http.MultipartFile.fromPath('image',image.path);
+    request.files.add(image_file);
+
+    http.StreamedResponse response = await request.send();
+    //change response status
+    if (response.statusCode == 200){
+      throw await '${response.stream.bytesToString()}';
+    }
+    else{
+      throw 'Failed to Add\n try again';
+    }
+  }
+
 }
