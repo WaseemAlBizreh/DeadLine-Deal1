@@ -136,9 +136,5 @@ class AddProduct with ChangeNotifier {
     notifyListeners();
   }
   //Api
-  Future ImageUpload() async{
-    String url = "";
-
-  }
 
 }
