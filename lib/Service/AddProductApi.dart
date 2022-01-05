@@ -1,12 +1,20 @@
+import 'dart:io';
+
 import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class AddProduct with ChangeNotifier {
 
   AddProductProvider(){
     this._select_cat.text = "food";
   }
+
   DateTime date = DateTime(0);
+
+  XFile? _imageFile;
+  XFile? get imageFile => _imageFile;
+
   TextEditingController _NameController = TextEditingController();
   TextEditingController _CatController = TextEditingController();
   TextEditingController _ContactController = TextEditingController();
@@ -34,6 +42,12 @@ class AddProduct with ChangeNotifier {
     }else{
       return;
     }
+  }
+ // final XFile? image =
+  Future setImage() async {
+    var choosedImage =  await ImagePicker().pickImage(source: ImageSource.gallery);
+    _imageFile = choosedImage;
+    notifyListeners();
   }
 
   TextEditingController get select_cat => _select_cat;
@@ -120,6 +134,11 @@ class AddProduct with ChangeNotifier {
     var dadays3=double.parse(days3);
     assert(dadays3 is double);
     notifyListeners();
+  }
+  //Api
+  Future ImageUpload() async{
+    String url = "";
+
   }
 
 }

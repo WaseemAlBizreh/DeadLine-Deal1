@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Service/AddProductApi.dart';
@@ -125,9 +126,9 @@ class AddProductPage extends StatelessWidget {
                         ), //for product quantity
                         Container(
                           margin: EdgeInsets.fromLTRB(
-                            constraints.maxWidth * 0.05,
+                            constraints.maxWidth * 0.04,
                             constraints.maxHeight * 0.01,
-                            constraints.maxWidth * 0.1,
+                            constraints.maxWidth * 0.08,
                             constraints.maxHeight * 0.01,
                           ),
                           child: Card(
@@ -212,8 +213,12 @@ class AddProductPage extends StatelessWidget {
                           ),
                           new Flexible(
                               child: FloatingActionButton(
-                            child: Icon(Icons.photo_camera_outlined),
-                            onPressed: () {},
+                            child: Icon(Icons.add_a_photo),
+                            onPressed: () {
+                              addP.setImage().then((value) {
+                                print(value.path);
+                              });
+                            },
                           ))
                         ]), //for dropdown category
                         Container(
