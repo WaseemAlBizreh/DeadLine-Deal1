@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Service/AddProductApi.dart';
@@ -23,14 +22,13 @@ class AddProductPage extends StatelessWidget {
               ),
               body: SingleChildScrollView(
                 child: Container(
-                  height: constraints.maxHeight * 0.9,
+                  height: constraints.maxHeight,
                   decoration: BoxDecoration(
                     color: c2,
                   ),
                   child: Form(
                     key: _formkey,
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
                         Container(
                           margin: EdgeInsets.fromLTRB(
@@ -140,7 +138,7 @@ class AddProductPage extends StatelessWidget {
                                 child: addP.date == DateTime(0)
                                     ? Text('Expiration Date')
                                     : Text(
-                                        'Date : ${DateFormat.yMMMd().format(addP.date)}'),
+                                    'Date : ${DateFormat('yyyy-MM-dd').format(addP.date)}'),
                               )),
                         ), //for expire date
                         Container(
@@ -174,52 +172,52 @@ class AddProductPage extends StatelessWidget {
                           ),
                         ), //for contact info
                         Row(children: [
-                          Container(
-                            margin: EdgeInsets.fromLTRB(
-                              constraints.maxWidth * 0.02,
-                              constraints.maxHeight * 0.01,
-                              constraints.maxWidth * 0.48,
-                              constraints.maxHeight * 0.01,
-                            ),
-                            width: constraints.maxWidth * 0.30,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                            ),
-                            child: new Flexible(
-                              child: DropdownButton<String>(
-                                value: dropdownValue,
-                                icon: const Icon(Icons.arrow_downward),
-                                elevation: 16,
-                                style:
-                                    const TextStyle(color: Colors.deepPurple),
-                                underline: Container(
-                                  height: 2,
-                                  color: Colors.deepPurpleAccent,
-                                ),
-                                onChanged: null,
-                                items: <String>[
-                                  "food",
-                                  "medicine",
-                                  "cosmetics",
-                                  "chemicals"
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
+                          Expanded(
+                            flex: 1,
+                            child: DropdownButton<String>(
+                              value: dropdownValue,
+                              icon: const Icon(Icons.arrow_downward),
+                              elevation: 16,
+                              style: TextStyle(
+                                color: Colors.deepPurple,),
+                              alignment: Alignment.centerRight,
+                              underline: Container(
+                                width: constraints.maxWidth * 0.03,
+                                height: 2,
+                                color: Colors.deepPurpleAccent,
                               ),
+                              onChanged: null,
+                              items: <String>[
+                                "food",
+                                "medicine",
+                                "cosmetics",
+                                "chemicals"
+                              ].map<DropdownMenuItem<String>>((String value) {
+                                return DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(
+                                    value,
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                );
+                              }).toList(),
                             ),
                           ),
-                          new Flexible(
-                              child: FloatingActionButton(
-                            child: Icon(Icons.add_a_photo),
-                            onPressed: () {
-                              addP.setImage().then((value) {
-                                print(value.path);
-                              });
-                            },
-                          ))
+                          Expanded(
+                            flex: 1,
+                            child: FloatingActionButton(
+                              child: Icon(Icons.add_a_photo),
+                              onPressed: () {
+                                addP.setImage().then((value) {
+                                  print(value.path);
+                                });
+                              },
+                            ),
+                          ),
                         ]), //for dropdown category
                         Container(
                           margin: EdgeInsets.fromLTRB(
@@ -410,7 +408,7 @@ class AddProductPage extends StatelessWidget {
                           margin: EdgeInsets.fromLTRB(
                             constraints.maxWidth * 0.27,
                             constraints.maxHeight * 0.01,
-                            constraints.maxWidth * 0.27,
+                            constraints.maxWidth * 0.25,
                             constraints.maxHeight * 0.01,
                           ),
                           child: Card(
@@ -419,10 +417,7 @@ class AddProductPage extends StatelessWidget {
                                 onPressed: () {},
                                 child: Row(children: [
                                   Text("Add Product"),
-                                SizedBox(
-                                  width: constraints.maxWidth*0.03,
-                                ),
-                                Icon(Icons.my_library_add_outlined )]),
+                                  Icon(Icons.my_library_add_outlined )]),
                               )),
                         ), //add button
                       ],
