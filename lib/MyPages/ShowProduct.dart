@@ -239,28 +239,34 @@ class ShowProduct extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(width: constraints.maxWidth * 0.1,),
-                                Expanded(
-                                  flex: 1,
-                                  child: RichText(
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: 'Contact Info\n',
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 18,
+                                Container(
+                                  // decoration: BoxDecoration(
+                                  //   border: Border.all(
+                                  //       color: c1),
+                                  // ),
+                                  child: Expanded(
+                                    flex: 1,
+                                    child: RichText(
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: 'Contact Info\n',
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 18,
+                                            ),
                                           ),
-                                        ),
-                                        TextSpan(
-                                          text: '${product.contact}',
-                                          style: TextStyle(
-                                            color: c1,
-                                            fontSize: 22,
-                                            fontWeight: FontWeight.bold,
+                                          TextSpan(
+                                            text: '${product.contact}',
+                                            style: TextStyle(
+                                              color: c1,
+                                              fontSize: 22,
+                                              fontWeight: FontWeight.bold,
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
