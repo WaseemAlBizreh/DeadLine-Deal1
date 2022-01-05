@@ -11,6 +11,7 @@ class ProductApiProvider with ChangeNotifier {
   }
 
   List<ResProduct> _product = [];
+  List<ResProduct> _search = [];
   List<ResProduct> get product => _product;
 
   Future<List<ResProduct>> ShowAllData() async {
@@ -37,33 +38,6 @@ class ProductApiProvider with ChangeNotifier {
       notifyListeners();
       return products;
     } else {
-      throw 'Failed to load products';
-    }
-  }
-
-  Future<ResProduct> AddProduct(ReqProduct requestModel) async {
-    //change url
-    String url = " ";
-    http.Response response = await http.post(
-        Uri.parse(url),
-        headers: {
-          'Accept': 'application/json',
-          'auth-token': token.toString(),
-        },
-        body: requestModel.toJson()
-    ).catchError((e){
-      if(e is SocketException){
-        throw 'No Internet Connection';
-      }
-      throw e;
-    });
-    //change response status
-    if (response.statusCode == 200){
-      String Data = response.body;
-      var jsonData = jsonDecode(Data);
-      return ResProduct.fromJson(jsonData);
-    }
-    else{
       throw 'Failed to load products';
     }
   }

@@ -1,8 +1,13 @@
 import 'dart:io';
+import 'dart:convert';
 
 import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
+import 'package:waseem/Model/ProductModel.dart';
+
+import '../Variables.dart';
 
 class AddProduct with ChangeNotifier {
 
@@ -136,5 +141,21 @@ class AddProduct with ChangeNotifier {
     notifyListeners();
   }
   //Api
-
+//   Future<ResProduct> AddProductApi(XFile image , ReqProduct requestModel) async {
+//     //change url
+//     String url = " ";
+//     var request = http.MultipartRequest(
+//       'POST',Uri.parse(url));
+//     request.fields.addAll(requestModel.toJson());
+//     //change response status
+//     if (response.statusCode == 200){
+//       String Data = response.body;
+//       var jsonData = jsonDecode(Data);
+//       return ResProduct.fromJson(jsonData);
+//     }
+//     else{
+//       throw 'Failed to load products';
+//     }
+//   }
+//
 }

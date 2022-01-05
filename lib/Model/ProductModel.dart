@@ -1,9 +1,10 @@
 import 'dart:io';
 
+import 'package:image_picker/image_picker.dart';
+
 class ReqProduct {
   // change product model
-  late String name;//
-  late File image; // File
+  late String name;
   late DateTime endDate; //Date
   late String contact;
   late String category;
@@ -18,7 +19,6 @@ class ReqProduct {
 
   ReqProduct({
     required this.name,
-    required this.image,
     required this.endDate,
     required this.price,
     required this.quantity,
@@ -32,21 +32,20 @@ class ReqProduct {
     required this.discount3_percentage
   });
 
-  Map<String, dynamic> toJson() {
-    Map<String, dynamic> ProductMap = {
+  Map<String, String> toJson() {
+    Map<String, String> ProductMap = {
       'name': name,
-      'image': image,
-      'endDate': endDate,
-      'price': price,
-      'quantity': quantity,
+      'endDate': '${endDate}',
+      'price': '${price}',
+      'quantity': '${quantity}',
       'contact': contact,
       'cat_Id': category,
-      'r1': days1,
-      'r2': days2,
-      'r3': days3,
-      'dis1': discount1_percentage,
-      'dis2': discount2_percentage,
-      'dis3': discount3_percentage,
+      'r1': '${days1}',
+      'r2': '${days2}',
+      'r3': '${days3}',
+      'dis1': '${discount1_percentage}',
+      'dis2': '${discount2_percentage}',
+      'dis3': '${discount3_percentage}',
     };
     return ProductMap;
   }

@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'AddProductPage.dart';
 import '../Variables.dart';
 import 'ShowProduct.dart';
+import 'search_page.dart';
 
 class Product_list extends StatefulWidget {
   @override
@@ -32,7 +33,9 @@ class _Product_listState extends State<Product_list> {
                 actions: [
                   IconButton(
                     icon: Icon(Icons.search),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (_) => Search()));
+                    },
                   ),
                 ],
               ),
