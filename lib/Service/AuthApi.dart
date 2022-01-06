@@ -7,13 +7,13 @@ import 'package:waseem/Model/RegisterModel.dart';
 
 class AuthApi {
 
-  Future<loginResponseModel> login(loginRequestModel requestModel) async {
+  Future<loginResponseModel> login(loginRequestModel loginRequest) async {
     //change url
     String url = "https://reqres.in/api/login";
     http.Response response = await http.post(
         Uri.parse(url),
         headers: {'Accept': 'application/json'},
-        body: requestModel.toJson()
+        body: loginRequest.toJson()
     ).catchError((e){
       if(e is SocketException){
         throw 'No Internet Connection';

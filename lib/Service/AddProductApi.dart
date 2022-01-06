@@ -13,7 +13,6 @@ class AddProduct with ChangeNotifier {
   }
 
   DateTime date = DateTime(0);
-
   XFile? _imageFile;
   XFile? get imageFile => _imageFile;
 
