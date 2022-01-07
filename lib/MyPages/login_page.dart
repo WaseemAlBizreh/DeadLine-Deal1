@@ -4,7 +4,7 @@ import 'package:waseem/Model/loginModel.dart';
 import 'package:waseem/MyPages/ProductList.dart';
 import 'package:waseem/Provider/LoginProvider.dart';
 import 'package:waseem/Service/authApi.dart';
-// import 'package:intl/intl.dart';
+
 import '../Variables.dart';
 import 'Register.dart';
 

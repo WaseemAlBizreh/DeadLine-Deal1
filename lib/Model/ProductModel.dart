@@ -59,6 +59,8 @@ class ResProduct {
   int days;
   int id;
   int views;
+  int like;
+  bool islike;
 
   ResProduct({
     required this.name,
@@ -72,6 +74,8 @@ class ResProduct {
     required this.days,
     required this.id,
     required this.views,
+    required this.like,
+    required this.islike,
   });
 
   factory ResProduct.fromJson(Map<String, dynamic> jsonData) {
@@ -86,7 +90,9 @@ class ResProduct {
       days: jsonData['days'],
       id: jsonData['id'],
       category: jsonData['cat_Id'],
-      views: jsonData['views'],
+      views: jsonData['views_count'],
+      like: jsonData['likes_count'],
+      islike: jsonData['isLike'],
     );
   }
 }

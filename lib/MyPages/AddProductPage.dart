@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:waseem/Model/ProductModel.dart';
 import 'package:waseem/Service/AddProductApi.dart';
 
 import '../Variables.dart';
+import 'ProductList.dart';
 
 class AddProductPage extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
@@ -21,6 +24,10 @@ class AddProductPage extends StatelessWidget {
               appBar: AppBar(
                 backgroundColor: c1,
                 title: Text("Add Your Product"),
+                leading: IconButton(
+                  onPressed: () {Navigator.pop(context);},
+                  icon: Icon(Icons.arrow_back),
+                ),
               ),
               body: SingleChildScrollView(
                 child: Container(
@@ -248,6 +255,9 @@ class AddProductPage extends StatelessWidget {
                                   if (value!.isEmpty) {
                                     return 'Empty value';
                                   }
+                                  if(value.contains('.')){
+                                    return 'Bad day';
+                                  }
                                 },
                                 autocorrect: false,
                                 decoration: InputDecoration(
@@ -273,6 +283,9 @@ class AddProductPage extends StatelessWidget {
                                 validator: (value) {
                                   if (value!.isEmpty) {
                                     return 'Empty value';
+                                  }
+                                  if(value.contains('.')){
+                                    return 'Bad day';
                                   }
                                 },
                                 autocorrect: false,
@@ -300,9 +313,9 @@ class AddProductPage extends StatelessWidget {
                                   if (value!.isEmpty) {
                                     return 'Empty value';
                                   }
-                                  //if (value<100) {
-                                  //   return 'please enter the third discount';
-                                  // }
+                                  if(value.contains('.')){
+                                    return 'Bad day';
+                                  }
                                 },
                                 autocorrect: false,
                                 decoration: InputDecoration(
@@ -339,6 +352,9 @@ class AddProductPage extends StatelessWidget {
                                   if (value!.isEmpty) {
                                     return 'Empty value';
                                   }
+                                  if (value.length > 2) {
+                                    return 'Bad discount';
+                                  }
                                 },
                                 autocorrect: false,
                                 decoration: InputDecoration(
@@ -365,6 +381,9 @@ class AddProductPage extends StatelessWidget {
                                 validator: (value) {
                                   if (value!.isEmpty) {
                                     return 'Empty value';
+                                  }
+                                  if (value.length > 2) {
+                                    return 'Bad discount';
                                   }
                                 },
                                 autocorrect: false,
@@ -393,9 +412,9 @@ class AddProductPage extends StatelessWidget {
                                   if (value!.isEmpty) {
                                     return 'Empty value';
                                   }
-                                  // if (value > 100) {
-                                  //   return 'please enter the third discount';
-                                  // }
+                                  if (value.length > 2) {
+                                    return 'Bad discount';
+                                  }
                                 },
                                 autocorrect: false,
                                 decoration: InputDecoration(
@@ -426,19 +445,62 @@ class AddProductPage extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               if(_formkey.currentState!.validate() && DateV!=0 && imageV!=0){
-                                print(addP.name.text);
-                                print(addP.price.text);
-                                print(addP.quantity.text);
-                                print(addP.date);
-                                print(addP.contatct.text);
-                                print(addP.select_cat.text);
-                                print(addP.imageFile!.path.toString());
-                                print(addP.days1.text);
-                                print(addP.days2.text);
-                                print(addP.days3.text);
-                                print(addP.dis1.text);
-                                print(addP.dis2.text);
-                                print(addP.dis3.text);
+                                var price = double.parse(addP.price.text);
+                                assert(price is double);
+                                var qunatity = double.parse(addP.quantity.text);
+                                assert(qunatity is double);
+                                var dis1 = double.parse(addP.dis1.text);
+                                assert(dis1 is double);
+                                var dis2 = double.parse(addP.dis2.text);
+                                assert(dis2 is double);
+                                var dis3 = double.parse(addP.dis3.text);
+                                assert(dis3 is double);
+                                var days1 = int.parse(addP.days1.text);
+                                assert(days1 is int);
+                                var days2 = int.parse(addP.days2.text);
+                                assert(days2 is int);
+                                var days3 = int.parse(addP.days3.text);
+                                assert(days3 is int);
+                                ReqProduct add = ReqProduct(
+                                  name: addP.name.text,
+                                  endDate:addP.date,
+                                  contact: addP.contatct.text,
+                                  category:addP.select_cat.text,
+                                  quantity:qunatity,
+                                  price: price,
+                                  days1: days1,
+                                  days2: days2,
+                                  days3: days3,
+                                  discount1_percentage:dis1,
+                                  discount2_percentage:dis2,
+                                  discount3_percentage:dis3,
+                                );
+                                XFile img = addP.imageFile;
+                                addP.AddProductApi(img , add).then((msg){
+                                  if(msg){
+                                    Fluttertoast.showToast(
+                                        msg: 'product added successfully',
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor: Colors.blueGrey,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0
+                                    );
+                                    Navigator.pushReplacement(context,
+                                        MaterialPageRoute(builder: (_) => Product_list()));
+                                  }else{
+                                    Fluttertoast.showToast(
+                                        msg: 'fail to Add\n try again',
+                                        toastLength: Toast.LENGTH_LONG,
+                                        gravity: ToastGravity.BOTTOM,
+                                        timeInSecForIosWeb: 1,
+                                        backgroundColor: Colors.blueGrey,
+                                        textColor: Colors.white,
+                                        fontSize: 16.0
+                                    );
+                                  }
+                                });
                               }
                               else{
                                 Fluttertoast.showToast(
