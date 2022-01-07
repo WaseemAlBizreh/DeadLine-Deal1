@@ -18,7 +18,7 @@ class ProductApiProvider with ChangeNotifier {
 
   Future<List<ResProduct>> ShowAllData() async {
     //change this
-    String url = "https://pastebin.com/raw/zTDh9VuM";
+    String url = "https://pastebin.com/raw/CzkLk5rJ";
     http.Response response = await http.get(
         Uri.parse(url),
         headers: {

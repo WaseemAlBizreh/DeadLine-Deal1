@@ -45,39 +45,39 @@ class _Product_listState extends State<Product_list> {
               ),
               drawer: Drawer(
                   child: ListView(
-                children: <Widget>[
-                  DrawerHeader(
-                    decoration: BoxDecoration(
-                      color: c1,
-                    ),
-                    child: Container(
-                      child: Column(
-                        children: [
-                          CircleAvatar(
-                            radius: 30,
-                            backgroundImage: AssetImage('assets/imgs/sus.png'),
-                            backgroundColor: Colors.transparent,
+                    children: <Widget>[
+                      DrawerHeader(
+                        decoration: BoxDecoration(
+                          color: c1,
+                        ),
+                        child: Container(
+                          child: Column(
+                            children: [
+                              CircleAvatar(
+                                radius: 30,
+                                backgroundImage: AssetImage('assets/imgs/sus.png'),
+                                backgroundColor: Colors.transparent,
+                              ),
+                              ListTile(
+                                contentPadding: EdgeInsets.fromLTRB(90, 1, 90, 1),
+                                title: Text("user name"),
+                                subtitle: Text("user email"),
+                              )
+                            ],
                           ),
-                          ListTile(
-                            contentPadding: EdgeInsets.fromLTRB(90, 1, 90, 1),
-                            title: Text("user name"),
-                            subtitle: Text("user email"),
-                          )
-                        ],
+                        ),
                       ),
-                    ),
-                  ),
-                  ListTile(
-                    title: Text("Log Out"),
-                    trailing: Icon(Icons.logout),
-                    onTap: () {
-                      authApi.logout();
-                      Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (_) => login_page()));
-                    }, //data.log_out(context)
-                  )
-                ],
-              )),
+                      ListTile(
+                        title: Text("Log Out"),
+                        trailing: Icon(Icons.logout),
+                        onTap: () {
+                          authApi.logout();
+                          Navigator.pushReplacement(context,
+                              MaterialPageRoute(builder: (_) => login_page()));
+                        }, //data.log_out(context)
+                      )
+                    ],
+                  )),
               body: FutureBuilder(
                   future: fetchData,
                   builder: (context, snapshot) {
@@ -89,11 +89,11 @@ class _Product_listState extends State<Product_list> {
                           return InkWell(
                             onTap: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => ShowProduct(
-                                            product: data.product[index],
-                                          )));
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => ShowProduct(
+                                    product: data.product[index],
+                                  ),),);
                             },
                             child: Container(
                               margin: EdgeInsets.fromLTRB(
@@ -114,7 +114,7 @@ class _Product_listState extends State<Product_list> {
                                         width: constraints.maxWidth * 0.5,
                                         child: ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(8.0),
+                                          BorderRadius.circular(8.0),
                                           child: Image.network(
                                             data.product[index].image,
                                             fit: BoxFit.fitWidth,
@@ -123,20 +123,26 @@ class _Product_listState extends State<Product_list> {
                                       ),
                                       ClipRRect(
                                         borderRadius:
-                                            BorderRadius.circular(8.0),
+                                        BorderRadius.circular(8.0),
                                         child: Container(
-                                          padding: EdgeInsets.all(
-                                              constraints.maxWidth * 0.01),
+                                          padding: EdgeInsets.only(
+                                              right:constraints.maxWidth * 0.01),
                                           color: c3,
-                                          child: RotationTransition(
-                                            turns: AlwaysStoppedAnimation(
-                                                -35 / 360),
-                                            child: Text(
-                                              '${data.product[index].quantity}',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
+                                          child: Row(
+                                            children: [
+                                              Icon(Icons.visibility,color:c1),
+                                              SizedBox(width: constraints.maxWidth *0.01,),
+                                              RotationTransition(
+                                                turns: AlwaysStoppedAnimation(
+                                                    0/ 360),
+                                                child: Text(
+                                                  '${data.product[index].views}',
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
                                               ),
-                                            ),
+                                            ],
                                           ),
                                         ),
                                       ),

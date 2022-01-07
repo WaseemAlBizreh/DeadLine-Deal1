@@ -62,6 +62,7 @@ class ResProduct {
   double main_price;
   int days;
   int id;
+  int views;
 
   ResProduct({
     required this.name,
@@ -74,6 +75,7 @@ class ResProduct {
     required this.category,
     required this.days,
     required this.id,
+    required this.views,
   });
 
   factory ResProduct.fromJson(Map<String, dynamic> jsonData) {
@@ -88,6 +90,7 @@ class ResProduct {
       days: jsonData['days'],
       id: jsonData['id'],
       category: jsonData['cat_Id'],
+      views: jsonData['views'],
     );
   }
 }

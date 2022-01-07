@@ -9,7 +9,8 @@
     "endDate": "2022-1-1",
     "init_price": 700.0,
     "days": 5,
-    "id": 1
+    "id": 1,
+    "views": 2
   },
   {
     "name": "CheeseBurger",
@@ -21,7 +22,8 @@
     "endDate": "2022-1-1",
     "init_price": 700.0,
     "days": 5,
-    "id": 2
+    "id": 2,
+    "views": 2
   },
   {
     "name": "Vegetables",
@@ -33,7 +35,8 @@
     "endDate": "2022-1-1",
     "init_price": 700.0,
     "days": 5,
-    "id": 3
+    "id": 3,
+    "views": 2
   },
   {
     "name": "Salad",
@@ -45,7 +48,8 @@
     "endDate": "2022-1-1",
     "init_price": 700.0,
     "days": 5,
-    "id": 4
+    "id": 4,
+    "views": 2
   },
   {
     "name": "CheeseBurger",
@@ -57,7 +61,8 @@
     "endDate": "2022-1-1",
     "init_price": 700.0,
     "days": 5,
-    "id": 5
+    "id": 5,
+    "views": 2
   },
   {
     "name": "Vegetables",
@@ -69,6 +74,7 @@
     "endDate": "2022-1-1",
     "init_price": 700.0,
     "days": 5,
-    "id": 6
+    "id": 6,
+    "views": 2
   }
 ]
