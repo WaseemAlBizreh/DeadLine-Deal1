@@ -1,5 +1,4 @@
 class ReqProduct {
-  // change product model
   late String name;
   late DateTime endDate; //Date
   late String contact;
@@ -35,7 +34,7 @@ class ReqProduct {
       'price': '${price}',
       'quantity': '${quantity}',
       'contact': contact,
-      'cat_Id': category,
+      'category': category,
       'r1': '${days1}',
       'r2': '${days2}',
       'r3': '${days3}',
@@ -60,7 +59,7 @@ class ResProduct {
   int id;
   int views;
   int like;
-  bool islike;
+  bool isLike;
 
   ResProduct({
     required this.name,
@@ -75,7 +74,7 @@ class ResProduct {
     required this.id,
     required this.views,
     required this.like,
-    required this.islike,
+    required this.isLike,
   });
 
   factory ResProduct.fromJson(Map<String, dynamic> jsonData) {
@@ -92,7 +91,7 @@ class ResProduct {
       category: jsonData['cat_Id'],
       views: jsonData['views_count'],
       like: jsonData['likes_count'],
-      islike: jsonData['isLike'],
+      isLike: jsonData['isLike'],
     );
   }
 }
