@@ -144,7 +144,7 @@ class _RegisterState extends State<Register> {
                                       fillColor: c3,
                                       filled: true,
                                       prefixIcon:
-                                          Icon(Icons.lock_rounded, color: c4),
+                                      Icon(Icons.lock_rounded, color: c4),
                                       suffixIcon: IconButton(
                                         onPressed: reg.setvisible1,
                                         icon: Icon(
@@ -156,7 +156,7 @@ class _RegisterState extends State<Register> {
                                       border: OutlineInputBorder(
                                         borderSide: BorderSide(width: 0.4),
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                        BorderRadius.circular(15.0),
                                       ),
                                     ),
                                   ),
@@ -193,7 +193,7 @@ class _RegisterState extends State<Register> {
                                       border: OutlineInputBorder(
                                         borderSide: BorderSide(width: 0.4),
                                         borderRadius:
-                                            BorderRadius.circular(15.0),
+                                        BorderRadius.circular(15.0),
                                       ),
                                     ),
                                     keyboardType: TextInputType.text,
@@ -210,7 +210,7 @@ class _RegisterState extends State<Register> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(30),
                                       gradient:
-                                          LinearGradient(colors: [c2, c1]),
+                                      LinearGradient(colors: [c2, c1]),
                                     ),
                                     child: Container(
                                       child: Text(
@@ -249,24 +249,18 @@ class _RegisterState extends State<Register> {
                                         await reg_api
                                             .register(reg_requestModel)
                                             .then((response) {
-                                          if (response.token != "") {
+                                          if (response.User.token != "") {
                                             final snackBar = SnackBar(
                                                 content:
                                                 Text("Registered Successfully"));
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(snackBar);
-                                            token = response.token;
-                                          } else {
-                                            final snackBar = SnackBar(
-                                                content: Text("Registration Failed Due To"+
-                                                    response.error.toString()));
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(snackBar);
-                                            // final snackBar = SnackBar(
-                                            //     content: Text("Registration Failed Due To ${response.error}"));
+                                            token = response.User.token!;
                                           }
-                                          print(response.token.toString());
-                                          print(response.error);
+                                          print(response.User.token);
+                                          print(response.User.name);
+                                          print(response.User.email);
+                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>Product_list()));
                                         });
                                       }catch(e){
                                         final snackBar =
@@ -276,7 +270,6 @@ class _RegisterState extends State<Register> {
                                         print(e.toString());
                                       }
                                     }
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_)=>Product_list()));
                                   },
                                 ),
                                 SizedBox(height: Devheight * 0.01),
@@ -303,7 +296,7 @@ class _RegisterState extends State<Register> {
                                           primary: c1,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(32.0),
+                                            BorderRadius.circular(32.0),
                                           ),
                                         ),
                                         child: Text(

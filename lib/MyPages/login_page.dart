@@ -162,10 +162,10 @@ class _login_pageState extends State<login_page> {
                                 onPressed: () async {
                                   _formkey1.currentState!.validate();
                                   if (_formkey1.currentState!.validate()) {
-                                    String email = log.email.text;
-                                    String password = log.pass.text;
+                                    String email1 = log.email.text;
+                                    String password1 = log.pass.text;
                                     login_requestModel = loginRequestModel(
-                                        email: email, password: password);
+                                        email: email1, password: password1);
                                     try {
                                       await login_api.login(login_requestModel).then((response) {
                                         if (response.token != "") {
@@ -173,6 +173,7 @@ class _login_pageState extends State<login_page> {
                                               content: Text("Logged In Successfully"));
                                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                                           token = response.token;
+                                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Product_list()));
                                         } else {
                                           final snackBar = SnackBar(
                                               content: Text(
@@ -185,11 +186,7 @@ class _login_pageState extends State<login_page> {
                                       final snackBar = SnackBar(content: Text(e.toString()));
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(snackBar);
-                                      print(log.email.text);
-                                      print(log.pass.text);
-                                      print(e.toString());
                                     }
-                                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => Product_list()));
                                   }
                                 },
                               ),

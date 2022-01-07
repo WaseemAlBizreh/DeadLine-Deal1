@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:waseem/Service/AuthApi.dart';
 import 'package:waseem/Service/ProductApi.dart';
 import 'package:provider/provider.dart';
@@ -16,11 +17,15 @@ class Product_list extends StatefulWidget {
 
 class _Product_listState extends State<Product_list> {
   late Future fetchData;
-  AuthApi authApi= new AuthApi();
+  AuthApi authApi = AuthApi();
   @override
   void initState() {
     super.initState();
     fetchData = context.read<ProductApiProvider>().ShowAllData();
+    authApi.me().then((res){
+      email = res.email;
+      UserName = res.name;
+    } );
   }
 
   @override
@@ -69,7 +74,7 @@ class _Product_listState extends State<Product_list> {
                                   text: TextSpan(
                                     children: [
                                       TextSpan(
-                                        text: 'UserName: Waseem \n\n',
+                                        text: 'UserName: ${UserName} \n\n',
                                         style: TextStyle(
                                           color: c3,
                                           fontWeight: FontWeight.w500,
@@ -77,7 +82,7 @@ class _Product_listState extends State<Product_list> {
                                         ),
                                       ),
                                       TextSpan(
-                                        text: 'Email: Waseem.bez@gmail.com \n',
+                                        text: 'Email: ${email} \n',
                                         style: TextStyle(
                                           color: c3,
                                           fontSize: 18,
@@ -96,9 +101,34 @@ class _Product_listState extends State<Product_list> {
                         title: Text("Log Out"),
                         trailing: Icon(Icons.logout),
                         onTap: () {
-                          authApi.logout();
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (_) => login_page()));
+                          authApi.logout().then((msg){
+                            if(msg){
+                              Fluttertoast.showToast(
+                                  msg: 'Successfully logged out',
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.blueGrey,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              );
+                              token = "";
+                              UserName = "";
+                              email = "";
+                              Navigator.pushReplacement(context,
+                                  MaterialPageRoute(builder: (_) => login_page()));
+                            }else{
+                              Fluttertoast.showToast(
+                                  msg: 'failed logged out try again',
+                                  toastLength: Toast.LENGTH_LONG,
+                                  gravity: ToastGravity.BOTTOM,
+                                  timeInSecForIosWeb: 1,
+                                  backgroundColor: Colors.blueGrey,
+                                  textColor: Colors.white,
+                                  fontSize: 16.0
+                              );
+                            }
+                          });
                         }, //data.log_out(context)
                       )
                     ],
@@ -107,6 +137,9 @@ class _Product_listState extends State<Product_list> {
                   future: fetchData,
                   builder: (context, snapshot) {
                     print(data.product.length);
+                    print(token);
+                    print(UserName);
+                    print(email);
                     if (snapshot.hasData) {
                       return ListView.builder(
                         itemCount: data.product.length,

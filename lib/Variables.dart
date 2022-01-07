@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 String token = "";
+String email = "";
+String UserName = "";
+
 List<String> category = ["food","medicine","makeup"];
 
 var c1 = const Color(0xff06487f);

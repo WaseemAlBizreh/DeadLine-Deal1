@@ -1,17 +1,11 @@
+import 'UserModel.dart';
+
 class registerResponseModel {
-  String? error;
-  late String token;
+  late user User;
 
   registerResponseModel({
-    this.error,
-    required this.token
+    required this.User,
   });
-
-  factory registerResponseModel.fromJson(Map<String, dynamic> jsonRegData) {
-    return registerResponseModel(
-        token: jsonRegData['token'] != null ? jsonRegData['token'] : "",
-        error: jsonRegData['error'] != null ? jsonRegData['error'] : "");
-  }
 }
 
 class registerRequestModel {

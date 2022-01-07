@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-//import 'package:image_picker/image_picker.dart'
 
 import 'MyPages/ProductList.dart';
 import 'MyPages/login_page.dart';
@@ -33,6 +32,6 @@ class _MyAppState extends State<MyApp> {
         ),
         title: 'Deadline Deals',
         debugShowCheckedModeBanner: false,
-        home: login_page());
+        home: Product_list());
   }
 }
