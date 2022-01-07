@@ -97,39 +97,53 @@ class _Product_listState extends State<Product_list> {
                           ),
                         ),
                       ),
-                      ListTile(
-                        title: Text("Log Out"),
-                        trailing: Icon(Icons.logout),
-                        onTap: () {
-                          authApi.logout().then((msg){
-                            if(msg){
-                              Fluttertoast.showToast(
-                                  msg: 'Successfully logged out',
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.blueGrey,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0
-                              );
-                              token = "";
-                              UserName = "";
-                              email = "";
-                              Navigator.pushReplacement(context,
-                                  MaterialPageRoute(builder: (_) => login_page()));
-                            }else{
-                              Fluttertoast.showToast(
-                                  msg: 'failed logged out try again',
-                                  toastLength: Toast.LENGTH_LONG,
-                                  gravity: ToastGravity.BOTTOM,
-                                  timeInSecForIosWeb: 1,
-                                  backgroundColor: Colors.blueGrey,
-                                  textColor: Colors.white,
-                                  fontSize: 16.0
-                              );
-                            }
-                          });
-                        }, //data.log_out(context)
+                      Container(
+                        margin: EdgeInsets.only(
+                            top: constraints.maxHeight * 0.01),
+                        decoration: BoxDecoration(
+                          color: c3,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: ListTile(
+                          title: Text(
+                            "Log Out",
+                            style: TextStyle(
+                              fontSize: constraints.maxWidth * 0.04,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          trailing: Icon(Icons.logout,color: c1,),
+                          onTap: () {
+                            authApi.logout().then((msg){
+                              if(msg){
+                                Fluttertoast.showToast(
+                                    msg: 'Successfully logged out',
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.blueGrey,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0
+                                );
+                                token = "";
+                                UserName = "";
+                                email = "";
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (_) => login_page()));
+                              }else{
+                                Fluttertoast.showToast(
+                                    msg: 'failed logged out try again',
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.blueGrey,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0
+                                );
+                              }
+                            });
+                          }, //data.log_out(context)
+                        ),
                       )
                     ],
                   )),
