@@ -130,7 +130,7 @@ class _Product_listState extends State<Product_list> {
                                           color: c3,
                                           child: Row(
                                             children: [
-                                              Icon(Icons.visibility,color:c1),
+                                              Icon(Icons.visibility,color:c1, size:18),
                                               SizedBox(width: constraints.maxWidth *0.01,),
                                               RotationTransition(
                                                 turns: AlwaysStoppedAnimation(
