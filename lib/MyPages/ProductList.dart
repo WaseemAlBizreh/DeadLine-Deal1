@@ -46,23 +46,48 @@ class _Product_listState extends State<Product_list> {
               drawer: Drawer(
                   child: ListView(
                     children: <Widget>[
-                      DrawerHeader(
+                      Container(
+                        height: constraints.maxHeight *0.32,
                         decoration: BoxDecoration(
                           color: c1,
                         ),
                         child: Container(
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CircleAvatar(
-                                radius: 30,
-                                backgroundImage: AssetImage('assets/imgs/sus.png'),
+                                radius: constraints.maxWidth *0.15,
+                                backgroundImage: AssetImage(
+                                  'assets/imgs/user-login.jpg',
+                                ),
                                 backgroundColor: Colors.transparent,
                               ),
-                              ListTile(
-                                contentPadding: EdgeInsets.fromLTRB(90, 1, 90, 1),
-                                title: Text("user name"),
-                                subtitle: Text("user email"),
-                              )
+                              SizedBox(height: constraints.maxHeight * 0.01,),
+                              Container(
+                                margin: EdgeInsets.only(left: constraints.maxWidth *0.03),
+                                child: RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: 'UserName: Waseem \n\n',
+                                        style: TextStyle(
+                                          color: c3,
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: 'Email: Waseem.bez@gmail.com \n',
+                                        style: TextStyle(
+                                          color: c3,
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                         ),
