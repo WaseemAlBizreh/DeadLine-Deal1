@@ -8,7 +8,6 @@ import '../Variables.dart';
 
 class AddProductPage extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
-  String dropdownValue = "food";
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -175,7 +174,7 @@ class AddProductPage extends StatelessWidget {
                           Expanded(
                             flex: 1,
                             child: DropdownButton<String>(
-                              value: dropdownValue,
+                              value: addP.select_cat.text,
                               icon: const Icon(Icons.arrow_downward),
                               elevation: 16,
                               style: TextStyle(
@@ -186,13 +185,10 @@ class AddProductPage extends StatelessWidget {
                                 height: 2,
                                 color: Colors.deepPurpleAccent,
                               ),
-                              onChanged: null,
-                              items: <String>[
-                                "food",
-                                "medicine",
-                                "cosmetics",
-                                "chemicals"
-                              ].map<DropdownMenuItem<String>>((String value) {
+                              onChanged:(String? val){
+                                addP.set_select_cat(val!);
+                              },
+                              items: category.map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
                                   child: Text(

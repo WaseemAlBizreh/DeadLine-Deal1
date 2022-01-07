@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 String token = "";
-List<String> category = ["food","medicine","makeup","gg"];
+List<String> category = ["food","medicine","makeup"];
 
 var c1 = const Color(0xff06487f);
 var c2 = const Color(0xFF86a9db);
