@@ -241,7 +241,7 @@ class AddProductPage extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return 'please enter the first days count';
+                                    return 'Empty value';
                                   }
                                 },
                                 autocorrect: false,
@@ -267,7 +267,7 @@ class AddProductPage extends StatelessWidget {
                                 onFieldSubmitted: addP.setDays2,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return 'please enter the second days count';
+                                    return 'Empty value';
                                   }
                                 },
                                 autocorrect: false,
@@ -293,7 +293,7 @@ class AddProductPage extends StatelessWidget {
                                 onFieldSubmitted: addP.setDays3,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return 'please enter the third days count';
+                                    return 'Empty value';
                                   }
                                   //if (value<100) {
                                   //   return 'please enter the third discount';
@@ -332,7 +332,7 @@ class AddProductPage extends StatelessWidget {
                                 textAlign: TextAlign.center,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return 'please enter the first discount';
+                                    return 'Empty value';
                                   }
                                 },
                                 autocorrect: false,
@@ -359,7 +359,7 @@ class AddProductPage extends StatelessWidget {
                                 onFieldSubmitted: addP.setDis2,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return 'please enter the second discount';
+                                    return 'Empty value';
                                   }
                                 },
                                 autocorrect: false,
@@ -386,7 +386,7 @@ class AddProductPage extends StatelessWidget {
                                 onFieldSubmitted: addP.setDis3,
                                 validator: (value) {
                                   if (value!.isEmpty) {
-                                    return 'please enter the third discount';
+                                    return 'Empty value';
                                   }
                                   // if (value > 100) {
                                   //   return 'please enter the third discount';
@@ -420,7 +420,21 @@ class AddProductPage extends StatelessWidget {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              _formkey.currentState!.validate();
+                              if(_formkey.currentState!.validate()){
+                                print(addP.name.text);
+                                print(addP.price.text);
+                                print(addP.quantity.text);
+                                print(addP.date);
+                                print(addP.contatct.text);
+                                print(addP.select_cat.text);
+                                print(addP.imageFile!.path.toString());
+                                print(addP.days1.text);
+                                print(addP.days2.text);
+                                print(addP.days3.text);
+                                print(addP.dis1.text);
+                                print(addP.dis2.text);
+                                print(addP.dis3.text);
+                              }
                             },
                             child: Row(
                                 children: [

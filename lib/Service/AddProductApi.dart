@@ -1,4 +1,3 @@
-import 'package:extended_masked_text/extended_masked_text.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
@@ -18,9 +17,8 @@ class AddProduct with ChangeNotifier {
 
   TextEditingController _NameController = TextEditingController();
   TextEditingController _ContactController = TextEditingController();
-  MoneyMaskedTextController _PriceController =
-  MoneyMaskedTextController(decimalSeparator: '.', thousandSeparator: ',');
   TextEditingController _QuantityController = TextEditingController();
+  TextEditingController _PriceController = TextEditingController();
   TextEditingController _Dis1Controller = TextEditingController();
   TextEditingController _Dis2Controller = TextEditingController();
   TextEditingController _Dis3Controller = TextEditingController();
@@ -68,7 +66,7 @@ class AddProduct with ChangeNotifier {
     notifyListeners();
   }
 
-  MoneyMaskedTextController get price => _PriceController;
+  TextEditingController get price => _PriceController;
   setPrice(String price) {
     _PriceController.text = price;
     var dprice = double.parse(price);
@@ -118,7 +116,7 @@ class AddProduct with ChangeNotifier {
   TextEditingController get days2 => _Days2Controller;
   setDays2(String days2) {
     _Days2Controller.text = days2;
-    var dadays2=double.parse(days2);
+    var dadays2 = double.parse(days2);
     assert(dadays2 is double);
     notifyListeners();
   }
