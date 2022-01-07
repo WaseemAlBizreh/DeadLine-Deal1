@@ -23,7 +23,7 @@ class AddProductPage extends StatelessWidget {
                 child: Container(
                   height: constraints.maxHeight,
                   decoration: BoxDecoration(
-                    color: c2,
+                    color: c3,
                   ),
                   child: Form(
                     key: _formkey,
@@ -34,7 +34,7 @@ class AddProductPage extends StatelessWidget {
                             constraints.maxWidth * 0.02,
                             constraints.maxHeight * 0.01,
                             constraints.maxWidth * 0.02,
-                            constraints.maxHeight * 0.01,
+                            constraints.maxHeight * 0.02,
                           ),
                           child: TextFormField(
                             controller: addP.name,
@@ -64,7 +64,7 @@ class AddProductPage extends StatelessWidget {
                             constraints.maxWidth * 0.02,
                             constraints.maxHeight * 0.01,
                             constraints.maxWidth * 0.02,
-                            constraints.maxHeight * 0.01,
+                            constraints.maxHeight * 0.02,
                           ),
                           child: TextFormField(
                             controller: addP.price,
@@ -95,7 +95,7 @@ class AddProductPage extends StatelessWidget {
                             constraints.maxWidth * 0.02,
                             constraints.maxHeight * 0.01,
                             constraints.maxWidth * 0.02,
-                            constraints.maxHeight * 0.01,
+                            constraints.maxHeight * 0.02,
                           ),
                           child: TextFormField(
                             controller: addP.quantity,
@@ -126,26 +126,41 @@ class AddProductPage extends StatelessWidget {
                             constraints.maxWidth * 0.04,
                             constraints.maxHeight * 0.01,
                             constraints.maxWidth * 0.08,
-                            constraints.maxHeight * 0.01,
+                            constraints.maxHeight * 0.02,
                           ),
-                          child: Card(
-                              color: c2,
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  addP.datepicker(context);
-                                },
-                                child: addP.date == DateTime(0)
-                                    ? Text('Expiration Date')
-                                    : Text(
-                                    'Date : ${DateFormat('yyyy-MM-dd').format(addP.date)}'),
-                              )),
+                          child:ElevatedButton(
+                            onPressed: () {
+                              addP.datepicker(context);
+                            },
+                            child: addP.date == DateTime(0)
+                                ? Text('Expiration Date')
+                                : Text(
+                                'Date : ${DateFormat('yyyy-MM-dd').format(addP.date)}'
+                            ),
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              padding: MaterialStateProperty.all(
+                                  EdgeInsets.fromLTRB(
+                                    constraints.maxWidth * 0.05,
+                                    constraints.maxHeight * 0.01,
+                                    constraints.maxWidth * 0.05,
+                                    constraints.maxHeight * 0.01,
+                                  )),
+                              elevation: MaterialStateProperty.all(10),
+                              backgroundColor: MaterialStateProperty.all(c1),
+                            ),
+                          ),
                         ), //for expire date
                         Container(
                           margin: EdgeInsets.fromLTRB(
                             constraints.maxWidth * 0.02,
                             constraints.maxHeight * 0.01,
                             constraints.maxWidth * 0.02,
-                            constraints.maxHeight * 0.01,
+                            constraints.maxHeight * 0.02,
                           ),
                           child: TextFormField(
                             controller: addP.contatct,
@@ -171,19 +186,16 @@ class AddProductPage extends StatelessWidget {
                           ),
                         ), //for contact info
                         Row(children: [
-                          Expanded(
-                            flex: 1,
+                          Container(
+                            margin: EdgeInsets.only(left: constraints.maxWidth * 0.2),
                             child: DropdownButton<String>(
+                              alignment: Alignment.center,
                               value: addP.select_cat.text,
-                              icon: const Icon(Icons.arrow_downward),
+                              icon: Icon(Icons.arrow_downward,color: c1,size:30),
                               elevation: 16,
-                              style: TextStyle(
-                                color: Colors.deepPurple,),
-                              alignment: Alignment.centerRight,
                               underline: Container(
-                                width: constraints.maxWidth * 0.03,
                                 height: 2,
-                                color: Colors.deepPurpleAccent,
+                                color: Colors.black,
                               ),
                               onChanged:(String? val){
                                 addP.set_select_cat(val!);
@@ -194,7 +206,7 @@ class AddProductPage extends StatelessWidget {
                                   child: Text(
                                     value,
                                     style: TextStyle(
-                                      color: Colors.black,
+                                      color: c1,
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -203,24 +215,22 @@ class AddProductPage extends StatelessWidget {
                               }).toList(),
                             ),
                           ),
-                          Expanded(
-                            flex: 1,
+                          Container(
+                            margin: EdgeInsets.only(left: constraints.maxWidth * 0.2),
                             child: FloatingActionButton(
+                              backgroundColor: c1,
                               child: Icon(Icons.add_a_photo),
                               onPressed: () {
-                                addP.setImage().then((value) {
-                                  print(value.path);
-                                });
+                                addP.setImage();
                               },
-                            ),
-                          ),
+                            ),),
                         ]), //for dropdown category
                         Container(
                           margin: EdgeInsets.fromLTRB(
                             constraints.maxWidth * 0.02,
                             constraints.maxHeight * 0.01,
                             constraints.maxWidth * 0.02,
-                            constraints.maxHeight * 0.01,
+                            constraints.maxHeight * 0.02,
                           ),
                           child: Row(children: [
                             new Flexible(
@@ -311,7 +321,7 @@ class AddProductPage extends StatelessWidget {
                             constraints.maxWidth * 0.02,
                             constraints.maxHeight * 0.01,
                             constraints.maxWidth * 0.02,
-                            constraints.maxHeight * 0.01,
+                            constraints.maxHeight * 0.02,
                           ),
                           child: Row(children: [
                             new Flexible(
@@ -402,19 +412,36 @@ class AddProductPage extends StatelessWidget {
                         ), //product discounts
                         Container(
                           margin: EdgeInsets.fromLTRB(
-                            constraints.maxWidth * 0.27,
+                            constraints.maxWidth * 0.28,
                             constraints.maxHeight * 0.01,
-                            constraints.maxWidth * 0.25,
-                            constraints.maxHeight * 0.01,
+                            constraints.maxWidth * 0.28,
+                            constraints.maxHeight * 0.02,
                           ),
-                          child: Card(
-                              color: c2,
-                              child: ElevatedButton(
-                                onPressed: () {},
-                                child: Row(children: [
-                                  Text("Add Product"),
-                                  Icon(Icons.my_library_add_outlined )]),
-                              )),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: Row(
+                                children: [
+                                  Text("Add Product",textAlign: TextAlign.center,),
+                                  SizedBox(width: constraints.maxWidth *0.01,),
+                                  Icon(Icons.my_library_add_outlined )
+                                ]),
+                            style: ButtonStyle(
+                              shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                              ),
+                              padding: MaterialStateProperty.all(
+                                  EdgeInsets.fromLTRB(
+                                    constraints.maxWidth * 0.05,
+                                    constraints.maxHeight * 0.01,
+                                    constraints.maxWidth * 0.05,
+                                    constraints.maxHeight * 0.01,
+                                  )),
+                              elevation: MaterialStateProperty.all(10),
+                              backgroundColor: MaterialStateProperty.all(c1),
+                            ),
+                          ),
                         ), //add button
                       ],
                     ),
