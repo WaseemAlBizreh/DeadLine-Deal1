@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Service/AddProductApi.dart';
@@ -8,6 +9,8 @@ import '../Variables.dart';
 
 class AddProductPage extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
+  int imageV = 0;
+  int DateV = 0;
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -130,6 +133,7 @@ class AddProductPage extends StatelessWidget {
                           ),
                           child:ElevatedButton(
                             onPressed: () {
+                              DateV++;
                               addP.datepicker(context);
                             },
                             child: addP.date == DateTime(0)
@@ -221,6 +225,7 @@ class AddProductPage extends StatelessWidget {
                               backgroundColor: c1,
                               child: Icon(Icons.add_a_photo),
                               onPressed: () {
+                                imageV++;
                                 addP.setImage();
                               },
                             ),),
@@ -420,7 +425,7 @@ class AddProductPage extends StatelessWidget {
                           ),
                           child: ElevatedButton(
                             onPressed: () {
-                              if(_formkey.currentState!.validate()){
+                              if(_formkey.currentState!.validate() && DateV!=0 && imageV!=0){
                                 print(addP.name.text);
                                 print(addP.price.text);
                                 print(addP.quantity.text);
@@ -435,7 +440,17 @@ class AddProductPage extends StatelessWidget {
                                 print(addP.dis2.text);
                                 print(addP.dis3.text);
                               }
-                            },
+                              else{
+                                Fluttertoast.showToast(
+                                    msg: 'date picker or image picker is empty',
+                                    toastLength: Toast.LENGTH_LONG,
+                                    gravity: ToastGravity.BOTTOM,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.blueGrey,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0
+                                );
+                              }},
                             child: Row(
                                 children: [
                                   Text("Add Product",textAlign: TextAlign.center,),
