@@ -138,7 +138,7 @@ class AddProductPage extends StatelessWidget {
                                 child: addP.date == DateTime(0)
                                     ? Text('Expiration Date')
                                     : Text(
-                                        'Date : ${DateFormat('yyyy-MM-dd').format(addP.date)}'),
+                                    'Date : ${DateFormat('yyyy-MM-dd').format(addP.date)}'),
                               )),
                         ), //for expire date
                         Container(
@@ -179,18 +179,18 @@ class AddProductPage extends StatelessWidget {
                               icon: const Icon(Icons.arrow_downward),
                               elevation: 16,
                               style: TextStyle(
-                                color: c1,
-                              ),
+                                color: Colors.deepPurple,),
                               alignment: Alignment.centerRight,
                               underline: Container(
                                 width: constraints.maxWidth * 0.03,
                                 height: 2,
-                                color: c1,
+                                color: Colors.deepPurpleAccent,
                               ),
                               onChanged: null,
                               items: <String>[
                                 "food",
                                 "medicine",
+                                "cosmetics",
                                 "chemicals"
                               ].map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
@@ -218,7 +218,7 @@ class AddProductPage extends StatelessWidget {
                               },
                             ),
                           ),
-                        ]),       //for dropdown category
+                        ]), //for dropdown category
                         Container(
                           margin: EdgeInsets.fromLTRB(
                             constraints.maxWidth * 0.02,
@@ -417,8 +417,7 @@ class AddProductPage extends StatelessWidget {
                                 onPressed: () {},
                                 child: Row(children: [
                                   Text("Add Product"),
-                                  Icon(Icons.my_library_add_outlined)
-                                ]),
+                                  Icon(Icons.my_library_add_outlined )]),
                               )),
                         ), //add button
                       ],
@@ -428,7 +427,6 @@ class AddProductPage extends StatelessWidget {
               ),
             );
           });
-        })
-    );
+        }));
   }
 }

@@ -8,7 +8,7 @@ import '../Variables.dart';
 
 class AddProduct with ChangeNotifier {
 
-  AddProductProvider(){
+  AddProduct(){
     this._select_cat.text = "food";
   }
 
@@ -17,7 +17,6 @@ class AddProduct with ChangeNotifier {
   XFile? get imageFile => _imageFile;
 
   TextEditingController _NameController = TextEditingController();
-  TextEditingController _CatController = TextEditingController();
   TextEditingController _ContactController = TextEditingController();
   MoneyMaskedTextController _PriceController =
   MoneyMaskedTextController(decimalSeparator: '.', thousandSeparator: ',');
@@ -54,17 +53,12 @@ class AddProduct with ChangeNotifier {
   TextEditingController get select_cat => _select_cat;
   set_select_cat(String value) {
     _select_cat.text = value;
+    notifyListeners();
   }
 
   TextEditingController get name => _NameController;
   setName(String name) {
     _NameController.text = name;
-    notifyListeners();
-  }
-
-  TextEditingController get cat => _CatController;
-  setCat(String cat) {
-    _CatController.text = cat;
     notifyListeners();
   }
 
