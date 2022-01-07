@@ -181,7 +181,7 @@ class AddProductPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                             ),
-                            keyboardType: TextInputType.name,
+                            keyboardType: TextInputType.number,
                             textInputAction: TextInputAction.next,
                           ),
                         ), //for contact info
@@ -233,7 +233,8 @@ class AddProductPage extends StatelessWidget {
                             constraints.maxHeight * 0.02,
                           ),
                           child: Row(children: [
-                            new Flexible(
+                            Expanded(
+                              flex:1,
                               child: TextFormField(
                                 controller: addP.days1,
                                 onFieldSubmitted: addP.setDays1,
@@ -258,7 +259,8 @@ class AddProductPage extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                               ),
                             ),
-                            new Flexible(
+                            Expanded(
+                              flex:1,
                               child: TextFormField(
                                 controller: addP.days2,
                                 textAlign: TextAlign.center,
@@ -283,7 +285,8 @@ class AddProductPage extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                               ),
                             ),
-                            new Flexible(
+                            Expanded(
+                              flex:1,
                               child: TextFormField(
                                 controller: addP.days3,
                                 textAlign: TextAlign.center,
@@ -311,10 +314,7 @@ class AddProductPage extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                               ),
                             )
-                          ]
-                              // [
-                              //]
-                              ),
+                          ]),
                         ), //for days
                         Container(
                           margin: EdgeInsets.fromLTRB(
@@ -324,7 +324,8 @@ class AddProductPage extends StatelessWidget {
                             constraints.maxHeight * 0.02,
                           ),
                           child: Row(children: [
-                            new Flexible(
+                            Expanded(
+                              flex:1,
                               child: TextFormField(
                                 controller: addP.dis1,
                                 onFieldSubmitted: addP.setDis1,
@@ -350,7 +351,8 @@ class AddProductPage extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                               ),
                             ),
-                            new Flexible(
+                            Expanded(
+                              flex:1,
                               child: TextFormField(
                                 controller: addP.dis2,
                                 textAlign: TextAlign.center,
@@ -376,7 +378,8 @@ class AddProductPage extends StatelessWidget {
                                 textInputAction: TextInputAction.next,
                               ),
                             ),
-                            new Flexible(
+                            Expanded(
+                              flex:1,
                               child: TextFormField(
                                 controller: addP.dis3,
                                 textAlign: TextAlign.center,
@@ -385,7 +388,7 @@ class AddProductPage extends StatelessWidget {
                                   if (value!.isEmpty) {
                                     return 'please enter the third discount';
                                   }
-                                  //if (value<100) {
+                                  // if (value > 100) {
                                   //   return 'please enter the third discount';
                                   // }
                                 },
@@ -395,7 +398,7 @@ class AddProductPage extends StatelessWidget {
                                   filled: true,
                                   hintText: "Dis3",
                                   prefixIcon:
-                                      Icon(Icons.emoji_symbols, color: c4),
+                                  Icon(Icons.emoji_symbols, color: c4),
                                   border: OutlineInputBorder(
                                     borderSide: BorderSide(width: 0.4),
                                     borderRadius: BorderRadius.circular(15.0),
@@ -406,19 +409,19 @@ class AddProductPage extends StatelessWidget {
                               ),
                             )
                           ]
-                              // [
-                              //]
-                              ),
+                          ),
                         ), //product discounts
                         Container(
                           margin: EdgeInsets.fromLTRB(
                             constraints.maxWidth * 0.28,
                             constraints.maxHeight * 0.01,
                             constraints.maxWidth * 0.28,
-                            constraints.maxHeight * 0.02,
+                            0,
                           ),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              _formkey.currentState!.validate();
+                            },
                             child: Row(
                                 children: [
                                   Text("Add Product",textAlign: TextAlign.center,),
