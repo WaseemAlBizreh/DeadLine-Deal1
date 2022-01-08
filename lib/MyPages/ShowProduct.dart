@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Model/ProductModel.dart';
+import 'package:waseem/MyPages/EditProduct.dart';
 import 'package:waseem/Service/ProductApi.dart';
 
 import '../Variables.dart';
@@ -15,26 +16,41 @@ class ShowProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ProductApiProvider>(
-      builder: (context,data,child){
+      builder: (context, data, child) {
         return LayoutBuilder(builder: (context, constraints) {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: c3,
               elevation: 0,
               leading: IconButton(
-                onPressed: () {Navigator.pop(context);},
-                icon: Icon(Icons.arrow_back, color: c1,),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: c1,
+                ),
               ),
               actions: [
                 IconButton(
-                  icon: Icon(Icons.create_sharp , color: c1,),
-                  onPressed: () {},
+                  icon: Icon(
+                    Icons.create_sharp,
+                    color: c1,
+                  ),
+                  onPressed: () {
+                    Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (_) => EditProductPage(product: product,)));
+                  },
                 ),
                 IconButton(
-                  icon: Icon(Icons.delete, color: c1,),
+                  icon: Icon(
+                    Icons.delete,
+                    color: c1,
+                  ),
                   onPressed: () {
-                    data.DeleteProduct(product.id).then((msg){
-                      if(msg){
+                    Navigator.pop(context);
+                    data.DeleteProduct(product.id).then((msg) {
+                      if (msg) {
                         Fluttertoast.showToast(
                             msg: 'Deleted Successfully',
                             toastLength: Toast.LENGTH_LONG,
@@ -42,9 +58,8 @@ class ShowProduct extends StatelessWidget {
                             timeInSecForIosWeb: 1,
                             backgroundColor: Colors.blueGrey,
                             textColor: Colors.white,
-                            fontSize: 16.0
-                        );
-                      }else{
+                            fontSize: 16.0);
+                      } else {
                         Fluttertoast.showToast(
                             msg: 'failed Delete try again',
                             toastLength: Toast.LENGTH_LONG,
@@ -52,8 +67,7 @@ class ShowProduct extends StatelessWidget {
                             timeInSecForIosWeb: 1,
                             backgroundColor: Colors.blueGrey,
                             textColor: Colors.white,
-                            fontSize: 16.0
-                        );
+                            fontSize: 16.0);
                       }
                     });
                   },
@@ -63,7 +77,9 @@ class ShowProduct extends StatelessWidget {
             body: Container(
               height: double.infinity,
               width: double.infinity,
-              decoration: BoxDecoration(color: c3,),
+              decoration: BoxDecoration(
+                color: c3,
+              ),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -85,8 +101,8 @@ class ShowProduct extends StatelessWidget {
                         ),
                         Container(
                           width: double.infinity,
-                          margin: EdgeInsets.only(
-                              top: constraints.maxHeight * 0.3),
+                          margin:
+                              EdgeInsets.only(top: constraints.maxHeight * 0.3),
                           height: constraints.maxHeight * 0.6,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -96,12 +112,14 @@ class ShowProduct extends StatelessWidget {
                             ),
                           ),
                           child: Container(
-                            padding:
-                            EdgeInsets.only(left: constraints.maxWidth * 0.1),
+                            padding: EdgeInsets.only(
+                                left: constraints.maxWidth * 0.1),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(height: constraints.maxHeight * 0.04,),
+                                SizedBox(
+                                  height: constraints.maxHeight * 0.04,
+                                ),
                                 Row(
                                   children: [
                                     Expanded(
@@ -129,7 +147,9 @@ class ShowProduct extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(width: constraints.maxWidth * 0.1,),
+                                    SizedBox(
+                                      width: constraints.maxWidth * 0.1,
+                                    ),
                                     Expanded(
                                       flex: 1,
                                       child: RichText(
@@ -157,7 +177,9 @@ class ShowProduct extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: constraints.maxHeight * 0.04,),
+                                SizedBox(
+                                  height: constraints.maxHeight * 0.04,
+                                ),
                                 Row(
                                   children: [
                                     Expanded(
@@ -237,7 +259,9 @@ class ShowProduct extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(height: constraints.maxHeight * 0.04,),
+                                SizedBox(
+                                  height: constraints.maxHeight * 0.04,
+                                ),
                                 Row(
                                   children: [
                                     Expanded(
@@ -265,7 +289,9 @@ class ShowProduct extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(width: constraints.maxWidth * 0.1,),
+                                    SizedBox(
+                                      width: constraints.maxWidth * 0.1,
+                                    ),
                                     Container(
                                       // decoration: BoxDecoration(
                                       //   border: Border.all(

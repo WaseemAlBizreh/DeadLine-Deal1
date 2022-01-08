@@ -14,6 +14,7 @@ class AddProductPage extends StatelessWidget {
   final _formkey = GlobalKey<FormState>();
   int imageV = 0;
   int DateV = 0;
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
