@@ -16,11 +16,16 @@ class ProductApiProvider with ChangeNotifier {
   List<ResProduct> get product => _product;
 
   Future<List<ResProduct>> ShowAllData() async {
-    String url = "https://pastebin.com/raw/1cUWbZZN";//change this to https://laravel-project-master.000webhostapp.com/showAll
+    String url = "https://laravel-project-master.000webhostapp.com/api/showAll";//change this to https://laravel-project-master.000webhostapp.com/showAll
     http.Response response = await http.get(Uri.parse(url),
         headers: {
           'Accept': 'application/json',
-          'auth-token': token.toString(),
+          'auth-token':'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYX'
+              'ZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBpXC9hdXRoXC9yZ'
+              'Wdpc3RlciIsImlhdCI6MTY0MTYyNzQxNSwiZXhwIjoxNjQxNzEzODE1LCJuYmYiOjE2NDE2'
+              'Mjc0MTUsImp0aSI6IkVKM2haZG92SmF1cXE1WTQiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yz'
+              'g5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qapZy7VNX18BwhlhSy'
+              '9BtEDs0A5_zZEiC8E-JHzFF2Y',
         }).catchError((e) {
       if (e is SocketException) {
         throw 'No Internet Connection';
@@ -42,7 +47,7 @@ class ProductApiProvider with ChangeNotifier {
   }
 
   Future DeleteProduct(int id) async{
-    String DelUrl = " " ;//change to this "https://laravel-project-master.000webhostapp.com/delete/${id}";
+    String DelUrl = "https://laravel-project-master.000webhostapp.com/api/delete/${id}";
     http.Response response = await http.get(Uri.parse(DelUrl),
         headers: {
           'Accept': 'application/json',

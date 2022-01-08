@@ -119,27 +119,36 @@ class AddProduct with ChangeNotifier {
   Future AddProductApi(XFile image , ReqProduct requestModel) async {
     //url
     String url = "https://laravel-project-master.000webhostapp.com/api/add";
-    var request = http.MultipartRequest(
-        'POST',Uri.parse(url));
-    //header
-    request.headers.addAll({
-      'Accept': 'application/json',
-      'auth-token': token.toString(),
-    });
-    //body
-    request.fields.addAll(requestModel.toJson());
-    var image_file = await http.MultipartFile.fromPath('image',image.path);
-    request.files.add(image_file);
-    http.StreamedResponse response = await request.send();
-    bool msg;
-    if (response.statusCode == 200) {
-      msg = true;
-      return msg;
+    try{
+      var request = http.MultipartRequest(
+          'POST',Uri.parse(url));
+      //header
+      request.headers.addAll({
+        'Accept': 'application/json',
+        'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBpXC9hdXRoXC9yZWdpc3RlciIsImlhdCI6MTY0MTYyNzQxNSwiZXhwIjoxNjQxNzEzODE1LCJuYmYiOjE2NDE2Mjc0MTUsImp0aSI6IkVKM2haZG92SmF1cXE1WTQiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qapZy7VNX18BwhlhSy9BtEDs0A5_zZEiC8E-JHzFF2Y',
+      });
+      //body
+      request.fields.addAll(requestModel.toJson());
+      var image_file = await http.MultipartFile.fromPath('image',image.path).catchError((e){
+        throw e;
+      });
+      request.files.add(image_file);
+      http.StreamedResponse response = await request.send().catchError((e){
+        throw e;
+      });
+      bool msg;
+      if (response.statusCode == 200) {
+        msg = true;
+        return msg;
+      }
+      else {
+        msg = false;
+        return msg;
+      }
+    }catch(e){
+      throw e;
     }
-    else {
-      msg = false;
-      return msg;
-    }
+
   }
 
 }
