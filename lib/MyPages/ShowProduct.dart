@@ -330,17 +330,13 @@ void Bottonsheets(context){
     builder:(builder){
     return new Container(
       height: 450.0,
-      color: Colors.transparent, //could change this to Color(0xFF737373),
-      //so you don't have to change MaterialApp canvasColor
+      color: Colors.transparent,
       child: new Container(
           decoration: new BoxDecoration(
               color: c3,
               borderRadius: new BorderRadius.only(
                   topLeft: const Radius.circular(10.0),
                   topRight: const Radius.circular(10.0))),
-          child: new Center(
-            child: new Text("This is a modal sheet"),
-          )
       ),
     );
   },
