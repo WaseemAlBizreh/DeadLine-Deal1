@@ -18,7 +18,7 @@ class ProductApiProvider with ChangeNotifier {
 
   Future<List<ResProduct>> ShowAllData() async {
     //change this
-    String url = "https://pastebin.com/raw/CzkLk5rJ";
+    String url = "https://pastebin.com/raw/1cUWbZZN";
     http.Response response = await http.get(
         Uri.parse(url),
         headers: {
@@ -34,7 +34,7 @@ class ProductApiProvider with ChangeNotifier {
     if (response.statusCode == 200) {
       String Data = response.body;
       var jsonData = jsonDecode(Data);
-      product_list Singlelist = product_list.fromJson(jsonData);
+      product_list Singlelist = product_list.fromJson(jsonData['products']);
       List<ResProduct> products = Singlelist.products_list.map((e) => ResProduct.fromJson(e)).toList();
       _product = products;
       notifyListeners();
