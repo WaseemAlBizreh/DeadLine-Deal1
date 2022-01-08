@@ -25,7 +25,17 @@ class _Product_listState extends State<Product_list> {
     authApi.me().then((res){
       email = res.email;
       UserName = res.name;
-    } );
+    }).catchError((e){
+      Fluttertoast.showToast(
+        msg: e.toString(),
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.blueGrey,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+    });
   }
 
   @override
@@ -141,6 +151,16 @@ class _Product_listState extends State<Product_list> {
                                     fontSize: 16.0
                                 );
                               }
+                            }).catchError((e){
+                              Fluttertoast.showToast(
+                                msg: e.toString(),
+                                toastLength: Toast.LENGTH_LONG,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.blueGrey,
+                                textColor: Colors.white,
+                                fontSize: 16.0,
+                              );
                             });
                           }, //data.log_out(context)
                         ),
@@ -230,7 +250,7 @@ class _Product_listState extends State<Product_list> {
                                     height: constraints.maxHeight * 0.15,
                                     child: Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         SizedBox(
                                           height: constraints.maxHeight * 0.01,
@@ -239,7 +259,7 @@ class _Product_listState extends State<Product_list> {
                                           data.product[index].name,
                                           style: TextStyle(
                                             fontSize:
-                                                constraints.maxWidth * 0.04,
+                                            constraints.maxWidth * 0.04,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -247,7 +267,7 @@ class _Product_listState extends State<Product_list> {
                                           data.product[index].category,
                                           style: TextStyle(
                                             fontSize:
-                                                constraints.maxWidth * 0.04,
+                                            constraints.maxWidth * 0.04,
                                             fontWeight: FontWeight.w300,
                                             color: c4,
                                           ),
@@ -259,12 +279,12 @@ class _Product_listState extends State<Product_list> {
                                             '\$${data.product[index].init_price}',
                                             style: TextStyle(
                                               decoration:
-                                                  TextDecoration.lineThrough,
+                                              TextDecoration.lineThrough,
                                               fontWeight: FontWeight.w400,
                                               color: c5,
                                             )),
                                         Text(
-                                          '\$${data.product[index].main_price}',
+                                          '\$${data.product[index].price}',
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Color(0xff8e0000),

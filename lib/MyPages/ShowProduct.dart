@@ -174,7 +174,7 @@ class ShowProduct extends StatelessWidget {
                                               ),
                                             ),
                                             TextSpan(
-                                              text: '\$${product.main_price}',
+                                              text: '\$${product.price}',
                                               style: TextStyle(
                                                 color: c1,
                                                 fontSize: 22,

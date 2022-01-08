@@ -54,7 +54,7 @@ class ResProduct {
   late String category;
   var quantity;
   var init_price;
-  var main_price;
+  var price;
   int days;
   int id;
   int views;
@@ -66,7 +66,7 @@ class ResProduct {
     required this.image,
     required this.endDate,
     required this.init_price,
-    required this.main_price,
+    required this.price,
     required this.quantity,
     required this.contact,
     required this.category,
@@ -82,8 +82,8 @@ class ResProduct {
       name: jsonData['name'] as String,
       image: jsonData['image'],
       endDate: jsonData['endDate'],
-      init_price: jsonData['init_price'],
-      main_price: jsonData['price'],
+      init_price: jsonData['main_price'],
+      price: jsonData['price'],
       quantity: jsonData['quantity'],
       contact: jsonData['contact'],
       days: jsonData['days'],

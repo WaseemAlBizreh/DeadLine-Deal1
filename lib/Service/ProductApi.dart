@@ -7,6 +7,7 @@ import 'package:waseem/Model/ProductModel.dart';
 import '../Variables.dart';
 
 class ProductApiProvider with ChangeNotifier {
+
   ProductApiProvider() {
     ShowAllData();
   }
@@ -15,7 +16,7 @@ class ProductApiProvider with ChangeNotifier {
   List<ResProduct> get product => _product;
 
   Future<List<ResProduct>> ShowAllData() async {
-    String url = "https://pastebin.com/raw/CzkLk5rJ";//change this to https://laravel-project-master.000webhostapp.com/showAll
+    String url = "https://pastebin.com/raw/1cUWbZZN";//change this to https://laravel-project-master.000webhostapp.com/showAll
     http.Response response = await http.get(Uri.parse(url),
         headers: {
           'Accept': 'application/json',
@@ -29,7 +30,7 @@ class ProductApiProvider with ChangeNotifier {
     if (response.statusCode == 200) {
       String Data = response.body;
       var jsonData = jsonDecode(Data);
-      product_list Singlelist = product_list.fromJson(jsonData);
+      product_list Singlelist = product_list.fromJson(jsonData['products']);
       List<ResProduct> products =
       Singlelist.products_list.map((e) => ResProduct.fromJson(e)).toList();
       _product = products;
