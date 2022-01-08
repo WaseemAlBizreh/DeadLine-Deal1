@@ -449,12 +449,12 @@ class AddProductPage extends StatelessWidget {
                                 assert(price is double);
                                 var qunatity = double.parse(addP.quantity.text);
                                 assert(qunatity is double);
-                                var dis1 = double.parse(addP.dis1.text);
-                                assert(dis1 is double);
-                                var dis2 = double.parse(addP.dis2.text);
-                                assert(dis2 is double);
-                                var dis3 = double.parse(addP.dis3.text);
-                                assert(dis3 is double);
+                                var dis1 = int.parse(addP.dis1.text);
+                                assert(dis1 is int);
+                                var dis2 = int.parse(addP.dis2.text);
+                                assert(dis2 is int);
+                                var dis3 = int.parse(addP.dis3.text);
+                                assert(dis3 is int);
                                 var days1 = int.parse(addP.days1.text);
                                 assert(days1 is int);
                                 var days2 = int.parse(addP.days2.text);
@@ -471,9 +471,9 @@ class AddProductPage extends StatelessWidget {
                                   days1: days1,
                                   days2: days2,
                                   days3: days3,
-                                  discount1_percentage:dis1,
-                                  discount2_percentage:dis2,
-                                  discount3_percentage:dis3,
+                                  discount1_percentage: dis1,
+                                  discount2_percentage: dis2,
+                                  discount3_percentage: dis3,
                                 );
                                 XFile img = addP.imageFile;
                                 addP.AddProductApi(img , add).then((msg){
@@ -489,7 +489,8 @@ class AddProductPage extends StatelessWidget {
                                     );
                                     Navigator.pushReplacement(context,
                                         MaterialPageRoute(builder: (_) => Product_list()));
-                                  }else{
+                                  }
+                                  else{
                                     Fluttertoast.showToast(
                                         msg: 'fail to Add\n try again',
                                         toastLength: Toast.LENGTH_LONG,

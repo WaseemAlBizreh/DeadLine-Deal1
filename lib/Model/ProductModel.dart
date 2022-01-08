@@ -8,9 +8,9 @@ class ReqProduct {
   int days1;
   int days2;
   int days3;
-  double discount1_percentage;
-  double discount2_percentage;
-  double discount3_percentage;
+  int discount1_percentage;
+  int discount2_percentage;
+  int discount3_percentage;
 
   ReqProduct({
     required this.name,

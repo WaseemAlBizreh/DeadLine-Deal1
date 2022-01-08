@@ -117,7 +117,6 @@ class AddProduct with ChangeNotifier {
   }
   //Api
   Future AddProductApi(XFile image , ReqProduct requestModel) async {
-    //url
     String url = "https://laravel-project-master.000webhostapp.com/api/add";
     try{
       var request = http.MultipartRequest(
@@ -125,7 +124,7 @@ class AddProduct with ChangeNotifier {
       //header
       request.headers.addAll({
         'Accept': 'application/json',
-        'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBpXC9hdXRoXC9yZWdpc3RlciIsImlhdCI6MTY0MTYyNzQxNSwiZXhwIjoxNjQxNzEzODE1LCJuYmYiOjE2NDE2Mjc0MTUsImp0aSI6IkVKM2haZG92SmF1cXE1WTQiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qapZy7VNX18BwhlhSy9BtEDs0A5_zZEiC8E-JHzFF2Y',
+        'auth-token': token.toString(),
       });
       //body
       request.fields.addAll(requestModel.toJson());
@@ -150,5 +149,4 @@ class AddProduct with ChangeNotifier {
     }
 
   }
-
 }
