@@ -118,21 +118,18 @@ class AddProduct with ChangeNotifier {
   //Api
   Future AddProductApi(XFile image , ReqProduct requestModel) async {
     //url
-    String url = " ";
+    String url = "https://laravel-project-master.000webhostapp.com/api/add";
     var request = http.MultipartRequest(
         'POST',Uri.parse(url));
-
     //header
     request.headers.addAll({
       'Accept': 'application/json',
       'auth-token': token.toString(),
     });
-
     //body
     request.fields.addAll(requestModel.toJson());
     var image_file = await http.MultipartFile.fromPath('image',image.path);
     request.files.add(image_file);
-
     http.StreamedResponse response = await request.send();
     bool msg;
     if (response.statusCode == 200) {
