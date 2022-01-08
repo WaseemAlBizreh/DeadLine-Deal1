@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Service/SearchApi.dart';
@@ -60,8 +61,7 @@ class _SearchState extends State<Search> {
                                 return InkWell(
                                   onTap: (){
                                     Navigator.push(context, MaterialPageRoute(
-                                        builder: (_)=> ShowProduct(
-                                          product: data.search[index],)));
+                                        builder: (_)=> ShowProduct(product: data.search[index],)));
                                   },
                                   child: Container(
                                     margin: EdgeInsets.fromLTRB(
@@ -176,10 +176,18 @@ class _SearchState extends State<Search> {
                             margin: EdgeInsets.fromLTRB(constraints.maxWidth * 0.07, 0,
                                 constraints.maxWidth * 0.07,0),
                             child: TextFormField(
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'please enter EmailAddress';
-                                }
+                              onChanged: (String value){
+                                data.SearchName(value).catchError((e){
+                                  Fluttertoast.showToast(
+                                      msg: e.toString(),
+                                      toastLength: Toast.LENGTH_LONG,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.blueGrey,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0
+                                  );
+                                });
                               },
                               autocorrect: false,
                               decoration: InputDecoration(
@@ -234,32 +242,32 @@ class _SearchState extends State<Search> {
                               ),
                               Container(
                                 margin: EdgeInsets.only(left: constraints.maxWidth * 0.2),
-                                child: DropdownButton<String>(
-                                  alignment: Alignment.center,
-                                  value: data.select_cat_to.text,
-                                  icon: Icon(Icons.arrow_downward,color: c1,size:30),
-                                  elevation: 16,
-                                  underline: Container(
-                                    height: 2,
-                                    color: Colors.black,
-                                  ),
-                                  onChanged:(String? val){
-                                    data.set_select_cat_to(val!);
-                                  },
-                                  items: category.map<DropdownMenuItem<String>>((String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(
-                                        value,
-                                        style: TextStyle(
-                                          color: c1,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                      ),
-                                    );
-                                  }).toList(),
-                                ),
+                                // child: DropdownButton<String>(
+                                //   alignment: Alignment.center,
+                                //   value: data.select_cat_to.text,
+                                //   icon: Icon(Icons.arrow_downward,color: c1,size:30),
+                                //   elevation: 16,
+                                //   underline: Container(
+                                //     height: 2,
+                                //     color: Colors.black,
+                                //   ),
+                                //   onChanged:(String? val){
+                                //     data.set_select_cat_to(val!);
+                                //   },
+                                //   items: category.map<DropdownMenuItem<String>>((String value) {
+                                //     return DropdownMenuItem<String>(
+                                //       value: value,
+                                //       child: Text(
+                                //         value,
+                                //         style: TextStyle(
+                                //           color: c1,
+                                //           fontSize: 20,
+                                //           fontWeight: FontWeight.bold,
+                                //         ),
+                                //       ),
+                                //     );
+                                //   }).toList(),
+                                // ),
                               ),
                             ],
                           )

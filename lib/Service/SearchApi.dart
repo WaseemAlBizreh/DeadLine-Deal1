@@ -8,22 +8,9 @@ import 'package:waseem/Model/ProductModel.dart';
 import '../Variables.dart';
 class SearchApiProvider with ChangeNotifier {
   List<ResProduct> _search = [];
-
-  TextEditingController _select_cat_to_search = TextEditingController();
-
   List<ResProduct> get search => _search;
 
   DateTime date_search = DateTime(0);
-
-
-    TextEditingController get select_cat_to => _select_cat_to_search;
-
-
-  set_select_cat_to(String value) {
-      _select_cat_to_search.text = value;
-      notifyListeners();
-    }
-
 
   Future<void> datepicker(BuildContext context) async {
     final DateTime? picker = await showDatePicker(
@@ -36,17 +23,20 @@ class SearchApiProvider with ChangeNotifier {
       date_search = picker;
       notifyListeners();
     } else {
-      return;
+      return ;
     }
   }
 
 
-  Future<List<ResProduct>> ShowAllData() async {
-    String url = "https://pastebin.com/raw/1cUWbZZN";//change this to https://laravel-project-master.000webhostapp.com/showAll
+  Future<void> SearchName(String name) async {
+    String url = "https://laravel-project-master.000webhostapp.com/api/searchName";
     http.Response response = await http.post(Uri.parse(url),
         headers: {
           'Accept': 'application/json',
-          'auth-token': token.toString(),
+          'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBpXC9hdXRoXC9yZWdpc3RlciIsImlhdCI6MTY0MTYyNzQxNSwiZXhwIjoxNjQxNzEzODE1LCJuYmYiOjE2NDE2Mjc0MTUsImp0aSI6IkVKM2haZG92SmF1cXE1WTQiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qapZy7VNX18BwhlhSy9BtEDs0A5_zZEiC8E-JHzFF2Y',
+        },
+        body:{
+          'name' : name,
         }).catchError((e) {
       if (e is SocketException) {
         throw 'No Internet Connection';
@@ -61,9 +51,9 @@ class SearchApiProvider with ChangeNotifier {
       Singlelist.products_list.map((e) => ResProduct.fromJson(e)).toList();
       _search = products;
       notifyListeners();
-      return products;
     } else {
-      throw 'Failed to load products';
+      throw 'Failed to Search';
     }
   }
+
 }
