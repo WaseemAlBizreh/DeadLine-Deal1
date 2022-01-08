@@ -6,6 +6,7 @@ import 'package:waseem/Model/ProductModel.dart';
 import 'package:waseem/Service/ProductApi.dart';
 
 import '../Variables.dart';
+import 'ProductList.dart';
 
 class ShowProduct extends StatelessWidget {
   late final ResProduct product;
@@ -45,6 +46,8 @@ class ShowProduct extends StatelessWidget {
                             textColor: Colors.white,
                             fontSize: 16.0
                         );
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (_)=> Product_list()));
                       }else{
                         Fluttertoast.showToast(
                             msg: 'failed Delete try again',
