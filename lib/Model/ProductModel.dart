@@ -52,9 +52,9 @@ class ResProduct {
   late String endDate; //Date
   late String contact;
   late String category;
-  double quantity;
-  double init_price;
-  double main_price;
+  var quantity;
+  var init_price;
+  var main_price;
   int days;
   int id;
   int views;
@@ -88,7 +88,7 @@ class ResProduct {
       contact: jsonData['contact'],
       days: jsonData['days'],
       id: jsonData['id'],
-      category: jsonData['cat_Id'],
+      category: jsonData['category'],
       views: jsonData['views_count'],
       like: jsonData['likes_count'],
       isLike: jsonData['isLike'],
