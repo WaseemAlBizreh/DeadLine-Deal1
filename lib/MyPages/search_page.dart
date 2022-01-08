@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Service/SearchApi.dart';
 import 'package:waseem/Variables.dart';
@@ -148,7 +149,7 @@ class _SearchState extends State<Search> {
                                                   color: c5,
                                                 )),
                                             Text(
-                                              '\$${data.search[index].main_price}',
+                                              '\$${data.search[index].price}',
                                               style: TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 color: Color(0xff8e0000),
@@ -195,6 +196,44 @@ class _SearchState extends State<Search> {
                              textInputAction: TextInputAction.search,
                            ),
                          ),
+                       Row(
+                         children: [
+                           Container(
+                             margin: EdgeInsets.fromLTRB(
+                               constraints.maxWidth * 0.04,
+                               constraints.maxHeight * 0.01,
+                               constraints.maxWidth * 0.08,
+                               constraints.maxHeight * 0.02,
+                             ),
+                             child:ElevatedButton(
+                               onPressed: () {
+                                 data.datepicker(context);
+                               },
+                               child: data.date_search == DateTime(0)
+                                   ? Text('Expiration Date')
+                                   : Text(
+                                   'Date : ${DateFormat('yyyy-MM-dd').format(data.date_search)}'
+                               ),
+                               style: ButtonStyle(
+                                 shape: MaterialStateProperty.all(
+                                   RoundedRectangleBorder(
+                                     borderRadius: BorderRadius.circular(10),
+                                   ),
+                                 ),
+                                 padding: MaterialStateProperty.all(
+                                     EdgeInsets.fromLTRB(
+                                       constraints.maxWidth * 0.05,
+                                       constraints.maxHeight * 0.01,
+                                       constraints.maxWidth * 0.05,
+                                       constraints.maxHeight * 0.01,
+                                     )),
+                                 elevation: MaterialStateProperty.all(10),
+                                 backgroundColor: MaterialStateProperty.all(c1),
+                               ),
+                             ),
+                           ),
+                         ],
+                       )
                      ],
                    ),
                 ],
@@ -206,5 +245,6 @@ class _SearchState extends State<Search> {
           }
        ),
     );
+
   }
 }
