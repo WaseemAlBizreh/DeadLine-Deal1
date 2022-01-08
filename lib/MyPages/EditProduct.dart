@@ -23,9 +23,9 @@ class EditProductPage extends StatelessWidget {
         child: Consumer<AddProduct>(builder: (context, addP, child) {
           addP.setName(product.name);
           addP.setContact(product.contact);
-          //addP.setQuantity(product.quantity);
+          addP.setQuantity(product.quantity.toString());
           addP.set_select_cat(product.category);
-          //addP.imageFile;
+
           return LayoutBuilder(builder: (context, constraints) {
             return Scaffold(
               appBar: AppBar(
@@ -198,12 +198,12 @@ class EditProductPage extends StatelessWidget {
                                 assert(price is double);
                                 var qunatity = double.parse(addP.quantity.text);
                                 assert(qunatity is double);
-                                var dis1 = double.parse(addP.dis1.text);
-                                assert(dis1 is double);
-                                var dis2 = double.parse(addP.dis2.text);
-                                assert(dis2 is double);
-                                var dis3 = double.parse(addP.dis3.text);
-                                assert(dis3 is double);
+                                var dis1 = int.parse(addP.dis1.text);
+                                assert(dis1 is int);
+                                var dis2 = int.parse(addP.dis2.text);
+                                assert(dis2 is int);
+                                var dis3 = int.parse(addP.dis3.text);
+                                assert(dis3 is int);
                                 var days1 = int.parse(addP.days1.text);
                                 assert(days1 is int);
                                 var days2 = int.parse(addP.days2.text);
