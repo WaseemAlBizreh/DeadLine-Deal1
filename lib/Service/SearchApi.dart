@@ -47,12 +47,7 @@ class SearchApiProvider with ChangeNotifier {
       'name': name
     });
     request.headers.addAll({
-      'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpc'
-          'L1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBpXC9'
-          'hdXRoXC9sb2dpbiIsImlhdCI6MTY0MTcxMzkwMSwiZXhwIjoxNjQxODAwMzAxLCJuYm'
-          'YiOjE2NDE3MTM5MDEsImp0aSI6Ik5vZTY1dUk2WGJJZjd1d20iLCJzdWIiOjIsInByd'
-          'iI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.SSjkQe'
-          'Yl6S7em-08n_8lGxP0mu6iUNbOgnBmcoF6Sko',
+      'auth-token': token.toString(),
       'Accept': 'application/json'
     });
     http.StreamedResponse response = await request.send();
@@ -76,12 +71,7 @@ class SearchApiProvider with ChangeNotifier {
       'endDate': date
     });
     request.headers.addAll({
-      'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwcz'
-          'pcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBp'
-          'XC9hdXRoXC9sb2dpbiIsImlhdCI6MTY0MTcxMzkwMSwiZXhwIjoxNjQxODAwMzAxLCJ'
-          'uYmYiOjE2NDE3MTM5MDEsImp0aSI6Ik5vZTY1dUk2WGJJZjd1d20iLCJzdWIiOjIsInB'
-          'ydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.SSjk'
-          'QeYl6S7em-08n_8lGxP0mu6iUNbOgnBmcoF6Sko',
+      'auth-token': token.toString(),
       'Accept': 'application/json'
     });
     http.StreamedResponse response = await request.send();
@@ -106,12 +96,7 @@ class SearchApiProvider with ChangeNotifier {
       'category': cat
     });
     request.headers.addAll({
-      'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwcz'
-          'pcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBp'
-          'XC9hdXRoXC9sb2dpbiIsImlhdCI6MTY0MTcxMzkwMSwiZXhwIjoxNjQxODAwMzAxLCJ'
-          'uYmYiOjE2NDE3MTM5MDEsImp0aSI6Ik5vZTY1dUk2WGJJZjd1d20iLCJzdWIiOjIsInB'
-          'ydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.SSjk'
-          'QeYl6S7em-08n_8lGxP0mu6iUNbOgnBmcoF6Sko',
+      'auth-token': token.toString(),
       'Accept': 'application/json'
     });
     http.StreamedResponse response = await request.send();
