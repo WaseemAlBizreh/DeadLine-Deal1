@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:waseem/Model/ProductModel.dart';
 import 'package:waseem/Service/SearchApi.dart';
 import 'package:waseem/Variables.dart';
 
@@ -15,6 +16,7 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  late List<ResProduct> list;
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -94,14 +96,21 @@ class _SearchState extends State<Search> {
                                                 padding: EdgeInsets.all(
                                                     constraints.maxWidth * 0.01),
                                                 color: c3,
-                                                child: RotationTransition(
-                                                  turns: AlwaysStoppedAnimation(-35/360),
-                                                  child: Text(
-                                                    '${data.search[index].quantity}',
-                                                    style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                child: Row(
+                                                  children: [
+                                                    Icon(Icons.visibility,color:c1, size:18),
+                                                    SizedBox(width: constraints.maxWidth *0.01,),
+                                                    RotationTransition(
+                                                      turns: AlwaysStoppedAnimation(
+                                                          0/ 360),
+                                                      child: Text(
+                                                        '${data.search[index].views}',
+                                                        style: TextStyle(
+                                                          fontWeight: FontWeight.bold,
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
                                               ),
                                             ),
@@ -177,7 +186,9 @@ class _SearchState extends State<Search> {
                                 constraints.maxWidth * 0.07,0),
                             child: TextFormField(
                               onChanged: (String value){
-                                data.SearchName(value).catchError((e){
+                                data.SearchName(value).then((value) {
+                                  print(value);
+                                }).catchError((e){
                                   Fluttertoast.showToast(
                                       msg: e.toString(),
                                       toastLength: Toast.LENGTH_LONG,
@@ -215,7 +226,20 @@ class _SearchState extends State<Search> {
                                 ),
                                 child:ElevatedButton(
                                   onPressed: () {
-                                    data.datepicker(context);
+                                    // var date_search = data.datepicker(context);
+                                    data.SearchDate().then((value) {
+                                      print(value);
+                                    }).catchError((e){
+                                      Fluttertoast.showToast(
+                                          msg: e.toString(),
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0
+                                      );
+                                    });
                                   },
                                   child: data.date_search == DateTime(0)
                                       ? Text('Expiration Date')
@@ -282,6 +306,5 @@ class _SearchState extends State<Search> {
       }
       ),
     );
-
   }
 }
