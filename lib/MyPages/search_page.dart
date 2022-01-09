@@ -232,7 +232,7 @@ class _SearchState extends State<Search> {
                                         EdgeInsets.fromLTRB(
                                           constraints.maxWidth * 0.05,
                                           constraints.maxHeight * 0.01,
-                                          constraints.maxWidth * 0.06,
+                                          constraints.maxWidth * 0.03,
                                           constraints.maxHeight * 0.01,
                                         )),
                                     elevation: MaterialStateProperty.all(10),
@@ -242,32 +242,32 @@ class _SearchState extends State<Search> {
                               ),
                               Container(
                                 margin: EdgeInsets.only(left: constraints.maxWidth * 0.2),
-                                // child: DropdownButton<String>(
-                                //   alignment: Alignment.center,
-                                //   value: data.select_cat_to.text,
-                                //   icon: Icon(Icons.arrow_downward,color: c1,size:30),
-                                //   elevation: 16,
-                                //   underline: Container(
-                                //     height: 2,
-                                //     color: Colors.black,
-                                //   ),
-                                //   onChanged:(String? val){
-                                //     data.set_select_cat_to(val!);
-                                //   },
-                                //   items: category.map<DropdownMenuItem<String>>((String value) {
-                                //     return DropdownMenuItem<String>(
-                                //       value: value,
-                                //       child: Text(
-                                //         value,
-                                //         style: TextStyle(
-                                //           color: c1,
-                                //           fontSize: 20,
-                                //           fontWeight: FontWeight.bold,
-                                //         ),
-                                //       ),
-                                //     );
-                                //   }).toList(),
-                                // ),
+                                child: DropdownButton<String>(
+                                  alignment: Alignment.center,
+                                  value: data.select_cat_to_search.text,
+                                  icon: Icon(Icons.arrow_downward,color: c1,size:30),
+                                  elevation: 16,
+                                  underline: Container(
+                                    height: 2,
+                                    color: Colors.black,
+                                  ),
+                                  onChanged:(String? val){
+                                    data.set_select_cat_to_search(val!);
+                                  },
+                                  items: category.map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                        style: TextStyle(
+                                          color: c1,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    );
+                                  }).toList(),
+                                ),
                               ),
                             ],
                           )
