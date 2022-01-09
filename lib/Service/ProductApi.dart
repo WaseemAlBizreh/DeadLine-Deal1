@@ -88,11 +88,7 @@ class ProductApiProvider with ChangeNotifier {
         "https://laravel-project-master.000webhostapp.com/api/likes/${id}";
     http.Response response = await http.post(Uri.parse(Url), headers: {
       'Accept': 'application/json',
-      'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZ'
-          'lbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBpXC9hdXRoXC9yZWdpc3Rl'
-          'ciIsImlhdCI6MTY0MTYyNzQxNSwiZXhwIjoxNjQxNzEzODE1LCJuYmYiOjE2NDE2Mjc0MTUsIm'
-          'p0aSI6IkVKM2haZG92SmF1cXE1WTQiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMz'
-          'llNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qapZy7VNX18BwhlhSy9BtEDs0A5_zZEiC8E-JHzFF2Y',
+      'auth-token': token.toString(),
     }).catchError((e) {
       if (e is SocketException) {
         throw 'No Internet Connection';
