@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:waseem/Model/ProductModel.dart';
 import 'package:waseem/Service/SearchApi.dart';
 import 'package:waseem/Variables.dart';
 
@@ -15,6 +16,7 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  late List<ResProduct> list;
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -177,7 +179,9 @@ class _SearchState extends State<Search> {
                                 constraints.maxWidth * 0.07,0),
                             child: TextFormField(
                               onChanged: (String value){
-                                data.SearchName(value).catchError((e){
+                                data.SearchName(value).then((value) {
+                                  print(value);
+                                }).catchError((e){
                                   Fluttertoast.showToast(
                                       msg: e.toString(),
                                       toastLength: Toast.LENGTH_LONG,
@@ -282,6 +286,5 @@ class _SearchState extends State<Search> {
       }
       ),
     );
-
   }
 }
