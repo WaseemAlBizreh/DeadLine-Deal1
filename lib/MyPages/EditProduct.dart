@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Model/ProductModel.dart';
-import 'package:waseem/Service/AddProductApi.dart';
+import 'package:waseem/Service/UpdateApi.dart';
 
 import '../Variables.dart';
 import 'ProductList.dart';
 
 class EditProductPage extends StatelessWidget {
-  late final ResProduct product;
+  late ResProduct product;
+
   EditProductPage({
     required this.product,
   });
@@ -18,14 +18,11 @@ class EditProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int vimg = 0;
     return ChangeNotifierProvider(
-        create: (_) => AddProduct(),
-        child: Consumer<AddProduct>(builder: (context, addP, child) {
-          addP.setName(product.name);
-          addP.setContact(product.contact);
-          addP.setQuantity(product.quantity.toString());
-          addP.set_select_cat(product.category);
-
+        create: (_) => UpdateProduct(product.category , product.name ,
+            product.quantity.toString() , product.contact),
+        child: Consumer<UpdateProduct>(builder: (context, addP, child) {
           return LayoutBuilder(builder: (context, constraints) {
             return Scaffold(
               appBar: AppBar(
@@ -156,12 +153,11 @@ class EditProductPage extends StatelessWidget {
                               onChanged: (String? val) {
                                 addP.set_select_cat(val!);
                               },
-                              items: category.map<DropdownMenuItem<String>>(
-                                  (String value) {
+                              items: category.
+                              map<DropdownMenuItem<String>>((String value) {
                                 return DropdownMenuItem<String>(
                                   value: value,
-                                  child: Text(
-                                    value,
+                                  child: Text(value,
                                     style: TextStyle(
                                       color: c1,
                                       fontSize: 20,
@@ -179,6 +175,7 @@ class EditProductPage extends StatelessWidget {
                               backgroundColor: c1,
                               child: Icon(Icons.add_a_photo),
                               onPressed: () {
+                                vimg++;
                                 addP.setImage();
                               },
                             ),
@@ -194,62 +191,66 @@ class EditProductPage extends StatelessWidget {
                           child: ElevatedButton(
                             onPressed: () {
                               if (_formkey.currentState!.validate()) {
-                                var price = double.parse(addP.price.text);
-                                assert(price is double);
                                 var qunatity = double.parse(addP.quantity.text);
                                 assert(qunatity is double);
-                                var dis1 = int.parse(addP.dis1.text);
-                                assert(dis1 is int);
-                                var dis2 = int.parse(addP.dis2.text);
-                                assert(dis2 is int);
-                                var dis3 = int.parse(addP.dis3.text);
-                                assert(dis3 is int);
-                                var days1 = int.parse(addP.days1.text);
-                                assert(days1 is int);
-                                var days2 = int.parse(addP.days2.text);
-                                assert(days2 is int);
-                                var days3 = int.parse(addP.days3.text);
-                                assert(days3 is int);
-                                ReqProduct add = ReqProduct(
-                                  name: addP.name.text,
-                                  endDate: addP.date,
-                                  contact: addP.contatct.text,
-                                  category: addP.select_cat.text,
-                                  quantity: qunatity,
-                                  price: price,
-                                  days1: days1,
-                                  days2: days2,
-                                  days3: days3,
-                                  discount1_percentage: dis1,
-                                  discount2_percentage: dis2,
-                                  discount3_percentage: dis3,
-                                );
-                                XFile img = addP.imageFile;
-                                addP.AddProductApi(img, add).then((msg) {
-                                  if (msg) {
-                                    Fluttertoast.showToast(
-                                        msg: 'product edited successfully',
-                                        toastLength: Toast.LENGTH_LONG,
-                                        gravity: ToastGravity.BOTTOM,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: Colors.blueGrey,
-                                        textColor: Colors.white,
-                                        fontSize: 16.0);
-                                    Navigator.pushReplacement(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (_) => Product_list()));
-                                  } else {
-                                    Fluttertoast.showToast(
-                                        msg: 'fail to edit\n try again',
-                                        toastLength: Toast.LENGTH_LONG,
-                                        gravity: ToastGravity.BOTTOM,
-                                        timeInSecForIosWeb: 1,
-                                        backgroundColor: Colors.blueGrey,
-                                        textColor: Colors.white,
-                                        fontSize: 16.0);
-                                  }
-                                });
+                                String cat = addP.select_cat.text;
+                                String cont = addP.contatct.text;
+                                String name = addP.name.text;
+                                if(addP.imageFile != null){
+                                  addP.EditProductApi(addP.imageFile!, name , cont, cat ,
+                                      qunatity , product.id).then((msg) {
+                                    if (msg) {
+                                      Fluttertoast.showToast(
+                                          msg: 'product update successfully',
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => Product_list()));
+                                    } else {
+                                      Fluttertoast.showToast(
+                                          msg: 'fail to update\n try again',
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                    }
+                                  });
+                                }else{
+                                  addP.EditProductApi_noImg(name , cont, cat ,
+                                      qunatity , product.id).then((msg) {
+                                    if (msg) {
+                                      Fluttertoast.showToast(
+                                          msg: 'product update successfully',
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                      Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (_) => Product_list()));
+                                    } else {
+                                      Fluttertoast.showToast(
+                                          msg: 'fail to update\n try again',
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0);
+                                    }
+                                  });
+                                }
                               }
                             },
                             child: Row(children: [
@@ -269,7 +270,7 @@ class EditProductPage extends StatelessWidget {
                                 ),
                               ),
                               padding:
-                                  MaterialStateProperty.all(EdgeInsets.fromLTRB(
+                              MaterialStateProperty.all(EdgeInsets.fromLTRB(
                                 constraints.maxWidth * 0.05,
                                 constraints.maxHeight * 0.01,
                                 constraints.maxWidth * 0.05,
@@ -279,7 +280,7 @@ class EditProductPage extends StatelessWidget {
                               backgroundColor: MaterialStateProperty.all(c1),
                             ),
                           ),
-                        ), //add button
+                        ), //edit button
                       ],
                     ),
                   ),

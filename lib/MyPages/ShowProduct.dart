@@ -6,6 +6,7 @@ import 'package:waseem/Model/ProductModel.dart';
 import 'package:waseem/Service/ProductApi.dart';
 
 import '../Variables.dart';
+import 'EditProduct.dart';
 
 class ShowProduct extends StatelessWidget {
   late final ResProduct product;
@@ -29,7 +30,11 @@ class ShowProduct extends StatelessWidget {
               actions: [
                 IconButton(
                   icon: Icon(Icons.create_sharp , color: c1,),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) =>
+                        EditProductPage(product: product,)));
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.delete, color: c1,),

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
@@ -125,7 +123,7 @@ class AddProduct with ChangeNotifier {
       //header
       request.headers.addAll({
         'Accept': 'application/json',
-        'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBpXC9hdXRoXC9yZWdpc3RlciIsImlhdCI6MTY0MTYyNzQxNSwiZXhwIjoxNjQxNzEzODE1LCJuYmYiOjE2NDE2Mjc0MTUsImp0aSI6IkVKM2haZG92SmF1cXE1WTQiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qapZy7VNX18BwhlhSy9BtEDs0A5_zZEiC8E-JHzFF2Y',
+        'auth-token': token.toString(),
       });
       //body
       request.fields.addAll(requestModel.toJson());
@@ -149,61 +147,4 @@ class AddProduct with ChangeNotifier {
       throw e;
     }
   }
-  //Api
-  Future EditProductApi(XFile image , ReqProduct requestModel) async {
-    //url
-    String url = "https://laravel-project-master.000webhostapp.com/api/add";
-    try{
-      var request = http.MultipartRequest(
-          'POST',Uri.parse(url));
-      //header
-      request.headers.addAll({
-        'Accept': 'application/json',
-        'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBpXC9hdXRoXC9yZWdpc3RlciIsImlhdCI6MTY0MTYyNzQxNSwiZXhwIjoxNjQxNzEzODE1LCJuYmYiOjE2NDE2Mjc0MTUsImp0aSI6IkVKM2haZG92SmF1cXE1WTQiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qapZy7VNX18BwhlhSy9BtEDs0A5_zZEiC8E-JHzFF2Y',
-      });
-      //body
-      // var editname = _NameController.text;
-      // var editprice = double.parse(_PriceController.text);
-      // assert(editprice is double);
-      // var editquantity = double.parse(_QuantityController.text);
-      // assert(editquantity is double);
-      // var editcontact = _ContactController.text;
-      // var editcategory = _select_cat.text;
-      // ReqProduct editP = ReqProduct(
-      //     name:editname,
-      //     contact:editcontact,
-      //     category:editcategory,
-      //     price:editprice,
-      //     quantity:editquantity,
-      //     days1:0,
-      //     days2:0,
-      //     days3:0,
-      //     endDate:DateTime(0),
-      //     discount1_percentage:0,
-      //     discount2_percentage:0,
-      //     discount3_percentage:0,
-      // );
-      request.fields.addAll(requestModel.toJson());
-      var image_file = await http.MultipartFile.fromPath('image',image.path).catchError((e){
-        throw e;
-      });
-      request.files.add(image_file);
-      http.StreamedResponse response = await request.send().catchError((e){
-        throw e;
-      });
-      bool msg;
-      if (response.statusCode == 200) {
-        msg = true;
-        return msg;
-      }
-      else {
-        msg = false;
-        return msg;
-      }
-    }catch(e){
-      throw e;
-    }
-
-  }
-
 }
