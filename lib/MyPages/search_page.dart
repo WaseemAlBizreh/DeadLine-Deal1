@@ -96,14 +96,21 @@ class _SearchState extends State<Search> {
                                                 padding: EdgeInsets.all(
                                                     constraints.maxWidth * 0.01),
                                                 color: c3,
-                                                child: RotationTransition(
-                                                  turns: AlwaysStoppedAnimation(-35/360),
-                                                  child: Text(
-                                                    '${data.search[index].quantity}',
-                                                    style: TextStyle(
-                                                      fontWeight: FontWeight.bold,
+                                                child: Row(
+                                                  children: [
+                                                    Icon(Icons.visibility,color:c1, size:18),
+                                                    SizedBox(width: constraints.maxWidth *0.01,),
+                                                    RotationTransition(
+                                                      turns: AlwaysStoppedAnimation(
+                                                          0/ 360),
+                                                      child: Text(
+                                                        '${data.search[index].views}',
+                                                        style: TextStyle(
+                                                          fontWeight: FontWeight.bold,
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
+                                                  ],
                                                 ),
                                               ),
                                             ),
@@ -219,7 +226,20 @@ class _SearchState extends State<Search> {
                                 ),
                                 child:ElevatedButton(
                                   onPressed: () {
-                                    data.datepicker(context);
+                                    // var date_search = data.datepicker(context);
+                                    data.SearchDate().then((value) {
+                                      print(value);
+                                    }).catchError((e){
+                                      Fluttertoast.showToast(
+                                          msg: e.toString(),
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0
+                                      );
+                                    });
                                   },
                                   child: data.date_search == DateTime(0)
                                       ? Text('Expiration Date')
