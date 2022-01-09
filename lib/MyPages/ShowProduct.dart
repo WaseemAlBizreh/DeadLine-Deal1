@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:like_button/like_button.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Model/ProductModel.dart';
@@ -91,6 +92,34 @@ class ShowProduct extends StatelessWidget {
                             ),
                           ),
                           alignment: Alignment.topCenter,
+                        ),
+                        Container(
+                          margin: EdgeInsets.fromLTRB(
+                              constraints.maxWidth * 0.8,
+                              constraints.maxHeight * 0.25,
+                              constraints.minWidth * 0.003,
+                              constraints.minHeight * 0.002),
+                          child: LikeButton(
+                            size: constraints.maxHeight * 0.04,
+                            circleColor: CircleColor(
+                                start: Color(0xff00ddff),
+                                end: Color(0xff0099cc)),
+                            bubblesColor: BubblesColor(
+                              dotPrimaryColor: Color(0xff33b5e5),
+                              dotSecondaryColor: Color(0xff0099cc),
+                            ),
+                            likeBuilder: (isLiked){
+                              data.setid(product.id);
+                              isLiked = product.isLike;
+                              return Icon(
+                                Icons.thumb_up,
+                                color: isLiked ? c1 : Colors.grey,
+                                size: constraints.maxHeight * 0.04,
+                              );
+                            },
+                            likeCount: product.like,
+                            onTap: data.onLikeTap,
+                          ),
                         ),
                         Container(
                           width: double.infinity,
