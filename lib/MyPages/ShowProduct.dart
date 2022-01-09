@@ -347,7 +347,8 @@ void Bottonsheets(context){
                     topLeft: const Radius.circular(10.0),
                     topRight: const Radius.circular(10.0))),
             child:CommentBox(
-            ),
+              sendButtonMethod: Icon(Icons.send),
+          ),
         )
       );
     },
