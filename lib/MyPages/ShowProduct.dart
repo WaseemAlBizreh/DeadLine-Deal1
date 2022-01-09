@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:like_button/like_button.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:waseem/Model/ProductModel.dart';
@@ -19,44 +18,30 @@ class ShowProduct extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<ProductApiProvider>(
-      builder: (context, data, child) {
+      builder: (context,data,child){
         return LayoutBuilder(builder: (context, constraints) {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: c3,
               elevation: 0,
               leading: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: c1,
-                ),
+                onPressed: () {Navigator.pop(context);},
+                icon: Icon(Icons.arrow_back, color: c1,),
               ),
               actions: [
                 IconButton(
-                  icon: Icon(
-                    Icons.create_sharp,
-                    color: c1,
-                  ),
+                  icon: Icon(Icons.create_sharp , color: c1,),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (_) => EditProductPage(
-                                  product: product,
-                                )));
+                        context, MaterialPageRoute(builder: (_) =>
+                        EditProductPage(product: product,)));
                   },
                 ),
                 IconButton(
-                  icon: Icon(
-                    Icons.delete,
-                    color: c1,
-                  ),
+                  icon: Icon(Icons.delete, color: c1,),
                   onPressed: () {
-                    data.DeleteProduct(product.id).then((msg) {
-                      if (msg) {
+                    data.DeleteProduct(product.id).then((msg){
+                      if(msg){
                         Fluttertoast.showToast(
                             msg: 'Deleted Successfully',
                             toastLength: Toast.LENGTH_LONG,
@@ -64,10 +49,11 @@ class ShowProduct extends StatelessWidget {
                             timeInSecForIosWeb: 1,
                             backgroundColor: Colors.blueGrey,
                             textColor: Colors.white,
-                            fontSize: 16.0);
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (_) => Product_list()));
-                      } else {
+                            fontSize: 16.0
+                        );
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (_) => Product_list()));
+                      }else{
                         Fluttertoast.showToast(
                             msg: 'failed Delete try again',
                             toastLength: Toast.LENGTH_LONG,
@@ -75,7 +61,8 @@ class ShowProduct extends StatelessWidget {
                             timeInSecForIosWeb: 1,
                             backgroundColor: Colors.blueGrey,
                             textColor: Colors.white,
-                            fontSize: 16.0);
+                            fontSize: 16.0
+                        );
                       }
                     });
                   },
@@ -83,11 +70,9 @@ class ShowProduct extends StatelessWidget {
               ],
             ),
             body: Container(
-              height: constraints.maxHeight,
-              width: constraints.maxHeight,
-              decoration: BoxDecoration(
-                color: c3,
-              ),
+              height: double.infinity,
+              width: double.infinity,
+              decoration: BoxDecoration(color: c3,),
               child: SingleChildScrollView(
                 child: Column(
                   children: [
@@ -108,37 +93,9 @@ class ShowProduct extends StatelessWidget {
                           alignment: Alignment.topCenter,
                         ),
                         Container(
-                          margin: EdgeInsets.fromLTRB(
-                              constraints.maxWidth * 0.8,
-                              constraints.maxHeight * 0.25,
-                              constraints.minWidth * 0.003,
-                              constraints.minHeight * 0.002),
-                          child: LikeButton(
-                              size: constraints.maxHeight * 0.04,
-                              circleColor: CircleColor(
-                                  start: Color(0xff00ddff),
-                                  end: Color(0xff0099cc)),
-                              bubblesColor: BubblesColor(
-                                dotPrimaryColor: Color(0xff33b5e5),
-                                dotSecondaryColor: Color(0xff0099cc),
-                              ),
-                              likeBuilder: (isLiked){
-                                data.setid(product.id);
-                                isLiked = product.isLike;
-                                return Icon(
-                                  Icons.thumb_up,
-                                  color: isLiked ? c1 : Colors.grey,
-                                  size: constraints.maxHeight * 0.04,
-                                );
-                              },
-                              likeCount: product.like,
-                              onTap: data.onLikeTap,
-                            ),
-                        ),
-                        Container(
                           width: double.infinity,
-                          margin:
-                              EdgeInsets.only(top: constraints.maxHeight * 0.3),
+                          margin: EdgeInsets.only(
+                              top: constraints.maxHeight * 0.3),
                           height: constraints.maxHeight * 0.6,
                           decoration: BoxDecoration(
                             color: Colors.white,
@@ -148,14 +105,12 @@ class ShowProduct extends StatelessWidget {
                             ),
                           ),
                           child: Container(
-                            padding: EdgeInsets.only(
-                                left: constraints.maxWidth * 0.1),
+                            padding:
+                            EdgeInsets.only(left: constraints.maxWidth * 0.1),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(
-                                  height: constraints.maxHeight * 0.04,
-                                ),
+                                SizedBox(height: constraints.maxHeight * 0.04,),
                                 Row(
                                   children: [
                                     Expanded(
@@ -183,9 +138,7 @@ class ShowProduct extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: constraints.maxWidth * 0.1,
-                                    ),
+                                    SizedBox(width: constraints.maxWidth * 0.1,),
                                     Expanded(
                                       flex: 1,
                                       child: RichText(
@@ -213,9 +166,7 @@ class ShowProduct extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: constraints.maxHeight * 0.04,
-                                ),
+                                SizedBox(height: constraints.maxHeight * 0.04,),
                                 Row(
                                   children: [
                                     Expanded(
@@ -295,9 +246,7 @@ class ShowProduct extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: constraints.maxHeight * 0.04,
-                                ),
+                                SizedBox(height: constraints.maxHeight * 0.04,),
                                 Row(
                                   children: [
                                     Expanded(
@@ -325,9 +274,7 @@ class ShowProduct extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: constraints.maxWidth * 0.1,
-                                    ),
+                                    SizedBox(width: constraints.maxWidth * 0.1,),
                                     Container(
                                       // decoration: BoxDecoration(
                                       //   border: Border.all(
@@ -385,11 +332,10 @@ class ShowProduct extends StatelessWidget {
     );
   }
 }
-
-void Bottonsheets(context) {
+void Bottonsheets(context){
   showMaterialModalBottomSheet(
     context: context,
-    builder: (builder) {
+    builder:(builder){
       return new Container(
         height: 450.0,
         color: Colors.transparent, //could change this to Color(0xFF737373),
@@ -402,7 +348,8 @@ void Bottonsheets(context) {
                     topRight: const Radius.circular(10.0))),
             child: new Center(
               child: new Text("This is a modal sheet"),
-            )),
+            )
+        ),
       );
     },
   );

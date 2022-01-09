@@ -32,6 +32,6 @@ class _MyAppState extends State<MyApp> {
         ),
         title: 'Deadline Deals',
         debugShowCheckedModeBanner: false,
-        home: Product_list());
+        home: login_page());
   }
 }
