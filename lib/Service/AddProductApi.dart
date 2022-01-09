@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
@@ -117,6 +115,7 @@ class AddProduct with ChangeNotifier {
   }
   //Api
   Future AddProductApi(XFile image , ReqProduct requestModel) async {
+    //url
     String url = "https://laravel-project-master.000webhostapp.com/api/add";
     try{
       var request = http.MultipartRequest(
@@ -124,7 +123,13 @@ class AddProduct with ChangeNotifier {
       //header
       request.headers.addAll({
         'Accept': 'application/json',
-        'auth-token': token.toString(),
+        'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc'
+            '3MiOiJodHRwczpcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNv'
+            'bVwvYXBpXC9hdXRoXC9yZWdpc3RlciIsImlhdCI6MTY0MTYyNzQxNSwiZXhwIjoxNjQxNzEzODE'
+            '1LCJuYmYiOjE2NDE2Mjc0MTUsImp0aSI6IkVKM2haZG92SmF1cXE1WTQiLCJzdWIiOjIsInBydiI6I'
+            'jIzYmQ1Yzg5NDlmNjAwYWRi'
+            'MzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qapZy7VNX18Bwhl'
+            'hSy9BtEDs0A5_zZEiC8E-JHzFF2Y',
       });
       //body
       request.fields.addAll(requestModel.toJson());
@@ -147,6 +152,5 @@ class AddProduct with ChangeNotifier {
     }catch(e){
       throw e;
     }
-
   }
 }

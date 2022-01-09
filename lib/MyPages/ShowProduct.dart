@@ -6,6 +6,8 @@ import 'package:waseem/Model/ProductModel.dart';
 import 'package:waseem/Service/ProductApi.dart';
 
 import '../Variables.dart';
+import 'EditProduct.dart';
+import 'ProductList.dart';
 
 class ShowProduct extends StatelessWidget {
   late final ResProduct product;
@@ -29,7 +31,11 @@ class ShowProduct extends StatelessWidget {
               actions: [
                 IconButton(
                   icon: Icon(Icons.create_sharp , color: c1,),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context, MaterialPageRoute(builder: (_) =>
+                        EditProductPage(product: product,)));
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.delete, color: c1,),
@@ -45,6 +51,8 @@ class ShowProduct extends StatelessWidget {
                             textColor: Colors.white,
                             fontSize: 16.0
                         );
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (_) => Product_list()));
                       }else{
                         Fluttertoast.showToast(
                             msg: 'failed Delete try again',
@@ -328,17 +336,21 @@ void Bottonsheets(context){
   showMaterialModalBottomSheet(
     context: context,
     builder:(builder){
-    return new Container(
-      height: 450.0,
-      color: Colors.transparent,
-      child: new Container(
-          decoration: new BoxDecoration(
-              color: c3,
-              borderRadius: new BorderRadius.only(
-                  topLeft: const Radius.circular(10.0),
-                  topRight: const Radius.circular(10.0))),
-      ),
-    );
-  },
-    );
+      return new Container(
+        height: 450.0,
+        color: Colors.transparent, //could change this to Color(0xFF737373),
+        //so you don't have to change MaterialApp canvasColor
+        child: new Container(
+            decoration: new BoxDecoration(
+                color: c3,
+                borderRadius: new BorderRadius.only(
+                    topLeft: const Radius.circular(10.0),
+                    topRight: const Radius.circular(10.0))),
+            child: new Center(
+              child: new Text("This is a modal sheet"),
+            )
+        ),
+      );
+    },
+  );
 }
