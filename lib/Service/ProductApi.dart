@@ -75,11 +75,12 @@ class ProductApiProvider with ChangeNotifier {
     http.Response response = await http.get(Uri.parse(Url),
         headers: {
           'Accept': 'application/json',
-          'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbGFyYXZ'
-              'lbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBpXC9hdXRoXC9yZWdpc3Rl'
-              'ciIsImlhdCI6MTY0MTYyNzQxNSwiZXhwIjoxNjQxNzEzODE1LCJuYmYiOjE2NDE2Mjc0MTUsIm'
-              'p0aSI6IkVKM2haZG92SmF1cXE1WTQiLCJzdWIiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMz'
-              'llNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.qapZy7VNX18BwhlhSy9BtEDs0A5_zZEiC8E-JHzFF2Y',
+          'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwc'
+              'zpcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYX'
+              'BpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY0MTcxMzkwMSwiZXhwIjoxNjQxODAwMzA'
+              'xLCJuYmYiOjE2NDE3MTM5MDEsImp0aSI6Ik5vZTY1dUk2WGJJZjd1d20iLCJzdW'
+              'IiOjIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OT'
+              'c2ZjcifQ.SSjkQeYl6S7em-08n_8lGxP0mu6iUNbOgnBmcoF6Sko',
         }).catchError((e) {
       if (e is SocketException) {
         throw 'No Internet Connection';

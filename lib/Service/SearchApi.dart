@@ -68,12 +68,12 @@ class SearchApiProvider with ChangeNotifier {
     }
   }
 
-  Future SearchDate() async {
+  Future SearchDate(String date) async {
     String url = "https://laravel-project-master.000webhostapp.com/api/searchDate";
     var request = http.MultipartRequest('POST',
         Uri.parse(url));
     request.fields.addAll({
-      'endDate': '2022-12-23'
+      'endDate': date
     });
     request.headers.addAll({
       'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwcz'
@@ -98,4 +98,33 @@ class SearchApiProvider with ChangeNotifier {
     }
   }
 
+  Future SearchCat(String cat) async {
+    String url = "https://laravel-project-master.000webhostapp.com/api/searchCat";
+    var request = http.MultipartRequest('POST',
+        Uri.parse(url));
+    request.fields.addAll({
+      'category': cat
+    });
+    request.headers.addAll({
+      'auth-token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwcz'
+          'pcL1wvbGFyYXZlbC1wcm9qZWN0LW1hc3Rlci4wMDB3ZWJob3N0YXBwLmNvbVwvYXBp'
+          'XC9hdXRoXC9sb2dpbiIsImlhdCI6MTY0MTcxMzkwMSwiZXhwIjoxNjQxODAwMzAxLCJ'
+          'uYmYiOjE2NDE3MTM5MDEsImp0aSI6Ik5vZTY1dUk2WGJJZjd1d20iLCJzdWIiOjIsInB'
+          'ydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.SSjk'
+          'QeYl6S7em-08n_8lGxP0mu6iUNbOgnBmcoF6Sko',
+      'Accept': 'application/json'
+    });
+    http.StreamedResponse response = await request.send();
+    final respStr = await response.stream.bytesToString();
+    print(respStr.toString());
+    if (response.statusCode == 200) {
+      String Data = respStr;
+      var jsonData = jsonDecode(Data);
+      product_list Singlelist = product_list.fromJson(jsonData);
+      List<ResProduct> products =
+      Singlelist.products_list.map((e) => ResProduct.fromJson(e)).toList();
+      _search = products;
+      notifyListeners();
+    }
+  }
 }

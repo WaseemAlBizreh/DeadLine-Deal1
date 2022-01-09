@@ -225,9 +225,9 @@ class _SearchState extends State<Search> {
                                   constraints.maxHeight * 0.02,
                                 ),
                                 child:ElevatedButton(
-                                  onPressed: () {
-                                    // var date_search = data.datepicker(context);
-                                    data.SearchDate().then((value) {
+                                  onPressed: () async {
+                                    var date = await data.datepicker(context);
+                                    data.SearchDate(date).then((value) {
                                       print(value);
                                     }).catchError((e){
                                       Fluttertoast.showToast(
@@ -277,6 +277,18 @@ class _SearchState extends State<Search> {
                                   ),
                                   onChanged:(String? val){
                                     data.set_select_cat_to_search(val!);
+                                    data.SearchCat(data.select_cat_to_search.text)
+                                        .catchError((e){
+                                      Fluttertoast.showToast(
+                                          msg: e.toString(),
+                                          toastLength: Toast.LENGTH_LONG,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.blueGrey,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0
+                                      );
+                                    });
                                   },
                                   items: category.map<DropdownMenuItem<String>>((String value) {
                                     return DropdownMenuItem<String>(
