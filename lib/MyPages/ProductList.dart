@@ -187,6 +187,7 @@ class _Product_listState extends State<Product_list> {
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: () {
+                                data.Views(data.product[index].id);
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
