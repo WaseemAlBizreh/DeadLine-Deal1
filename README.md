@@ -9,7 +9,9 @@
             <img src="https://img.shields.io/github/contributors/WaseemAlBizreh/DeadLine-Deals" alt="contributors" />
         </a>
         <span>..</span>
-        <a href="https://gitlab.com/SuffahSkull/waseem-files/-/blob/main/DeadLine%20Deals%20files/Demo/DeadLine%20Deals.mp4">View Demo</a>
+        <a href="https://gitlab.com/SuffahSkull/waseem-files/-/blob/main/DeadLine%20Deals%20files/Demo/DeadLine%20Deals.mp4">View first Demo</a>  
+        <span>..</span>
+        <a href="https://gitlab.com/SuffahSkull/waseem-files/-/raw/main/DeadLine%20Deals%20files/Demo/DeadLine%20Deals%20Demo.mp4">View Second Demo</a>
     </p>
 </div>
 <br />
