@@ -36,6 +36,8 @@ add product that he want to sell</p>
 ### :camera: Screenshots
 run vpn If photos don't appear 
 <div>
+<img src="https://gitlab.com/SuffahSkull/waseem-files/-/raw/main/DeadLine%20Deals%20files/ScreenShots/SplashScreen.jpg"
+        alt="splashscreen" height="500" width="auto" display="inline"/>
 <img src="https://gitlab.com/SuffahSkull/waseem-files/-/raw/main/DeadLine%20Deals%20files/ScreenShots/Login.jpg"
         alt="Login" height="500" width="auto" display="inline"/>
 <img src="https://gitlab.com/SuffahSkull/waseem-files/-/raw/main/DeadLine%20Deals%20files/ScreenShots/View%20Products.jpg"
@@ -44,8 +46,6 @@ run vpn If photos don't appear
         alt="Product Details" height="500" width="auto" display="inline"/>
 <img src="https://gitlab.com/SuffahSkull/waseem-files/-/raw/main/DeadLine%20Deals%20files/ScreenShots/AddProduct.jpg"
         alt="Add Product" height="500" width="auto" display="inline"/>
-<img src="https://gitlab.com/SuffahSkull/waseem-files/-/raw/main/DeadLine%20Deals%20files/ScreenShots/SplashScreen.jpg"
-        alt="splashscreen" height="500" width="auto" display="inline"/>
     <p>more screenshots => This link contains all application interfaces.. </p>
     <a href="https://gitlab.com/SuffahSkull/waseem-files/-/tree/main/DeadLine%20Deals%20files/ScreenShots">Screenshots</a>
 </div>
