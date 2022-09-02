@@ -34,7 +34,7 @@ add product that he want to sell</p>
 
 <!-- Screenshots -->
 ### :camera: Screenshots
-run vpn If photos don't appear 
+run vpn please
 <div>
 <img src="https://gitlab.com/SuffahSkull/waseem-files/-/raw/main/DeadLine%20Deals%20files/ScreenShots/SplashScreen.jpg"
         alt="splashscreen" height="500" width="auto" display="inline"/>
