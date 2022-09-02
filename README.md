@@ -82,7 +82,7 @@ run vpn please
 - View Products , View Products Details
 - Add Product , Edit Product , Delete Product
 - Search product by name , search product by category , search product by Expiration Date
-- Like
+- Like button in product details
 
 <hr><br>
 
